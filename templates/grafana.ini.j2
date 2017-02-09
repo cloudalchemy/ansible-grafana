@@ -1,0 +1,59 @@
+# {{ ansible_managed }}
+# More informations:
+# http://docs.grafana.org/installation/configuration
+
+instance_name = {{ grafana_instance }}
+
+[paths]
+data = {{ grafana_data_dir }}
+logs = {{ grafana_logs_dir }}
+plugins = {{ grafana_data_dir }}/plugins
+
+[server]
+http_addr = {{ grafana_address }}
+http_port = {{ grafana_port }}
+
+[database]
+type = sqlite3
+
+[security]
+admin_user = {{ grafana_admin }}
+admin_password = {{ grafana_password }}
+login_remember_days = 1
+disable_gravatar = true
+
+[users]
+{% if not grafana_user_sign_up %}
+allow_sign_up = false
+{% else %}
+allow_sign_up = true
+auto_assign_org_role = {{ grafana_user_sign_up_role }}
+{% endif %}
+
+{% if grafana_auth %}
+[auth.basic]
+enabled = true
+{% else %}
+[auth]
+disable_login_form = true
+{% endif %}
+
+{% if grafana_mail.enabled %}
+[smtp]
+enabled = true
+host = {{ grafana_mail.host }}
+user = {{ grafana_mail.user }}
+password = {{ grafana_mail.password }}
+from_address = {{ grafana_mail.from_address }}
+{% endif %}
+
+[dashboards.json]
+enabled = true
+path = {{ grafana_data_dir }}/dashboards
+
+[log]
+mode = console file
+level = info
+
+[alerting]
+enabled = true

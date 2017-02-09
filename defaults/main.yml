@@ -1,0 +1,29 @@
+---
+grafana_install_url:
+
+grafana_system_user: grafana
+grafana_system_group: grafana
+
+grafana_instance: "{{ ansible_fqdn }}"
+
+grafana_address: "{{ ansible_default_ipv4.address }}"
+grafana_port: 3000
+grafana_url: "http://{{ grafana_address }}:{{ grafana_port }}"
+
+grafana_logs_dir: "/var/log/grafana"
+grafana_data_dir: "/var/lib/grafana"
+
+grafana_admin: admin
+grafana_password: password
+
+grafana_auth: true
+grafana_user_sign_up: false
+grafana_user_sign_up_role: Editor
+
+# Set this for mail notifications
+grafana_mail:
+  enabled: false
+  host:
+  user:
+  password:
+  from_address:

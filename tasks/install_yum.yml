@@ -1,0 +1,24 @@
+---
+- name: Add Grafana repository file [RHEL/CentOS]
+  template:
+    src: grafana.yum.repo.j2
+    dest: /etc/yum.repos.d/grafana.repo
+    force: yes
+    backup: yes
+  when: grafana_install_url == None
+
+- name: Install Grafana packages [RHEL/CentOS]
+  yum:
+    name: grafana
+    state: latest
+    update_cache: yes
+  notify: restart grafana
+  when: grafana_install_url == None
+
+- name: Install Grafana from URL [RHEL/CentOS]
+  yum:
+    name: "{{ grafana_install_url }}"
+    state: present
+  notify: restart grafana
+  when: grafana_install_url != None
+

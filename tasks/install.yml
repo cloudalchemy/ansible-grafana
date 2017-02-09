@@ -1,0 +1,13 @@
+---
+- name: Install dependencies
+  package:
+    name: "{{ item }}"
+    state: present
+  with_items: "{{ grafana_dependencies }}"
+
+- include: install_yum.yml
+  when: ansible_pkg_mgr == "yum"
+  
+- include: install_apt.yml
+  when: ansible_pkg_mgr == "apt" 
+  

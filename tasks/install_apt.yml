@@ -1,0 +1,31 @@
+---
+- block:
+  - name: Import Grafana GPG signing key [Debian/Ubuntu]
+    apt_key:
+      url: "https://packagecloud.io/gpg.key"
+      state: present
+
+  - name: Add Grafana repository [Debian/Ubuntu]
+    apt_repository:
+      repo: deb https://packagecloud.io/grafana/stable/debian/ jessie main
+      state: present
+
+  - name: Install Grafana packages [Debian/Ubuntu]
+    apt: 
+      name: grafana
+      state: latest
+      update_cache: yes 
+      cache_valid_time: 3600
+    notify: restart grafana
+  when: grafana_install_url == None
+
+- block:
+  - name: Download Grafana package via URL [Debian/Ubuntu]
+    command: curl -o /tmp/grafana-ansible-download.deb {{ grafana_install_url }}
+
+  - name: Install downloaded Grafana package [Debian/Ubuntu]
+    apt:
+      deb: /tmp/grafana-ansible-download.deb
+      state: present
+    notify: restart grafana
+  when: grafana_install_url != None

@@ -1,0 +1,19 @@
+---
+galaxy_info:
+  author: Pawel Krupa
+  description: Grafana configuration
+  company: Sointeractive
+  min_ansible_version: 1.2
+  platforms:
+   - name: EL
+     versions:
+       - 7
+   - name: Ubuntu
+     versions:
+       - 14.04
+       - 16.04
+  galaxy_tags:
+   - grafana
+   - dashboard
+   - metrics
+

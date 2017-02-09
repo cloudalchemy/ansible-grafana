@@ -1,0 +1,33 @@
+---
+- name: Ensure grafana configuration directory existance
+  file:
+    path: /etc/grafana
+    state: directory
+
+- name: Copy the template
+  template:
+    src: grafana.ini.j2
+    dest: /etc/grafana/grafana.ini
+    owner: root
+    group: grafana
+    mode: 0640
+  notify: restart grafana
+
+- name: Create grafana directories
+  file: 
+    path: "{{ item }}"
+    state: directory
+    mode: 0755
+    owner: "{{ grafana_system_user }}"
+    group: "{{ grafana_system_group }}"
+  with_items:
+    - "{{ grafana_logs_dir }}"
+    - "{{ grafana_data_dir }}"
+    - "{{ grafana_data_dir }}/dashboards"
+    - "{{ grafana_data_dir }}/plugins"
+  
+- name: Copy dashboard JSON
+  copy: 
+    src: dashboard.json
+    dest: "{{ grafana_data_dir }}/dashboards/example.json"
+  notify: restart grafana
