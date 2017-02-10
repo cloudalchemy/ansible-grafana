@@ -4,6 +4,7 @@
     apt_key:
       url: "https://packagecloud.io/gpg.key"
       state: present
+      validate_certs: false
 
   - name: Add Grafana repository [Debian/Ubuntu]
     apt_repository:
