@@ -5,6 +5,9 @@
       url: "https://packagecloud.io/gpg.key"
       state: present
       validate_certs: false
+    environment:
+      http_proxy: "{{ http_proxy | default('') }}"
+      https_proxy: "{{ https_proxy | default('') }}"
 
   - name: Add Grafana repository [Debian/Ubuntu]
     apt_repository:
@@ -23,6 +26,9 @@
 - block:
   - name: Download Grafana package via URL [Debian/Ubuntu]
     command: curl -o /tmp/grafana-ansible-download.deb {{ grafana_install_url }}
+    environment:
+      http_proxy: "{{ http_proxy | default('') }}"
+      https_proxy: "{{ https_proxy | default('') }}"
 
   - name: Install downloaded Grafana package [Debian/Ubuntu]
     apt:
