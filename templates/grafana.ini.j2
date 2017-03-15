@@ -12,6 +12,7 @@ plugins = {{ grafana_data_dir }}/plugins
 [server]
 http_addr = {{ grafana_address }}
 http_port = {{ grafana_port }}
+domain = {{ ansible_host | default('localhost') }}
 
 [database]
 type = sqlite3
