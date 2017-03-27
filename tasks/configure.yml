@@ -26,8 +26,17 @@
     - "{{ grafana_data_dir }}/dashboards"
     - "{{ grafana_data_dir }}/plugins"
   
-- name: Copy dashboard JSON
+- name: Copy dashboard JSONs
   copy: 
-    src: dashboard.json
-    dest: "{{ grafana_data_dir }}/dashboards/example.json"
+    src: "{{ item }}"
+    dest: "{{ grafana_data_dir }}/dashboards/{{ item }}"
+  with_items:
+    - api.json
+    - app.json
+    - cassandra.json
+    - engine.json
+    - micro.json
+    - mongodb.json
+    - rabbitmq.json
+    - rankme.json
   notify: restart grafana
