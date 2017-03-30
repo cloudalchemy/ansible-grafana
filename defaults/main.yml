@@ -6,7 +6,7 @@ grafana_system_group: grafana
 
 grafana_instance: "{{ ansible_fqdn }}"
 
-grafana_address: "{{ ansible_default_ipv4.address }}"
+grafana_address: "0.0.0.0"
 grafana_port: 3000
 grafana_url: "http://{{ grafana_address }}:{{ grafana_port }}"
 
