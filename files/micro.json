@@ -4,7 +4,7 @@
   },
   "editable": true,
   "gnetId": null,
-  "graphTooltip": 0,
+  "graphTooltip": 1,
   "hideControls": false,
   "id": 11,
   "links": [],
@@ -20,7 +20,7 @@
               {
                 "evaluator": {
                   "params": [
-                    30
+                    20
                   ],
                   "type": "lt"
                 },
@@ -87,7 +87,7 @@
               {
                 "evaluator": {
                   "params": [
-                    30
+                    20
                   ],
                   "type": "lt"
                 },
@@ -158,9 +158,6 @@
             "name": "Available memory - micro",
             "noDataState": "no_data",
             "notifications": [
-              {
-                "id": 1
-              },
               {
                 "id": 2
               }
@@ -286,7 +283,7 @@
               "fill": true,
               "line": true,
               "op": "lt",
-              "value": 30
+              "value": 20
             }
           ],
           "timeFrom": null,
@@ -527,9 +524,6 @@
             "name": "Used space - micro",
             "noDataState": "no_data",
             "notifications": [
-              {
-                "id": 1
-              },
               {
                 "id": 2
               }
@@ -1109,6 +1103,12 @@
                   {
                     "params": [],
                     "type": "last"
+                  },
+                  {
+                    "params": [
+                      "10s"
+                    ],
+                    "type": "derivative"
                   }
                 ]
               ],
@@ -1158,6 +1158,12 @@
                   {
                     "params": [],
                     "type": "last"
+                  },
+                  {
+                    "params": [
+                      "10s"
+                    ],
+                    "type": "derivative"
                   }
                 ]
               ],
@@ -1271,6 +1277,12 @@
                   {
                     "params": [],
                     "type": "last"
+                  },
+                  {
+                    "params": [
+                      "10s"
+                    ],
+                    "type": "derivative"
                   }
                 ]
               ],
@@ -1320,6 +1332,12 @@
                   {
                     "params": [],
                     "type": "last"
+                  },
+                  {
+                    "params": [
+                      "10s"
+                    ],
+                    "type": "derivative"
                   }
                 ]
               ],
@@ -1433,6 +1451,12 @@
                   {
                     "params": [],
                     "type": "last"
+                  },
+                  {
+                    "params": [
+                      "10s"
+                    ],
+                    "type": "derivative"
                   }
                 ]
               ],
@@ -1482,6 +1506,12 @@
                   {
                     "params": [],
                     "type": "last"
+                  },
+                  {
+                    "params": [
+                      "10s"
+                    ],
+                    "type": "derivative"
                   }
                 ]
               ],
@@ -1595,6 +1625,12 @@
                   {
                     "params": [],
                     "type": "last"
+                  },
+                  {
+                    "params": [
+                      "10s"
+                    ],
+                    "type": "derivative"
                   }
                 ]
               ],
@@ -1644,6 +1680,12 @@
                   {
                     "params": [],
                     "type": "last"
+                  },
+                  {
+                    "params": [
+                      "10s"
+                    ],
+                    "type": "derivative"
                   }
                 ]
               ],
@@ -1710,6 +1752,87 @@
       "height": 276,
       "panels": [
         {
+          "alert": {
+            "conditions": [
+              {
+                "evaluator": {
+                  "params": [
+                    20
+                  ],
+                  "type": "gt"
+                },
+                "operator": {
+                  "type": "and"
+                },
+                "query": {
+                  "datasourceId": 1,
+                  "model": {
+                    "alias": "Last 15 minutes",
+                    "dsType": "influxdb",
+                    "groupBy": [
+                      {
+                        "params": [
+                          "$interval"
+                        ],
+                        "type": "time"
+                      },
+                      {
+                        "params": [
+                          "null"
+                        ],
+                        "type": "fill"
+                      }
+                    ],
+                    "measurement": "system",
+                    "policy": "default",
+                    "refId": "C",
+                    "resultFormat": "time_series",
+                    "select": [
+                      [
+                        {
+                          "params": [
+                            "load15"
+                          ],
+                          "type": "field"
+                        },
+                        {
+                          "params": [],
+                          "type": "mean"
+                        }
+                      ]
+                    ],
+                    "tags": [
+                      {
+                        "key": "host",
+                        "operator": "=",
+                        "value": "micro"
+                      }
+                    ]
+                  },
+                  "params": [
+                    "C",
+                    "5m",
+                    "now"
+                  ]
+                },
+                "reducer": {
+                  "params": [],
+                  "type": "avg"
+                },
+                "type": "query"
+              }
+            ],
+            "executionErrorState": "alerting",
+            "frequency": "60s",
+            "handler": 1,
+            "name": "System load average - micro",
+            "noDataState": "no_data",
+            "notifications": [
+              {
+                "id": 2
+              }
+            ]
+          },
           "aliasColors": {},
           "bars": false,
           "datasource": null,
@@ -1867,7 +1990,15 @@
               ]
             }
           ],
-          "thresholds": [],
+          "thresholds": [
+            {
+              "colorMode": "critical",
+              "fill": true,
+              "line": true,
+              "op": "gt",
+              "value": 20
+            }
+          ],
           "timeFrom": null,
           "timeShift": null,
           "title": "micro system load average",
@@ -1903,6 +2034,87 @@
           ]
         },
         {
+          "alert": {
+            "conditions": [
+              {
+                "evaluator": {
+                  "params": [
+                    20
+                  ],
+                  "type": "gt"
+                },
+                "operator": {
+                  "type": "and"
+                },
+                "query": {
+                  "datasourceId": 1,
+                  "model": {
+                    "alias": "Last 15 minutes",
+                    "dsType": "influxdb",
+                    "groupBy": [
+                      {
+                        "params": [
+                          "$interval"
+                        ],
+                        "type": "time"
+                      },
+                      {
+                        "params": [
+                          "null"
+                        ],
+                        "type": "fill"
+                      }
+                    ],
+                    "measurement": "system",
+                    "policy": "default",
+                    "refId": "C",
+                    "resultFormat": "time_series",
+                    "select": [
+                      [
+                        {
+                          "params": [
+                            "load15"
+                          ],
+                          "type": "field"
+                        },
+                        {
+                          "params": [],
+                          "type": "mean"
+                        }
+                      ]
+                    ],
+                    "tags": [
+                      {
+                        "key": "host",
+                        "operator": "=",
+                        "value": "micro-failover"
+                      }
+                    ]
+                  },
+                  "params": [
+                    "C",
+                    "5m",
+                    "now"
+                  ]
+                },
+                "reducer": {
+                  "params": [],
+                  "type": "avg"
+                },
+                "type": "query"
+              }
+            ],
+            "executionErrorState": "alerting",
+            "frequency": "60s",
+            "handler": 1,
+            "name": "System load average - micro-failover",
+            "noDataState": "no_data",
+            "notifications": [
+              {
+                "id": 2
+              }
+            ]
+          },
           "aliasColors": {},
           "bars": false,
           "datasource": null,
@@ -2060,7 +2272,15 @@
               ]
             }
           ],
-          "thresholds": [],
+          "thresholds": [
+            {
+              "colorMode": "critical",
+              "fill": true,
+              "line": true,
+              "op": "gt",
+              "value": 20
+            }
+          ],
           "timeFrom": null,
           "timeShift": null,
           "title": "micro-failover system load average",
@@ -2329,6 +2549,12 @@
                   {
                     "params": [],
                     "type": "last"
+                  },
+                  {
+                    "params": [
+                      "10s"
+                    ],
+                    "type": "derivative"
                   }
                 ]
               ],
@@ -2378,6 +2604,12 @@
                   {
                     "params": [],
                     "type": "last"
+                  },
+                  {
+                    "params": [
+                      "10s"
+                    ],
+                    "type": "derivative"
                   }
                 ]
               ],
@@ -2427,6 +2659,12 @@
                   {
                     "params": [],
                     "type": "last"
+                  },
+                  {
+                    "params": [
+                      "10s"
+                    ],
+                    "type": "derivative"
                   }
                 ]
               ],
@@ -2476,6 +2714,12 @@
                   {
                     "params": [],
                     "type": "last"
+                  },
+                  {
+                    "params": [
+                      "10s"
+                    ],
+                    "type": "derivative"
                   }
                 ]
               ],
@@ -2837,7 +3081,7 @@
               "label": null,
               "logBase": 1,
               "max": null,
-              "min": null,
+              "min": "0",
               "show": true
             },
             {
@@ -2896,5 +3140,5 @@
   },
   "timezone": "browser",
   "title": "Micro",
-  "version": 2
+  "version": 9
 }

@@ -4,7 +4,7 @@
   },
   "editable": true,
   "gnetId": null,
-  "graphTooltip": 0,
+  "graphTooltip": 1,
   "hideControls": false,
   "id": 5,
   "links": [],
@@ -20,7 +20,7 @@
               {
                 "evaluator": {
                   "params": [
-                    30
+                    20
                   ],
                   "type": "lt"
                 },
@@ -28,7 +28,7 @@
                   "type": "and"
                 },
                 "query": {
-                  "datasourceId": 2,
+                  "datasourceId": 1,
                   "model": {
                     "alias": "api-1",
                     "dsType": "influxdb",
@@ -87,7 +87,7 @@
               {
                 "evaluator": {
                   "params": [
-                    30
+                    20
                   ],
                   "type": "lt"
                 },
@@ -95,7 +95,7 @@
                   "type": "or"
                 },
                 "query": {
-                  "datasourceId": 2,
+                  "datasourceId": 1,
                   "model": {
                     "alias": "api-2",
                     "dsType": "influxdb",
@@ -160,9 +160,6 @@
             "notifications": [
               {
                 "id": 2
-              },
-              {
-                "id": 1
               }
             ]
           },
@@ -286,7 +283,7 @@
               "fill": true,
               "line": true,
               "op": "lt",
-              "value": 30
+              "value": 20
             }
           ],
           "timeFrom": null,
@@ -310,7 +307,7 @@
               "label": null,
               "logBase": 1,
               "max": null,
-              "min": null,
+              "min": "0",
               "show": true
             },
             {
@@ -385,7 +382,7 @@
                   "type": "and"
                 },
                 "query": {
-                  "datasourceId": 2,
+                  "datasourceId": 1,
                   "model": {
                     "alias": "api-1",
                     "dsType": "influxdb",
@@ -458,7 +455,7 @@
                   "type": "or"
                 },
                 "query": {
-                  "datasourceId": 2,
+                  "datasourceId": 1,
                   "model": {
                     "alias": "api-2",
                     "dsType": "influxdb",
@@ -527,9 +524,6 @@
             "name": "Used space - api",
             "noDataState": "no_data",
             "notifications": [
-              {
-                "id": 1
-              },
               {
                 "id": 2
               }
@@ -718,7 +712,7 @@
                   "type": "and"
                 },
                 "query": {
-                  "datasourceId": 2,
+                  "datasourceId": 1,
                   "model": {
                     "alias": "api-1",
                     "dsType": "influxdb",
@@ -791,7 +785,7 @@
                   "type": "or"
                 },
                 "query": {
-                  "datasourceId": 2,
+                  "datasourceId": 1,
                   "model": {
                     "alias": "api-2",
                     "dsType": "influxdb",
@@ -860,9 +854,6 @@
             "name": "Used space - api",
             "noDataState": "no_data",
             "notifications": [
-              {
-                "id": 1
-              },
               {
                 "id": 2
               }
@@ -1109,6 +1100,12 @@
                   {
                     "params": [],
                     "type": "last"
+                  },
+                  {
+                    "params": [
+                      "10s"
+                    ],
+                    "type": "derivative"
                   }
                 ]
               ],
@@ -1158,6 +1155,12 @@
                   {
                     "params": [],
                     "type": "last"
+                  },
+                  {
+                    "params": [
+                      "10s"
+                    ],
+                    "type": "derivative"
                   }
                 ]
               ],
@@ -1271,6 +1274,12 @@
                   {
                     "params": [],
                     "type": "last"
+                  },
+                  {
+                    "params": [
+                      "10s"
+                    ],
+                    "type": "derivative"
                   }
                 ]
               ],
@@ -1320,6 +1329,12 @@
                   {
                     "params": [],
                     "type": "last"
+                  },
+                  {
+                    "params": [
+                      "10s"
+                    ],
+                    "type": "derivative"
                   }
                 ]
               ],
@@ -1433,6 +1448,12 @@
                   {
                     "params": [],
                     "type": "last"
+                  },
+                  {
+                    "params": [
+                      "10s"
+                    ],
+                    "type": "derivative"
                   }
                 ]
               ],
@@ -1482,6 +1503,12 @@
                   {
                     "params": [],
                     "type": "last"
+                  },
+                  {
+                    "params": [
+                      "10s"
+                    ],
+                    "type": "derivative"
                   }
                 ]
               ],
@@ -1595,6 +1622,12 @@
                   {
                     "params": [],
                     "type": "last"
+                  },
+                  {
+                    "params": [
+                      "10s"
+                    ],
+                    "type": "derivative"
                   }
                 ]
               ],
@@ -1644,6 +1677,12 @@
                   {
                     "params": [],
                     "type": "last"
+                  },
+                  {
+                    "params": [
+                      "10s"
+                    ],
+                    "type": "derivative"
                   }
                 ]
               ],
@@ -1710,6 +1749,87 @@
       "height": 276,
       "panels": [
         {
+          "alert": {
+            "conditions": [
+              {
+                "evaluator": {
+                  "params": [
+                    20
+                  ],
+                  "type": "gt"
+                },
+                "operator": {
+                  "type": "and"
+                },
+                "query": {
+                  "datasourceId": 1,
+                  "model": {
+                    "alias": "Last 15 minutes",
+                    "dsType": "influxdb",
+                    "groupBy": [
+                      {
+                        "params": [
+                          "$interval"
+                        ],
+                        "type": "time"
+                      },
+                      {
+                        "params": [
+                          "null"
+                        ],
+                        "type": "fill"
+                      }
+                    ],
+                    "measurement": "system",
+                    "policy": "default",
+                    "refId": "C",
+                    "resultFormat": "time_series",
+                    "select": [
+                      [
+                        {
+                          "params": [
+                            "load15"
+                          ],
+                          "type": "field"
+                        },
+                        {
+                          "params": [],
+                          "type": "mean"
+                        }
+                      ]
+                    ],
+                    "tags": [
+                      {
+                        "key": "host",
+                        "operator": "=",
+                        "value": "api-1"
+                      }
+                    ]
+                  },
+                  "params": [
+                    "C",
+                    "5m",
+                    "now"
+                  ]
+                },
+                "reducer": {
+                  "params": [],
+                  "type": "avg"
+                },
+                "type": "query"
+              }
+            ],
+            "executionErrorState": "alerting",
+            "frequency": "60s",
+            "handler": 1,
+            "name": "System load average - api-1",
+            "noDataState": "no_data",
+            "notifications": [
+              {
+                "id": 2
+              }
+            ]
+          },
           "aliasColors": {},
           "bars": false,
           "datasource": null,
@@ -1867,7 +1987,15 @@
               ]
             }
           ],
-          "thresholds": [],
+          "thresholds": [
+            {
+              "colorMode": "critical",
+              "fill": true,
+              "line": true,
+              "op": "gt",
+              "value": 20
+            }
+          ],
           "timeFrom": null,
           "timeShift": null,
           "title": "api-1 system load average",
@@ -1903,6 +2031,87 @@
           ]
         },
         {
+          "alert": {
+            "conditions": [
+              {
+                "evaluator": {
+                  "params": [
+                    20
+                  ],
+                  "type": "gt"
+                },
+                "operator": {
+                  "type": "and"
+                },
+                "query": {
+                  "datasourceId": 1,
+                  "model": {
+                    "alias": "Last 15 minutes",
+                    "dsType": "influxdb",
+                    "groupBy": [
+                      {
+                        "params": [
+                          "$interval"
+                        ],
+                        "type": "time"
+                      },
+                      {
+                        "params": [
+                          "null"
+                        ],
+                        "type": "fill"
+                      }
+                    ],
+                    "measurement": "system",
+                    "policy": "default",
+                    "refId": "C",
+                    "resultFormat": "time_series",
+                    "select": [
+                      [
+                        {
+                          "params": [
+                            "load15"
+                          ],
+                          "type": "field"
+                        },
+                        {
+                          "params": [],
+                          "type": "mean"
+                        }
+                      ]
+                    ],
+                    "tags": [
+                      {
+                        "key": "host",
+                        "operator": "=",
+                        "value": "api-2"
+                      }
+                    ]
+                  },
+                  "params": [
+                    "C",
+                    "5m",
+                    "now"
+                  ]
+                },
+                "reducer": {
+                  "params": [],
+                  "type": "avg"
+                },
+                "type": "query"
+              }
+            ],
+            "executionErrorState": "alerting",
+            "frequency": "60s",
+            "handler": 1,
+            "name": "System load average - api-2",
+            "noDataState": "no_data",
+            "notifications": [
+              {
+                "id": 2
+              }
+            ]
+          },
           "aliasColors": {},
           "bars": false,
           "datasource": null,
@@ -2060,7 +2269,15 @@
               ]
             }
           ],
-          "thresholds": [],
+          "thresholds": [
+            {
+              "colorMode": "critical",
+              "fill": true,
+              "line": true,
+              "op": "gt",
+              "value": 20
+            }
+          ],
           "timeFrom": null,
           "timeShift": null,
           "title": "api-2 system load average",
@@ -2329,6 +2546,12 @@
                   {
                     "params": [],
                     "type": "last"
+                  },
+                  {
+                    "params": [
+                      "10s"
+                    ],
+                    "type": "derivative"
                   }
                 ]
               ],
@@ -2378,6 +2601,12 @@
                   {
                     "params": [],
                     "type": "last"
+                  },
+                  {
+                    "params": [
+                      "10s"
+                    ],
+                    "type": "derivative"
                   }
                 ]
               ],
@@ -2427,6 +2656,12 @@
                   {
                     "params": [],
                     "type": "last"
+                  },
+                  {
+                    "params": [
+                      "10s"
+                    ],
+                    "type": "derivative"
                   }
                 ]
               ],
@@ -2476,6 +2711,12 @@
                   {
                     "params": [],
                     "type": "last"
+                  },
+                  {
+                    "params": [
+                      "10s"
+                    ],
+                    "type": "derivative"
                   }
                 ]
               ],
@@ -2555,7 +2796,7 @@
                   "type": "and"
                 },
                 "query": {
-                  "datasourceId": 2,
+                  "datasourceId": 1,
                   "model": {
                     "alias": "api-1",
                     "dsType": "influxdb",
@@ -2622,7 +2863,7 @@
                   "type": "or"
                 },
                 "query": {
-                  "datasourceId": 2,
+                  "datasourceId": 1,
                   "model": {
                     "alias": "api-2",
                     "dsType": "influxdb",
@@ -2837,7 +3078,7 @@
               "label": null,
               "logBase": 1,
               "max": null,
-              "min": null,
+              "min": "0",
               "show": true
             },
             {
@@ -2896,5 +3137,5 @@
   },
   "timezone": "browser",
   "title": "Api",
-  "version": 0
+  "version": 10
 }
