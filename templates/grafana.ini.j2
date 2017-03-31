@@ -46,6 +46,7 @@ host = {{ grafana_mail.host }}
 user = {{ grafana_mail.user }}
 password = {{ grafana_mail.password }}
 from_address = {{ grafana_mail.from_address }}
+skip_verify = true
 {% endif %}
 
 [dashboards.json]
