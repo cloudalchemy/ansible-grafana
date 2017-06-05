@@ -10,7 +10,7 @@
 - name: Install Grafana packages [RHEL/CentOS]
   yum:
     name: grafana
-    state: latest
+    state: present
     update_cache: yes
   notify: restart grafana
   when: grafana_install_url == None
@@ -21,4 +21,3 @@
     state: present
   notify: restart grafana
   when: grafana_install_url != None
-

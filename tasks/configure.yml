@@ -14,7 +14,7 @@
   notify: restart grafana
 
 - name: Create grafana directories
-  file: 
+  file:
     path: "{{ item }}"
     state: directory
     mode: 0755
@@ -25,9 +25,9 @@
     - "{{ grafana_data_dir }}"
     - "{{ grafana_data_dir }}/dashboards"
     - "{{ grafana_data_dir }}/plugins"
-  
+
 #- name: Copy dashboard JSONs
-#  copy: 
+#  copy:
 #    src: "{{ item }}"
 #    dest: "{{ grafana_data_dir }}/dashboards/{{ item }}"
 #  with_items:

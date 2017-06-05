@@ -1,0 +1,16 @@
+---
+- hosts: all
+  tasks:
+    - name: install testing suite
+      package:
+        name: "{{ item }}"
+        state: present
+      with_items:
+        - iproute
+        - net-tools
+
+- hosts: all
+  roles:
+    - grafana
+  vars:
+    grafana_address: "127.0.0.1"
