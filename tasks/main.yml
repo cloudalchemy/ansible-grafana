@@ -19,3 +19,5 @@
     name: grafana-server
     state: started
     enabled: yes
+
+- include: dashboards.yml

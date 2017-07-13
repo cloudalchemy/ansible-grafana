@@ -1,0 +1,28 @@
+---
+- name: Create grafana directories
+  file:
+    path: /tmp/dashboards
+    state: directory
+    mode: 0755
+  delegate_to: localhost
+
+- name: download grafana dashboard to lacal folder
+  become: no
+  get_url:
+    url: "https://grafana.com/api/dashboards/{{ item.dashboard_id }}/revisions/{{ item.revision_id }}/download"
+    dest: /tmp/dashboards
+    validate_certs: no
+  delegate_to: localhost
+  with_items: "{{ grafana_dashboards }}"
+
+- name: import grafana dashboards
+  uri:
+    url: "{{ grafana_url }}/api/dashboards/db"
+    user: "{{ grafana_admin }}"
+    password: "{{ grafana_password }}"
+    force_basic_auth: yes
+    method: POST
+    body_format: json
+    body: '{ "dashboard": {{ lookup("file", item) }}, "overwrite": true }'
+  with_fileglob:
+    - /tmp/dashboards/*
