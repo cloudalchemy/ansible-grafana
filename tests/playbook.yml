@@ -14,3 +14,4 @@
     - grafana
   vars:
     grafana_address: "127.0.0.1"
+    grafana_dashboards: []
