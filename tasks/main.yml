@@ -21,4 +21,4 @@
     enabled: yes
 
 - include: dashboards.yml
-  when: grafana_dashboards is defined
+  when: grafana_dashboards != []
