@@ -1,12 +1,13 @@
 ---
-- name: Create grafana directories
+- name: Create local grafana dashboard directories
+  become: no
   file:
     path: /tmp/dashboards
     state: directory
     mode: 0755
   delegate_to: localhost
 
-- name: download grafana dashboard to lacal folder
+- name: download grafana dashboard to local folder
   become: no
   get_url:
     url: "https://grafana.com/api/dashboards/{{ item.dashboard_id }}/revisions/{{ item.revision_id }}/download"
