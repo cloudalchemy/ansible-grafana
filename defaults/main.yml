@@ -31,5 +31,18 @@ grafana_mail:
 grafana_dashboards:
   - dashboard_id: '1860'
     revision_id: '4'
+    datasource: 'prometheus'
   - dashboard_id: '358'
     revision_id: '1'
+    datasource: 'prometheus'
+
+grafana_datasources:
+  - name: "Prometheus"
+    type: "prometheus"
+    access: "proxy"
+    url: "http://prometheus.mydomain"
+    basicAuth: "true"
+    basicAuthUser: "admin"
+    basicAuthPassword: "password"
+    isDefault: "true"
+    jsonData: '{"tlsAuth":false,"tlsAuthWithCACert":false,"tlsSkipVerify":true}'

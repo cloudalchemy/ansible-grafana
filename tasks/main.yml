@@ -10,6 +10,11 @@
   tags:
     - always
 
+- name: Check if datasources are configured when dashboards are set to be installed
+  fail:
+    msg: "You need to specify datasources for dashboards!!!"
+  when: grafana_dashboards != [] and grafana_datasources == []
+
 - include: install.yml
 
 - include: configure.yml
@@ -20,5 +25,8 @@
     state: started
     enabled: yes
 
+- include: datasources.yml
+  when: grafana_datasources != []
+
 - include: dashboards.yml
-  when: grafana_dashboards != []
+  when: grafana_dashboards | length > 0
