@@ -3,6 +3,12 @@
     host: "{{ grafana_address }}"
     port: "{{ grafana_port }}"
 
+- name: Check datasources list
+  uri:
+    url: "{{ grafana_url }}/api/datasources"
+    return_content: yes
+  register: datasources
+
 - name: Create grafana datasource
   uri:
     url: "{{ grafana_url }}/api/datasources"
@@ -14,3 +20,4 @@
     body: '{ "name": "{{ item.name }}", "type": "{{ item.type }}", "access": "{{ item.access }}", "url": "{{ item.url }}", "basicAuth": {{ item.basicAuth }}, "basicAuthUser": "{{ item.basicAuthUser }}", "basicAuthPassword": "{{ item.basicAuthPassword }}", "isDefault": {{ item.isDefault }}, "jsonData": {{ item.jsonData }} }'
   with_items:
     "{{ grafana_datasources }}"
+  when: datasources.content == "[]"
