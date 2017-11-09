@@ -31,10 +31,10 @@ grafana_mail:
 grafana_dashboards:
   - dashboard_id: '1860'
     revision_id: '4'
-    datasource: 'prometheus'
+    datasource: 'Prometheus'
   - dashboard_id: '358'
     revision_id: '1'
-    datasource: 'prometheus'
+    datasource: 'Prometheus'
 
 grafana_datasources:
   - name: "Prometheus"
