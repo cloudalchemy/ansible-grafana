@@ -11,7 +11,16 @@
   become: no
   get_url:
     url: "https://grafana.com/api/dashboards/{{ item.dashboard_id }}/revisions/{{ item.revision_id }}/download"
-    dest: /tmp/dashboards
+    dest: "/tmp/dashboards/{{ item.dashboard_id }}.json"
+  delegate_to: localhost
+  with_items: "{{ grafana_dashboards }}"
+
+- name: Replace datasource variable names
+  become: no
+  replace:
+    path: "/tmp/dashboards/{{ item.dashboard_id }}.json"
+    regexp: "[$].DS_.*}"
+    replace: "{{ item.datasource }}"
   delegate_to: localhost
   with_items: "{{ grafana_dashboards }}"
 
