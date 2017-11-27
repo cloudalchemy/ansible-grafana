@@ -1,4 +1,4 @@
-<p><img src="https://pbs.twimg.com/profile_images/806984496381886464/F7LUp1W2.jpg" alt="grafana logo" title="grafana" align="right" height="60" /></p>
+<p><img src="https://assets.packet.net/media/pages/images/a8849b052492b5106526b2331e526138/xCMw-grafana.png" alt="grafana logo" title="grafana" align="right" height="60" /></p>
 
 Ansible Role: grafana
 ===================
