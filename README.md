@@ -3,6 +3,9 @@
 Ansible Role: grafana
 ===================
 
+From now on, we are using repository listed in [Cloud Alchemy](https://github.com/cloudalchemy/ansible-grafana) organization thus this repo is read only.
+----------------------------
+
 [![Build Status](https://travis-ci.org/SoInteractive/ansible-grafana.svg?branch=master)](https://travis-ci.org/SoInteractive/ansible-grafana) [![License](https://img.shields.io/badge/license-MIT%20License-brightgreen.svg)](https://opensource.org/licenses/MIT) [![Ansible Role](https://img.shields.io/badge/ansible%20role-SoInteractive.grafana-blue.svg)](https://galaxy.ansible.com/SoInteractive/grafana/) [![GitHub tag](https://img.shields.io/github/tag/sointeractive/ansible-grafana.svg)](https://github.com/SoInteractive/ansible-grafana/tags) [![Twitter URL](https://img.shields.io/twitter/follow/sointeractive.svg?style=social&label=Follow%20%40SoInteractive)](https://twitter.com/sointeractive)
 
 Grafana - platform for analytics and monitoring
