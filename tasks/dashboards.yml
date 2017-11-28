@@ -18,7 +18,7 @@
 - name: Replace datasource variable names
   become: no
   replace:
-    path: "/tmp/dashboards/{{ item.dashboard_id }}.json"
+    dest: "/tmp/dashboards/{{ item.dashboard_id }}.json"
     regexp: "[$].DS_.*}"
     replace: "{{ item.datasource }}"
   delegate_to: localhost
