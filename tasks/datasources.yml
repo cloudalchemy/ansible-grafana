@@ -1,0 +1,26 @@
+- name: Wait for grafana to start
+  wait_for:
+    host: "{{ grafana_address }}"
+    port: "{{ grafana_port }}"
+
+- name: Check datasources list
+  uri:
+    url: "{{ grafana_url }}/api/datasources"
+    user: "{{ grafana_admin }}"
+    password: "{{ grafana_password }}"
+    force_basic_auth: yes
+    return_content: yes
+  register: datasources
+
+- name: Create grafana datasource
+  uri:
+    url: "{{ grafana_url }}/api/datasources"
+    user: "{{ grafana_admin }}"
+    password: "{{ grafana_password }}"
+    force_basic_auth: yes
+    method: POST
+    body_format: json
+    body: '{ "name": "{{ item.name }}", "type": "{{ item.type }}", "access": "{{ item.access }}", "url": "{{ item.url }}", "basicAuth": {{ item.basicAuth }}, "basicAuthUser": "{{ item.basicAuthUser }}", "basicAuthPassword": "{{ item.basicAuthPassword }}", "isDefault": {{ item.isDefault }}, "jsonData": {{ item.jsonData }} }'
+  with_items:
+    "{{ grafana_datasources }}"
+  when: datasources.content == "[]"
