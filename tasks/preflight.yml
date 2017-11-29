@@ -7,3 +7,10 @@
   fail:
     msg: "Please specify grafana admin password (grafana_password)"
   when: grafana_password == ''
+
+- name: Check if all variables in datasources definition have their correct type
+  fail:
+    msg: "Boolean variables in grafana_datasources shouldn't be passed as strings. Please remove unneded apostrophes."
+  when: ( item.isDefault is defined and item.isDefault is string ) or
+        ( item.basicAuth is defined and item.basicAuth is string )
+  with_items: "{{ grafana_datasources }}"

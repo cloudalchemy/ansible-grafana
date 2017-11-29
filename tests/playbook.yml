@@ -27,8 +27,8 @@
         type: "prometheus"
         access: "proxy"
         url: "http://prometheus.mydomain"
-        basicAuth: "true"
+        basicAuth: true
         basicAuthUser: "admin"
         basicAuthPassword: "password"
-        isDefault: "true"
+        isDefault: true
         jsonData: '{"tlsAuth":false,"tlsAuthWithCACert":false,"tlsSkipVerify":true}'
