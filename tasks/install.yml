@@ -5,8 +5,33 @@
     state: present
   with_items: "{{ grafana_dependencies }}"
 
-- include: install_yum.yml
+- name: Add Grafana repository file [RHEL/CentOS]
+  template:
+    src: grafana.yum.repo.j2
+    dest: /etc/yum.repos.d/grafana.repo
+    force: yes
+    backup: yes
   when: ansible_pkg_mgr == "yum"
 
-- include: install_apt.yml
+- name: Import Grafana GPG signing key [Debian/Ubuntu]
+  apt_key:
+    url: "https://packagecloud.io/gpg.key"
+    state: present
+    validate_certs: false
+  environment:
+    http_proxy: "{{ http_proxy | default('') }}"
+    https_proxy: "{{ https_proxy | default('') }}"
   when: ansible_pkg_mgr == "apt"
+
+- name: Add Grafana repository [Debian/Ubuntu]
+  apt_repository:
+    repo: deb https://packagecloud.io/grafana/stable/debian/ jessie main
+    state: present
+    update_cache: yes
+  when: ansible_pkg_mgr == "apt"
+
+- name: Install Grafana
+  package:
+    name: grafana
+    state: present
+  notify: restart grafana
