@@ -10,20 +10,18 @@
   tags:
     - always
 
-- name: Check if datasources are configured when dashboards are set to be installed
-  fail:
-    msg: "You need to specify datasources for dashboards!!!"
-  when: grafana_dashboards != [] and grafana_datasources == []
+- include: preflight.yml
 
 - include: install.yml
 
 - include: configure.yml
 
-- name: Start grafana
-  service:
-    name: grafana-server
-    state: started
-    enabled: yes
+- meta: flush_handlers
+
+- name: Wait for grafana to start
+  wait_for:
+    host: "{{ grafana_address }}"
+    port: "{{ grafana_port }}"
 
 - include: datasources.yml
   when: grafana_datasources != []

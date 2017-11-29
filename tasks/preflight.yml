@@ -1,0 +1,9 @@
+- name: Check if datasources are configured when dashboards are set to be installed
+  fail:
+    msg: "You need to specify datasources for dashboards!!!"
+  when: grafana_dashboards != [] and grafana_datasources == []
+
+- name: Check if grafana admin password is set
+  fail:
+    msg: "Please specify grafana admin password (grafana_password)"
+  when: grafana_password == ''

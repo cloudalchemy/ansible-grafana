@@ -13,6 +13,7 @@
   roles:
     - ansible-grafana
   vars:
+    grafana_password: password
     grafana_address: "127.0.0.1"
     grafana_dashboards:
       - dashboard_id: '1860'

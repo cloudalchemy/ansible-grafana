@@ -1,10 +1,8 @@
 ---
-grafana_install_url:
-
 grafana_system_user: grafana
 grafana_system_group: grafana
 
-grafana_instance: "{{ ansible_fqdn }}"
+grafana_instance: "{{ ansible_fqdn | default(ansible_host) | default(inventory_hostname) }}"
 
 grafana_address: "0.0.0.0"
 grafana_port: 3000
@@ -14,7 +12,7 @@ grafana_logs_dir: "/var/log/grafana"
 grafana_data_dir: "/var/lib/grafana"
 
 grafana_admin: admin
-grafana_password: password
+grafana_password: ""
 
 grafana_auth: true
 grafana_user_sign_up: false

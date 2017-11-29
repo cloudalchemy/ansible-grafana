@@ -25,3 +25,9 @@
     - "{{ grafana_data_dir }}"
     - "{{ grafana_data_dir }}/dashboards"
     - "{{ grafana_data_dir }}/plugins"
+
+- name: Enable grafana system service
+  systemd:
+    name: grafana-server
+    enabled: yes
+    daemon_reload: yes
