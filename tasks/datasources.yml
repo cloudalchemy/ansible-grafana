@@ -15,7 +15,6 @@
     force_basic_auth: yes
     method: POST
     body_format: json
-    body: '{ "name": "{{ item.name }}", "type": "{{ item.type }}", "access": "{{ item.access }}", "url": "{{ item.url }}", "basicAuth": {{ item.basicAuth }}, "basicAuthUser": "{{ item.basicAuthUser }}", "basicAuthPassword": "{{ item.basicAuthPassword }}", "isDefault": {{ item.isDefault }}, "jsonData": {{ item.jsonData }} }'
-  with_items:
-    "{{ grafana_datasources }}"
+    body: "{{ item | to_json }}"
+  with_items: "{{ grafana_datasources }}"
   when: datasources.content == "[]"
