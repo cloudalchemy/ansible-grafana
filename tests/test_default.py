@@ -3,7 +3,7 @@ from testinfra.utils.ansible_runner import AnsibleRunner
 testinfra_hosts = AnsibleRunner('.molecule/ansible_inventory').get_hosts('all')
 
 
-def test_directories(File):
+def test_directories(host):
     present = [
         "/etc/grafana",
         "/var/log/grafana",
@@ -13,47 +13,47 @@ def test_directories(File):
     ]
     if present:
         for directory in present:
-            d = File(directory)
+            d = host.file(directory)
             assert d.is_directory
             assert d.exists
 
 
-def test_files(File):
+def test_files(host):
     present = [
         "/etc/grafana/grafana.ini"
     ]
     if present:
         for file in present:
-            f = File(file)
+            f = host.file(file)
             assert f.exists
             assert f.is_file
 
 
-def test_service(Service):
+def test_service(host):
     present = [
         "grafana-server"
     ]
     if present:
         for service in present:
-            s = Service(service)
+            s = host.service(service)
             assert s.is_enabled
 
 
-def test_packages(Package):
+def test_packages(host):
     present = [
         "grafana"
     ]
     if present:
         for package in present:
-            p = Package(package)
+            p = host.package(package)
             assert p.is_installed
 
 
-def test_socket(Socket):
+def test_socket(host):
     present = [
         # "tcp://0.0.0.0:3000"
         "tcp://127.0.0.1:3000"
     ]
     for socket in present:
-        s = Socket(socket)
+        s = host.socket(socket)
         assert s.is_listening
