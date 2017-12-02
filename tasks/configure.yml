@@ -1,8 +1,11 @@
 ---
-- name: Ensure grafana configuration directory existance
+- name: Ensure grafana configuration directories exist
   file:
-    path: /etc/grafana
+    path: "{{ item }}"
     state: directory
+  with_items:
+    - "/etc/grafana"
+    - "/etc/grafana/datasources"
 
 - name: Copy the template
   template:
@@ -11,6 +14,7 @@
     owner: root
     group: grafana
     mode: 0640
+  no_log: true
   notify: restart grafana
 
 - name: Create grafana directories

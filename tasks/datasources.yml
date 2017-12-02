@@ -1,20 +1,22 @@
 - name: Check datasources list
   uri:
     url: "{{ grafana_url }}/api/datasources"
-    user: "{{ grafana_admin }}"
-    password: "{{ grafana_password }}"
+    user: "{{ grafana_security.admin_user }}"
+    password: "{{ grafana_security.admin_password }}"
     force_basic_auth: yes
     return_content: yes
+  no_log: True
   register: datasources
 
 - name: Create grafana datasource
   uri:
     url: "{{ grafana_url }}/api/datasources"
-    user: "{{ grafana_admin }}"
-    password: "{{ grafana_password }}"
+    user: "{{ grafana_security.admin_user }}"
+    password: "{{ grafana_security.admin_password }}"
     force_basic_auth: yes
     method: POST
     body_format: json
     body: "{{ item | to_json }}"
   with_items: "{{ grafana_datasources }}"
+  no_log: True
   when: datasources.content == "[]"
