@@ -8,7 +8,7 @@ galaxy_info:
   - name: Ubuntu
     versions:
     - xenial
-  - name: debian
+  - name: Debian
     versions:
     - jessie
   - name: EL
