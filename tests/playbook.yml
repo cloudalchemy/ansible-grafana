@@ -14,8 +14,17 @@
   roles:
     - ansible-grafana
   vars:
-    grafana_password: password
+    grafana_security:
+      admin_user: admin
+      admin_password: "password"
     grafana_address: "127.0.0.1"
+    grafana_auth:
+      disable_login_form: false
+      disable_signout_menu: false
+      anonymous:
+        org_name: "Main Organization"
+        org_role: Viewer
+      basic: True
     grafana_dashboards:
       - dashboard_id: '1860'
         revision_id: '4'

@@ -4,28 +4,128 @@ grafana_system_group: grafana
 
 grafana_instance: "{{ ansible_fqdn | default(ansible_host) | default(inventory_hostname) }}"
 
-grafana_address: "0.0.0.0"
-grafana_port: 3000
-grafana_url: "http://{{ grafana_address }}:{{ grafana_port }}"
-
 grafana_logs_dir: "/var/log/grafana"
 grafana_data_dir: "/var/lib/grafana"
 
-grafana_admin: admin
-grafana_password: ""
+grafana_address: "0.0.0.0"
+grafana_port: 3000
 
-grafana_auth: true
-grafana_user_sign_up: false
-grafana_user_sign_up_role: Editor
+# External Grafana address. Variable maps to "root_url" in grafana server section
+grafana_url: "http://{{ grafana_address }}:{{ grafana_port }}"
+grafana_domain: "{{ ansible_fqdn | default(ansible_host) | default('localhost') }}"
+
+# Additional options for grafana "server" section
+# This section WILL omit options for: http_addr, http_port, domain, and root_url, as those settings are set by variables listed before
+grafana_server:
+  protocol: http
+  enforce_domain: false
+  socket: ""
+  cert_key: ""
+  cert_file: ""
+  enable_gzip: False
+  static_root_path: public
+  router_logging: false
+
+# Variables correspond to ones in grafana.ini configuration file
+# Security
+grafana_security:
+  admin_user: admin
+  admin_password: ""
+#  secret_key: ""
+#  login_remember_days: 7
+#  cookie_username: grafana_user
+#  cookie_remember_name: grafana_remember
+#  disable_gravatar: True
+#  data_source_proxy_whitelist:
+
+# Database setup
+grafana_database:
+  type: sqlite3
+#  host: 127.0.0.1:3306
+#  name: grafana
+#  user: root
+#  password: ""
+#  url: ""
+#  ssl_mode: disable
+#  path: grafana.db
+#  max_idle_conn: 2
+#  max_open_conn: ""
+#  log_queries: ""
+
+# User management and registration
+grafana_welcome_email_on_sign_up: False
+grafana_users:
+  allow_sign_up: False
+#  allow_org_create: True
+#  auto_assign_org: True
+  auto_assign_org_role: Viewer
+#  login_hint: "email or username"
+  default_theme: dark
+#  external_manage_link_url: ""
+#  external_manage_link_name: ""
+#  external_manage_info: ""
+
+# grafana authentication mechanisms
+grafana_auth: {}
+#  disable_login_form: false
+#  disable_signout_menu: false
+#  anonymous:
+#    org_name: "Main Organization"
+#    org_role: Viewer
+#  ldap:
+#    config_file: "/etc/grafana/ldap.toml"
+#    allow_sign_up: False
+#  basic: True
+
+grafana_session: {}
+#  provider: file
+#  provider_config: "sessions"
+
+grafana_analytics: {}
+#  reporting_enabled: True
+#  google_analytics_ua_id: ""
 
 # Set this for mail notifications
-grafana_mail:
-  enabled: false
-  host:
-  user:
-  password:
-  from_address:
+grafana_smtp: {}
+#  host:
+#  user:
+#  password:
+#  from_address:
 
+# Enable grafana alerting mechanism
+grafana_alerting: True
+
+# Internal grafana metrics system
+grafana_metrics: {}
+#  interval_seconds: 10
+#  graphite:
+#    address: "localhost:2003"
+#    prefix: "prod.grafana.%(instance_name)s"
+
+# Distributed tracing options
+grafana_tracing: {}
+#  address: "localhost:6831"
+#  always_included_tag: "tag1:value1,tag2:value2"
+#  sampler_type: const
+#  sampler_param: 1
+
+grafana_snapshots: {}
+#  external_enabled: True
+#  external_snapshot_url: "https://snapshots-origin.raintank.io"
+#  external_snapshot_name: "Publish to snapshot.raintank.io"
+#  snapshot_remove_expired: True
+#  snapshot_TTL_days: 90
+
+# External image store
+grafana_image_storage: {}
+#  provider: gcs
+#  key_file:
+#  bucket:
+#  path:
+
+
+#######
+# Dashboards from grafana.com
 grafana_dashboards: []
 #  - dashboard_id: '1860'
 #    revision_id: '4'
@@ -34,6 +134,7 @@ grafana_dashboards: []
 #    revision_id: '1'
 #    datasource: 'Prometheus'
 
+# Datasources to configure
 grafana_datasources: []
 #  - name: "Prometheus"
 #    type: "prometheus"

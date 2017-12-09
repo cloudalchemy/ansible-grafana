@@ -27,11 +27,12 @@
 - name: import grafana dashboards
   uri:
     url: "{{ grafana_url }}/api/dashboards/db"
-    user: "{{ grafana_admin }}"
-    password: "{{ grafana_password }}"
+    user: "{{ grafana_security.admin_user }}"
+    password: "{{ grafana_security.admin_password }}"
     force_basic_auth: yes
     method: POST
     body_format: json
     body: '{ "dashboard": {{ lookup("file", item) }}, "overwrite": true }'
+  no_log: True
   with_fileglob:
     - /tmp/dashboards/*
