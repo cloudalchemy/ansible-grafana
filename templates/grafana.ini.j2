@@ -19,7 +19,7 @@ http_addr = {{ grafana_address }}
 http_port = {{ grafana_port }}
 domain = {{ grafana_domain }}
 root_url = {{ grafana_url }}
-{% for k,v in grafana_security.iteritems() %}
+{% for k,v in grafana_server.iteritems() %}
 {%   if not k in ['http_addr', 'http_port', 'domain', 'root_url'] %}
 {{ k }} = {{ v }}
 {%   endif %}
