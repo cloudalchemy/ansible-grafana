@@ -32,6 +32,6 @@
 
 - name: Install Grafana
   package:
-    name: grafana
+    name: "{{ grafana_package }}"
     state: present
   notify: restart grafana
