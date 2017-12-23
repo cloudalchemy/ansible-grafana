@@ -29,6 +29,8 @@
     - "{{ grafana_data_dir }}"
     - "{{ grafana_data_dir }}/dashboards"
     - "{{ grafana_data_dir }}/plugins"
+    - "{{ grafana_data_dir }}/provisioning"
+    - "{{ grafana_data_dir }}/provisioning/datasources"
 
 - name: Enable grafana system service
   systemd:
