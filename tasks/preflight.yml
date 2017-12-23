@@ -14,3 +14,20 @@
   when: ( item.isDefault is defined and item.isDefault is string ) or
         ( item.basicAuth is defined and item.basicAuth is string )
   with_items: "{{ grafana_datasources }}"
+
+- name: Check database configuration
+  fail:
+    msg: "Wrong database configuration. Please look at http://docs.grafana.org/installation/configuration/#database"
+  when: ( grafana_database.type == "sqlite3" and grafana_database.url is defined ) or
+        ( grafana_database.type != "sqlite3" and grafana_database.path is defined ) or
+        ( grafana_database.type == "sqlite3" and grafana_database.host is defined ) or
+        ( grafana_database.type == "sqlite3" and grafana_database.user is defined ) or
+        ( grafana_database.type == "sqlite3" and grafana_database.password is defined ) or
+        ( grafana_database.type == "sqlite3" and grafana_database.server_cert_name is defined )
+
+- name: Check grafana domain configuration
+  fail:
+    msg: "Check server configuration. Please look at http://docs.grafana.org/installation/configuration/#server"
+  when:
+  - grafana_server.root_url is defined
+  - grafana_server.root_url | search(grafana_server.domain)
