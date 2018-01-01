@@ -36,14 +36,14 @@
     environment:
       http_proxy: "{{ http_proxy | default('') }}"
       https_proxy: "{{ https_proxy | default('') }}"
-    when: ansible_architecture == "amd64"
+    when: ansible_architecture == "x86_64"
   
   - name: Add Grafana repository [Debian/Ubuntu]
     apt_repository:
       repo: deb https://packagecloud.io/grafana/stable/debian/ jessie main
       state: present
       update_cache: yes
-    when: ansible_architecture == "amd64"
+    when: ansible_architecture == "x86_64"
   
   - name: Import Grafana GPG signing key [Raspbian]
     apt_key:
