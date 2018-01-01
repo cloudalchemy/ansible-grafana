@@ -5,6 +5,20 @@
     state: present
   with_items: "{{ grafana_dependencies }}"
 
+- name: Remove conflicting grafana packages
+  package:
+    name: grafana-data
+    state: absent
+  register: old_grafana_pkgs
+
+- name: Clean apt cache
+  command: apt clean
+  #  tags:
+  #    - ansible_skip_lint
+  when: 
+    - old_grafana_pkgs is changed
+    - ansible_pkg_mgr == "apt"
+
 - name: Add Grafana repository file [RHEL/CentOS]
   template:
     src: grafana.yum.repo.j2
@@ -13,22 +27,39 @@
     backup: yes
   when: ansible_pkg_mgr == "yum"
 
-- name: Import Grafana GPG signing key [Debian/Ubuntu]
-  apt_key:
-    url: "https://packagecloud.io/gpg.key"
-    state: present
-    validate_certs: false
-  environment:
-    http_proxy: "{{ http_proxy | default('') }}"
-    https_proxy: "{{ https_proxy | default('') }}"
-  when: ansible_pkg_mgr == "apt"
-
-- name: Add Grafana repository [Debian/Ubuntu]
-  apt_repository:
-    repo: deb https://packagecloud.io/grafana/stable/debian/ jessie main
-    state: present
-    update_cache: yes
-  when: ansible_pkg_mgr == "apt"
+- block:
+  - name: Import Grafana GPG signing key [Debian/Ubuntu]
+    apt_key:
+      url: "https://packagecloud.io/gpg.key"
+      state: present
+      validate_certs: false
+    environment:
+      http_proxy: "{{ http_proxy | default('') }}"
+      https_proxy: "{{ https_proxy | default('') }}"
+    when: ansible_architecture == "amd64"
+  
+  - name: Add Grafana repository [Debian/Ubuntu]
+    apt_repository:
+      repo: deb https://packagecloud.io/grafana/stable/debian/ jessie main
+      state: present
+      update_cache: yes
+    when: ansible_architecture == "amd64"
+  
+  - name: Import Grafana GPG signing key [Raspbian]
+    apt_key:
+      url: "https://bintray.com/user/downloadSubjectPublicKey?username=bintray"
+      state: present
+      validate_certs: false
+    when: ansible_architecture == "armv6l" or ansible_architecture == "armv7l"
+  
+  - name: Add Grafana repository [Raspbian]
+    apt_repository:
+      repo: "deb {% if ansible_architecture == 'armv6l' %}https://dl.bintray.com/fg2it/deb-rpi-1b{% else %}https://dl.bintray.com/fg2it/deb{% endif %} {{ ansible_distribution_release }} main"
+      state: present
+      update_cache: yes
+    when: ansible_architecture == "armv6l" or ansible_architecture == "armv7l"
+  when:
+    - ansible_pkg_mgr == "apt"
 
 - name: Install Grafana
   package:
