@@ -15,7 +15,7 @@
   command: apt clean
   #  tags:
   #    - ansible_skip_lint
-  when: 
+  when:
     - old_grafana_pkgs is changed
     - ansible_pkg_mgr == "apt"
 
@@ -37,21 +37,21 @@
       http_proxy: "{{ http_proxy | default('') }}"
       https_proxy: "{{ https_proxy | default('') }}"
     when: ansible_architecture == "x86_64"
-  
+
   - name: Add Grafana repository [Debian/Ubuntu]
     apt_repository:
       repo: deb https://packagecloud.io/grafana/stable/debian/ jessie main
       state: present
       update_cache: yes
     when: ansible_architecture == "x86_64"
-  
+
   - name: Import Grafana GPG signing key [Raspbian]
     apt_key:
       url: "https://bintray.com/user/downloadSubjectPublicKey?username=bintray"
       state: present
       validate_certs: false
     when: ansible_architecture == "armv6l" or ansible_architecture == "armv7l"
-  
+
   - name: Add Grafana repository [Raspbian]
     apt_repository:
       repo: "deb {% if ansible_architecture == 'armv6l' %}https://dl.bintray.com/fg2it/deb-rpi-1b{% else %}https://dl.bintray.com/fg2it/deb{% endif %} {{ ansible_distribution_release }} main"
