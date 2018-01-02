@@ -1,2 +1,3 @@
 ---
+grafana_package: "grafana-{{ grafana_version }}"
 grafana_dependencies: []
