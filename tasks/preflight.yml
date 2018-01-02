@@ -1,3 +1,10 @@
+- name: Check if system architecture is supported
+  fail:
+    msg: "Sorry grafana doesn't support {{ ansible_architecture }} on this OS family ({{ ansible_os_family }}). Exiting."
+  when:
+  - ansible_architecture != "x86_64"
+  - not ( ansible_architecture in ['armv6l', 'armv7l'] and ansible_os_family == 'Debian' )
+
 - name: Check if datasources are configured when dashboards are set to be installed
   fail:
     msg: "You need to specify datasources for dashboards!!!"
