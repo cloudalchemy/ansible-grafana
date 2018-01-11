@@ -9,7 +9,8 @@ def test_directories(host):
         "/var/log/grafana",
         "/var/lib/grafana",
         "/var/lib/grafana/dashboards",
-        "/var/lib/grafana/plugins"
+        "/var/lib/grafana/plugins",
+        "/var/lib/grafana/plugins/raintank-worldping-app"
     ]
     if present:
         for directory in present:
