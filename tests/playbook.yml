@@ -25,6 +25,8 @@
         org_name: "Main Organization"
         org_role: Viewer
       basic: True
+    grafana_plugins:
+      - raintank-worldping-app
     grafana_dashboards:
       - dashboard_id: '1860'
         revision_id: '4'

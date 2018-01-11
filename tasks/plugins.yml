@@ -1,0 +1,19 @@
+- name: Check which plugins are installed
+  find:
+    file_type: directory
+    recurse: no
+    paths: "{{ grafana_data_dir }}/plugins"
+  register: installed_plugins
+
+- debug:
+    var: installed_plugins
+
+- name: Install plugins
+  command: "grafana-cli plugins install {{ item }}"
+  args:
+    creates: "{{ grafana_data_dir }}/plugins/{{ item }}"
+  with_items: "{{ grafana_plugins | difference(installed_plugins.files) }}"
+  notify:
+    - restart grafana
+
+- meta: flush_handlers

@@ -127,7 +127,11 @@ grafana_image_storage: {}
 
 
 #######
-# Dashboards from grafana.com
+# Plugins from https://grafana.com/plugins
+grafana_plugins: []
+#  - raintank-worldping-app
+#
+# Dashboards from https://grafana.com/dashboards
 grafana_dashboards: []
 #  - dashboard_id: '1860'
 #    revision_id: '4'

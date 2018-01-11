@@ -23,6 +23,9 @@
     host: "{{ grafana_address }}"
     port: "{{ grafana_port }}"
 
+- include: plugins.yml
+  when: grafana_plugins != []
+
 - include: datasources.yml
   when: grafana_datasources != []
 
