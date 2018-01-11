@@ -16,15 +16,16 @@
 
 - include: configure.yml
 
-- meta: flush_handlers
+- include: plugins.yml
+  when: grafana_plugins != []
+
+- name: Restart grafana before configuring datasources and dashboards
+  meta: flush_handlers
 
 - name: Wait for grafana to start
   wait_for:
     host: "{{ grafana_address }}"
     port: "{{ grafana_port }}"
-
-- include: plugins.yml
-  when: grafana_plugins != []
 
 - include: datasources.yml
   when: grafana_datasources != []
