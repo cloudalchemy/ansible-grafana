@@ -13,6 +13,7 @@ Provision and manage [grafana](https://github.com/grafana/grafana) - platform fo
 
 - Ansible > 2.2
 - go-lang installed on deployer machine (same one where ansible is installed)
+- libselinux-python on deployer host (only when deployer machine has SELinux)
 
 ## Role Variables
 
