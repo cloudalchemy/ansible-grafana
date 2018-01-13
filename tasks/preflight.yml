@@ -1,28 +1,28 @@
-- name: Check if system architecture is supported
+- name: Fail on unsupported system architectures
   fail:
     msg: "Sorry grafana doesn't support {{ ansible_architecture }} on this OS family ({{ ansible_os_family }}). Exiting."
   when:
   - ansible_architecture != "x86_64"
   - not ( ansible_architecture in ['armv6l', 'armv7l'] and ansible_os_family == 'Debian' )
 
-- name: Check if datasources are configured when dashboards are set to be installed
+- name: Fail when datasources aren't configured when dashboards are set to be installed
   fail:
     msg: "You need to specify datasources for dashboards!!!"
   when: grafana_dashboards != [] and grafana_datasources == []
 
-- name: Check if grafana admin password is set
+- name: Fail when grafana admin password isn't set
   fail:
     msg: "Please specify grafana admin password (grafana_security.admin_password)"
   when: grafana_security.admin_password == ''
 
-- name: Check if all variables in datasources definition have their correct type
+- name: Fail on incorrect variable types in datasource definitions
   fail:
     msg: "Boolean variables in grafana_datasources shouldn't be passed as strings. Please remove unneeded apostrophes."
   when: ( item.isDefault is defined and item.isDefault is string ) or
         ( item.basicAuth is defined and item.basicAuth is string )
   with_items: "{{ grafana_datasources }}"
 
-- name: Check database configuration
+- name: Fail on bad database configuration
   fail:
     msg: "Wrong database configuration. Please look at http://docs.grafana.org/installation/configuration/#database"
   when: ( grafana_database.type == "sqlite3" and grafana_database.url is defined ) or
@@ -32,7 +32,7 @@
         ( grafana_database.type == "sqlite3" and grafana_database.password is defined ) or
         ( grafana_database.type == "sqlite3" and grafana_database.server_cert_name is defined )
 
-- name: Check grafana domain configuration
+- name: Fail when grafana domain isn't properly configured
   fail:
     msg: "Check server configuration. Please look at http://docs.grafana.org/installation/configuration/#server"
   when:
