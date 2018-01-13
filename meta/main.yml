@@ -11,12 +11,20 @@ galaxy_info:
   - name: Debian
     versions:
     - jessie
+    - stretch
   - name: EL
     versions:
     - 7
+  - name: Fedora
+    versions:
+    - 27
   galaxy_tags:
   - grafana
   - dashboard
+  - alerts
+  - alerting
+  - presentation
+  - monitoring
   - metrics
 
 dependencies: []
