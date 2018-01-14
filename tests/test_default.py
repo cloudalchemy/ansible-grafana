@@ -4,7 +4,7 @@ testinfra_hosts = AnsibleRunner('.molecule/ansible_inventory').get_hosts('all')
 
 
 def test_directories(host):
-    present = [
+    dirs = [
         "/etc/grafana",
         "/var/log/grafana",
         "/var/lib/grafana",
@@ -12,49 +12,30 @@ def test_directories(host):
         "/var/lib/grafana/plugins",
         "/var/lib/grafana/plugins/raintank-worldping-app"
     ]
-    if present:
-        for directory in present:
-            d = host.file(directory)
-            assert d.is_directory
-            assert d.exists
-
-
-def test_files(host):
-    present = [
+    files = [
         "/etc/grafana/grafana.ini"
     ]
-    if present:
-        for file in present:
-            f = host.file(file)
-            assert f.exists
-            assert f.is_file
+    for directory in dirs:
+        d = host.file(directory)
+        assert d.is_directory
+        assert d.exists
+    for file in files:
+        f = host.file(file)
+        assert f.exists
+        assert f.is_file
 
 
 def test_service(host):
-    present = [
-        "grafana-server"
-    ]
-    if present:
-        for service in present:
-            s = host.service(service)
-            assert s.is_enabled
+    s = host.service("grafana-server")
+    assert s.is_enabled
+    assert s.is_running
 
 
 def test_packages(host):
-    present = [
-        "grafana"
-    ]
-    if present:
-        for package in present:
-            p = host.package(package)
-            assert p.is_installed
+    p = host.package("grafana")
+    assert p.is_installed
+    assert p.version == "4.6.3"
 
 
 def test_socket(host):
-    present = [
-        # "tcp://0.0.0.0:3000"
-        "tcp://127.0.0.1:3000"
-    ]
-    for socket in present:
-        s = host.socket(socket)
-        assert s.is_listening
+    assert host.socket("tcp://127.0.0.1:3000").is_listening
