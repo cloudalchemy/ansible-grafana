@@ -29,7 +29,7 @@ root_url = {{ grafana_url }}
 [database]
 {% for k,v in grafana_database.iteritems() %}
 {%   if k == 'password' %}
-{{ k }} = """{{ v }}""""
+{{ k }} = """{{ v }}"""
 {%   else %}
 {{ k }} = {{ v }}
 {%   endif %}
@@ -109,7 +109,7 @@ enabled = True
 {%   for k,v in grafana_smtp.iteritems() %}
 {%     if k == 'enabled' %}{% endif %}
 {%     if k == 'password' %}
-{{ k }} = """{{ v }}""""
+{{ k }} = """{{ v }}"""
 {%     else %}
 {{ k }} = {{ v }}
 {%     endif %}
