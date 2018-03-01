@@ -1,0 +1,5 @@
+{
+  "tests/test_default.py::test_packages[docker://centos7]": true, 
+  "tests/test_default.py::test_packages[docker://jessie]": true, 
+  "tests/test_default.py::test_packages[docker://xenial]": true
+}
