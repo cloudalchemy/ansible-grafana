@@ -23,7 +23,7 @@ All variables which can be overridden are stored in [defaults/main.yml](defaults
 | -------------- | ------------- | -----------------------------------|
 | `grafana_system_user` | grafana | Grafana server system user |
 | `grafana_system_group` | grafana | Grafana server system group |
-| `grafana_version` | 4.6.3 | Grafana package version |
+| `grafana_version` | latest | Grafana package version |
 | `grafana_instance` | {{ ansible_fqdn \| default(ansible_host) \| default(inventory_hostname) }} | Grafana instance name |
 | `grafana_logs_dir` | /var/log/grafana | Path to logs directory |
 | `grafana_data_dir` | /var/lib/grafana | Path to database directory |

@@ -1,3 +1,4 @@
+grafana_version: 5.0.0
 grafana_security:
   admin_user: admin
   admin_password: "password"
