@@ -72,6 +72,6 @@
   package:
     name: grafana
     state: latest
-    when: grafana_version == "latest"
+  when: grafana_version == "latest"
   tags:
     - skip_ansible_lint
