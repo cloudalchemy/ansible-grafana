@@ -66,3 +66,12 @@
     name: "{{ grafana_package }}"
     state: present
   notify: restart grafana
+  when: grafana_version != "latest"
+
+- name: Install latest Grafana version
+  package:
+    name: grafana
+    state: latest
+  when: grafana_version == "latest"
+  tags:
+    - skip_ansible_lint
