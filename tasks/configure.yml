@@ -32,8 +32,9 @@
     - "{{ grafana_data_dir }}/provisioning"
     - "{{ grafana_data_dir }}/provisioning/datasources"
 
-- name: Enable grafana system service
+- name: Enable and start Grafana systemd unit
   systemd:
     name: grafana-server
     enabled: yes
+    state: started
     daemon_reload: yes
