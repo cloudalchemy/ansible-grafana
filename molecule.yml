@@ -42,9 +42,9 @@ docker:
       privileged: true
       volume_mounts:
         - /sys/fs/cgroup:/sys/fs/cgroup:ro
-#    - name: fedora
-#      image: paulfantom/fedora-molecule
-#      image_version: 27
-#      privileged: true
-#      volume_mounts:
-#        - /sys/fs/cgroup:/sys/fs/cgroup:ro
+    - name: fedora
+      image: paulfantom/fedora-molecule
+      image_version: 27
+      privileged: true
+      volume_mounts:
+        - /sys/fs/cgroup:/sys/fs/cgroup:ro
