@@ -1,9 +1,8 @@
 ---
 - name: Install dependencies
   package:
-    name: "{{ item }}"
+    name: "{{ grafana_dependencies }}"
     state: present
-  with_items: "{{ grafana_dependencies }}"
 
 - name: Remove conflicting grafana packages
   package:
