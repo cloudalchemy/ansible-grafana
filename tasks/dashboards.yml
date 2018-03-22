@@ -21,12 +21,44 @@
   run_once: yes
   with_items: "{{ grafana_dashboards }}"
 
-- name: Replace datasource variable names
+# As noted in [1] an exported dashboard replaces the exporter's datasource
+# name with a representative name, something like 'DS_GRAPHITE'. The name
+# is different for each datasource plugin, but always begins with 'DS_'.
+# In the rest of the data, the same name is used, but captured in braces,
+# for example: '${DS_GRAPHITE}'.
+#
+# [1] http://docs.grafana.org/reference/export_import/#import-sharing-with-grafana-2-x-or-3-0
+#
+# The data structure looks (massively abbreviated) something like:
+#
+#   "name": "DS_GRAPHITE",
+#   "datasource": "${DS_GRAPHITE}",
+#
+# If we import the downloaded dashboard verbatim, it will not automatically
+# be connected to the data source like we want it. The Grafana UI expects
+# us to do the final connection by hand, which we do not want to do.
+# So, in the below task we ensure that we replace instances of this string
+# with the data source name we want.
+# To make sure that we're not being too greedy with the regex replacement
+# of the data source to use for each dashboard that's uploaded, we make the
+# regex match very specific by using the following:
+#
+# 1. Literal boundaries for " on either side of the match.
+# 2. Non-capturing optional group matches for the ${} bits which may, or
+#    or may not, be there..
+# 3. A case-sensitive literal match for DS_.
+# 4. A one-or-more case-sensitive match for the part that follows the
+#    underscore, with no characters allowed except alphabetical.
+#
+# This regex can be tested and understood better by looking at the
+# matches and non-matches in https://regex101.com/r/f4Gkvg/2
+
+- name: Set the correct data source name in the dashboard
   become: no
   replace:
     dest: "/tmp/dashboards/{{ item.dashboard_id }}.json"
-    regexp: "[$].DS_.*}"
-    replace: "{{ item.datasource }}"
+    regexp: '"(?:\${)?DS_[A-Z]+(?:})?"'
+    replace: '"{{ item.datasource }}"'
   delegate_to: localhost
   run_once: yes
   with_items: "{{ grafana_dashboards }}"
