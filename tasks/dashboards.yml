@@ -6,6 +6,7 @@
     state: directory
     mode: 0755
   delegate_to: localhost
+  run_once: yes
 
 - name: download grafana dashboard to local folder
   become: no
@@ -17,6 +18,7 @@
   retries: 5
   delay: 2
   delegate_to: localhost
+  run_once: yes
   with_items: "{{ grafana_dashboards }}"
 
 - name: Replace datasource variable names
@@ -26,6 +28,7 @@
     regexp: "[$].DS_.*}"
     replace: "{{ item.datasource }}"
   delegate_to: localhost
+  run_once: yes
   with_items: "{{ grafana_dashboards }}"
 
 - name: import grafana dashboards
