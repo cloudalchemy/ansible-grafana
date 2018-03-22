@@ -3,4 +3,5 @@ grafana_package: "grafana={{ grafana_version }}"
 grafana_dependencies:
   - apt-transport-https
   - adduser
+  - ca-certificates
   - libfontconfig

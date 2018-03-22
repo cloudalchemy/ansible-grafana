@@ -17,6 +17,12 @@ docker:
       privileged: true
       volume_mounts:
         - /sys/fs/cgroup:/sys/fs/cgroup:ro
+    - name: bionic
+      image: paulfantom/ubuntu-molecule
+      image_version: 18.04
+      privileged: true
+      volume_mounts:
+        - /sys/fs/cgroup:/sys/fs/cgroup:ro
     - name: stretch
       image: paulfantom/debian-molecule
       image_version: 9
