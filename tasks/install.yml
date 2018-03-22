@@ -3,6 +3,10 @@
   package:
     name: "{{ grafana_dependencies }}"
     state: present
+  register: _install_dep_packages
+  until: _install_dep_packages | success
+  retries: 5
+  delay: 2
 
 - name: Remove conflicting grafana packages
   package:
@@ -33,6 +37,9 @@
       state: present
       validate_certs: false
     register: _add_apt_key_x86
+    until: _add_apt_key_x86 | success
+    retries: 5
+    delay: 2
     environment:
       http_proxy: "{{ http_proxy | default('') }}"
       https_proxy: "{{ https_proxy | default('') }}"
@@ -52,6 +59,9 @@
       state: present
       validate_certs: false
     register: _add_apt_key_arm
+    until: _add_apt_key_arm | success
+    retries: 5
+    delay: 2
     when: ansible_architecture == "armv6l" or ansible_architecture == "armv7l"
 
   - name: Add Grafana repository [Raspbian]
@@ -81,6 +91,10 @@
   package:
     name: "{{ grafana_package }}"
     state: present
+  register: _install_packages_present
+  until: _install_packages_present | success
+  retries: 5
+  delay: 2
   notify: restart grafana
   when: grafana_version != "latest"
 
@@ -88,6 +102,10 @@
   package:
     name: grafana
     state: latest
+  register: _install_packages_latest
+  until: _install_packages_latest | success
+  retries: 5
+  delay: 2
   when: grafana_version == "latest"
   tags:
     - skip_ansible_lint
