@@ -90,22 +90,9 @@
 - name: Install Grafana
   package:
     name: "{{ grafana_package }}"
-    state: present
-  register: _install_packages_present
-  until: _install_packages_present | success
+    state: "{{ (grafana_version == 'latest') | ternary('latest', 'present') }}"
+  register: _install_packages
+  until: _install_packages | success
   retries: 5
   delay: 2
   notify: restart grafana
-  when: grafana_version != "latest"
-
-- name: Install latest Grafana version
-  package:
-    name: grafana
-    state: latest
-  register: _install_packages_latest
-  until: _install_packages_latest | success
-  retries: 5
-  delay: 2
-  when: grafana_version == "latest"
-  tags:
-    - skip_ansible_lint
