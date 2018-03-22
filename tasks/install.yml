@@ -28,7 +28,7 @@
     dest: /etc/yum.repos.d/grafana.repo
     force: yes
     backup: yes
-  when: ansible_pkg_mgr == "yum"
+  when: ansible_pkg_mgr in ['yum', 'dnf']
 
 - block:
   - name: Import Grafana GPG signing key [Debian/Ubuntu]
