@@ -3,5 +3,6 @@
 *.idea
 .molecule
 .cache
+.pytest_cache
 *.kate-swp
 **__pycache__**
