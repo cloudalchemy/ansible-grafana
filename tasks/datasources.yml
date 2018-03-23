@@ -19,7 +19,7 @@
     body: "{{ item | to_json }}"
   with_items: "{{ grafana_datasources }}"
   no_log: True
-  when: datasources.content == "[]"
+  when: ((datasources['json'] | selectattr("name", "equalto", item['name'])) | list) | length == 0
 
 - name: Create datasources file
   copy:
