@@ -148,3 +148,15 @@ grafana_datasources: []
 #    basicAuthPassword: "password"
 #    isDefault: true
 #    jsonData: '{"tlsAuth":false,"tlsAuthWithCACert":false,"tlsSkipVerify":true}'
+
+# API keys to configure
+grafana_api_keys: []
+#  - name: "admin"
+#    role: "Admin"
+#  - name: "viewer"
+#    role: "Viewer"
+#  - name: "editor"
+#    role: "Editor"
+
+# The location where the keys should be stored.
+grafana_api_keys_dir: "{{ lookup('env', 'HOME') }}/grafana/keys"

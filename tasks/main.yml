@@ -27,6 +27,9 @@
     host: "{{ grafana_address }}"
     port: "{{ grafana_port }}"
 
+- include: api_keys.yml
+  when: grafana_api_keys | length > 0
+
 - include: datasources.yml
   when: grafana_datasources != []
 
