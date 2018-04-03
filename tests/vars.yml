@@ -10,6 +10,14 @@ grafana_auth:
     org_name: "Main Organization"
     org_role: Viewer
   basic: True
+grafana_api_keys:
+  - name: "admin"
+    role: "Admin"
+  - name: "viewer"
+    role: "Viewer"
+  - name: "editor"
+    role: "Editor"
+grafana_api_keys_dir: "/tmp/grafana/keys"
 grafana_plugins:
   - raintank-worldping-app
 grafana_dashboards:

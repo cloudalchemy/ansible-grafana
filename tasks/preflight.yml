@@ -38,3 +38,10 @@
   when:
   - grafana_server.root_url is defined
   - grafana_server.root_url | search(grafana_server.domain)
+
+- name: Fail when grafana_api_keys uses invalid role names
+  fail:
+    msg: "Check grafana_api_keys. The role can only be one of the following values: Viewer, Editor or Admin."
+  when:
+    - item.role not in ['Viewer', 'Editor', 'Admin']
+  with_items: "{{ grafana_api_keys }}"
