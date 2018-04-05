@@ -4,4 +4,4 @@
 .molecule
 .cache
 *.kate-swp
-**__pycache__**
+__pycache__/
