@@ -13,7 +13,6 @@ Provision and manage [grafana](https://github.com/grafana/grafana) - platform fo
 ## Requirements
 
 - Ansible >= 2.3
-- go-lang installed on deployer machine (same one where ansible is installed)
 - libselinux-python on deployer host (only when deployer machine has SELinux)
 
 ## Role Variables
@@ -48,6 +47,13 @@ All variables which can be overridden are stored in [defaults/main.yml](defaults
 | `grafana_image_storage` | {} | [image storage](http://docs.grafana.org/installation/configuration/#external-image-storage) configuration section |
 | `grafana_dashboards` | [] | List of dashboards which should be imported |
 | `grafana_datasources` | [] | List of datasources which should be configured |
+
+## Supported CPU Architectures
+
+Detection is done automatically and packages are taken from different channels according to CPU architecture:
+
+- amd64 - via official grafana packages ([1](http://docs.grafana.org/installation/debian/#installing-on-debian-ubuntu), [2](http://docs.grafana.org/installation/rpm/))
+- armv6/armv7 and aarch64/arm64 - via [unofficial packages distributed by fg2it](https://github.com/fg2it/grafana-on-raspberry)
 
 ## Example
 
