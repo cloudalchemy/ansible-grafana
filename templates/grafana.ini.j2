@@ -19,7 +19,7 @@ http_addr = {{ grafana_address }}
 http_port = {{ grafana_port }}
 domain = {{ grafana_domain }}
 root_url = {{ grafana_url }}
-{% for k,v in grafana_server.iteritems() %}
+{% for k,v in grafana_server.items() %}
 {%   if not k in ['http_addr', 'http_port', 'domain', 'root_url'] %}
 {{ k }} = {{ v }}
 {%   endif %}
@@ -27,7 +27,7 @@ root_url = {{ grafana_url }}
 
 # Database
 [database]
-{% for k,v in grafana_database.iteritems() %}
+{% for k,v in grafana_database.items() %}
 {%   if k == 'password' %}
 {{ k }} = """{{ v }}"""
 {%   else %}
@@ -37,14 +37,14 @@ root_url = {{ grafana_url }}
 
 # Security
 [security]
-{% for k,v in grafana_security.iteritems() %}
+{% for k,v in grafana_security.items() %}
 {{ k }} = {{ v }}
 {% endfor %}
 
 # Users management and registration
 {% if grafana_users != {} %}
 [users]
-{%   for k,v in grafana_users.iteritems() %}
+{%   for k,v in grafana_users.items() %}
 {{ k }} = {{ v }}
 {%   endfor %}
 {% endif %}
@@ -56,7 +56,7 @@ welcome_email_on_sign_up = {{ grafana_welcome_email_on_sign_up }}
 [auth]
 disable_login_form = {{ grafana_auth.disable_login_form | default('False') }}
 disable_signout_menu = {{ grafana_auth.disable_signout_menu | default('False') }}
-{%  for section, options in grafana_auth.iteritems() %}
+{%  for section, options in grafana_auth.items() %}
 {%    if section in ['disable_login_form', 'disable_signout_menu'] %}
 {%    elif section == 'basic' %}
 [auth.basic]
@@ -64,7 +64,7 @@ enabled = True
 {%    else %}
 [auth.{{ section }}]
 enabled = True
-{%      for k, v in options.iteritems() %}
+{%      for k, v in options.items() %}
 {%        if k != 'enabled' %}{{ k }} = {{ v }}
 {%        endif %}
 {%      endfor %}
@@ -75,7 +75,7 @@ enabled = True
 # Session
 {% if grafana_session != {} %}
 [session]
-{%   for k,v in grafana_session.iteritems() %}
+{%   for k,v in grafana_session.items() %}
 {{ k }} = {{ v }}
 {%   endfor %}
 {% endif %}
@@ -106,7 +106,7 @@ enabled = True
 {% if grafana_smtp != {} %}
 [smtp]
 enabled = True
-{%   for k,v in grafana_smtp.iteritems() %}
+{%   for k,v in grafana_smtp.items() %}
 {%     if k == 'enabled' %}{% endif %}
 {%     if k == 'password' %}
 {{ k }} = """{{ v }}"""
@@ -136,7 +136,7 @@ prefix = {{ grafana_metrics.graphite.prefix }}
 # Tracing
 {% if grafana_tracing != {} %}
 [tracing.jaeger]
-{%   for k,v in grafana_tracing.iteritems() %}
+{%   for k,v in grafana_tracing.items() %}
 {{ k }} = {{ v }}
 {%   endfor %}
 {% endif %}
@@ -148,7 +148,7 @@ url = https://grafana.com
 # Snapshots
 {% if grafana_snapshots != {} %}
 [snapshots]
-{%   for k,v in grafana_snapshots.iteritems() %}
+{%   for k,v in grafana_snapshots.items() %}
 {{ k }} = {{ v }}
 {%   endfor %}
 {% endif %}
@@ -158,7 +158,7 @@ url = https://grafana.com
 [external_image_storage]
 provider = {{ grafana_image_storage.provider }}
 [external_image_storage.{{ grafana_image_storage.provider }}]
-{%   for k,v in grafana_image_storage.iteritems() %}
+{%   for k,v in grafana_image_storage.items() %}
 {%     if k != 'provider' %}
 {{ k }} = {{ v }}
 {%     endif %}
