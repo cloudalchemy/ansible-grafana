@@ -4,7 +4,7 @@
     name: "{{ grafana_dependencies }}"
     state: present
   register: _install_dep_packages
-  until: _install_dep_packages is success
+  until: _install_dep_packages is succeeded
   retries: 5
   delay: 2
 
@@ -37,7 +37,7 @@
       state: present
       validate_certs: false
     register: _add_apt_key_x86
-    until: _add_apt_key_x86 is success
+    until: _add_apt_key_x86 is succeeded
     retries: 5
     delay: 2
     environment:
@@ -59,7 +59,7 @@
       state: present
       validate_certs: false
     register: _add_apt_key_arm
-    until: _add_apt_key_arm is success
+    until: _add_apt_key_arm is succeeded
     retries: 5
     delay: 2
     when: ansible_architecture == "armv6l" or ansible_architecture == "armv7l"
@@ -81,7 +81,7 @@
         ( _add_apt_key_x86 is changed ) or
         ( _add_apt_key_arm is changed )
     register: _update_apt_cache
-    until: _update_apt_cache is success
+    until: _update_apt_cache is succeeded
     retries: 5
     delay: 2
   when:
@@ -92,7 +92,7 @@
     name: "{{ grafana_package }}"
     state: "{{ (grafana_version == 'latest') | ternary('latest', 'present') }}"
   register: _install_packages
-  until: _install_packages is success
+  until: _install_packages is succeeded
   retries: 5
   delay: 2
   notify: restart grafana
