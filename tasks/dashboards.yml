@@ -14,7 +14,7 @@
     url: "https://grafana.com/api/dashboards/{{ item.dashboard_id }}/revisions/{{ item.revision_id }}/download"
     dest: "/tmp/dashboards/{{ item.dashboard_id }}.json"
   register: _download_dashboards
-  until: _download_dashboards | success
+  until: _download_dashboards is succeeded
   retries: 5
   delay: 2
   delegate_to: localhost
