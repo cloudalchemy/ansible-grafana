@@ -4,6 +4,7 @@
 
 **Merged pull requests:**
 
+- Use newer test filter schema to get rid of some deprecation warnings. [\#52](https://github.com/cloudalchemy/ansible-grafana/pull/52) ([swesterveld](https://github.com/swesterveld))
 - change way releases work; update license year [\#51](https://github.com/cloudalchemy/ansible-grafana/pull/51) ([paulfantom](https://github.com/paulfantom))
 
 ## [0.8.1](https://galaxy.ansible.com/cloudalchemy/grafana) (2018-04-13)
