@@ -46,18 +46,18 @@
 # 1. Literal boundaries for " on either side of the match.
 # 2. Non-capturing optional group matches for the ${} bits which may, or
 #    or may not, be there..
-# 3. A case-sensitive literal match for DS_.
-# 4. A one-or-more case-sensitive match for the part that follows the
-#    underscore, with no characters allowed except alphabetical.
+# 3. A case-sensitive literal match for DS .
+# 4. One or more case-sensitive matches for groups of alphabetical characters
+#    where each group is preceded by an underscore.
 #
 # This regex can be tested and understood better by looking at the
-# matches and non-matches in https://regex101.com/r/f4Gkvg/2
+# matches and non-matches in https://regex101.com/r/f4Gkvg/4
 
 - name: Set the correct data source name in the dashboard
   become: no
   replace:
     dest: "/tmp/dashboards/{{ item.dashboard_id }}.json"
-    regexp: '"(?:\${)?DS_[A-Z]+(?:})?"'
+    regexp: '"(?:\${)?DS(_([A-Z])+)+(?:})?"'
     replace: '"{{ item.datasource }}"'
   delegate_to: localhost
   run_once: yes
