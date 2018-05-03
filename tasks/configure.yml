@@ -6,6 +6,8 @@
   with_items:
     - "/etc/grafana"
     - "/etc/grafana/datasources"
+    - "/etc/grafana/provisioning"
+    - "/etc/grafana/provisioning/datasources"
 
 - name: Copy the template
   template:
@@ -29,8 +31,6 @@
     - "{{ grafana_data_dir }}"
     - "{{ grafana_data_dir }}/dashboards"
     - "{{ grafana_data_dir }}/plugins"
-    - "{{ grafana_data_dir }}/provisioning"
-    - "{{ grafana_data_dir }}/provisioning/datasources"
 
 - name: Enable and start Grafana systemd unit
   systemd:
