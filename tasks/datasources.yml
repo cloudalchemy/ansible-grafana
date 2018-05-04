@@ -29,3 +29,4 @@
       datasources:
       {{ grafana_datasources | to_nice_yaml }}
     backup: no
+  notify: restart grafana
