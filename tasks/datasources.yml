@@ -23,9 +23,10 @@
 
 - name: Create datasources file
   copy:
-    dest: "{{ grafana_data_dir }}/provisioning/datasources/ansible.yml"
+    dest: "/etc/grafana/provisioning/datasources/ansible.yml"
     content: |
       delete_datasources: []
       datasources:
       {{ grafana_datasources | to_nice_yaml }}
     backup: no
+  notify: restart grafana
