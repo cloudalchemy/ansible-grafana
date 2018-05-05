@@ -2,8 +2,13 @@
 
 ## [**Next release**](https://galaxy.ansible.com/cloudalchemy/grafana)
 
+**Fixed bugs:**
+
+- Incorrect location for datasources provisioning directory [\#55](https://github.com/cloudalchemy/ansible-grafana/issues/55)
+
 **Merged pull requests:**
 
+- fix incorrect provisioning directory placing [\#56](https://github.com/cloudalchemy/ansible-grafana/pull/56) ([paulfantom](https://github.com/paulfantom))
 - extending regex to match multiple subsequent words in datasource placeholder [\#53](https://github.com/cloudalchemy/ansible-grafana/pull/53) ([aman0019](https://github.com/aman0019))
 - Use newer test filter schema to get rid of some deprecation warnings. [\#52](https://github.com/cloudalchemy/ansible-grafana/pull/52) ([swesterveld](https://github.com/swesterveld))
 - change way releases work; update license year [\#51](https://github.com/cloudalchemy/ansible-grafana/pull/51) ([paulfantom](https://github.com/paulfantom))
