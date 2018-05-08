@@ -36,7 +36,7 @@ def test_service(host):
 def test_packages(host):
     p = host.package("grafana")
     assert p.is_installed
-    assert p.version == "5.0.0"
+    assert p.version == "5.1.0"
 
 
 def test_socket(host):
