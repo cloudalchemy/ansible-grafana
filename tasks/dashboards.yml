@@ -1,15 +1,15 @@
 ---
 - name: Create local grafana dashboard directories
-  become: no
+  become: false
   file:
     path: /tmp/dashboards
     state: directory
     mode: 0755
   delegate_to: localhost
-  run_once: yes
+  run_once: true
 
 - name: download grafana dashboard to local folder
-  become: no
+  become: false
   get_url:
     url: "https://grafana.com/api/dashboards/{{ item.dashboard_id }}/revisions/{{ item.revision_id }}/download"
     dest: "/tmp/dashboards/{{ item.dashboard_id }}.json"
@@ -18,7 +18,7 @@
   retries: 5
   delay: 2
   delegate_to: localhost
-  run_once: yes
+  run_once: true
   with_items: "{{ grafana_dashboards }}"
 
 # As noted in [1] an exported dashboard replaces the exporter's datasource
@@ -54,13 +54,13 @@
 # matches and non-matches in https://regex101.com/r/f4Gkvg/4
 
 - name: Set the correct data source name in the dashboard
-  become: no
+  become: false
   replace:
     dest: "/tmp/dashboards/{{ item.dashboard_id }}.json"
     regexp: '"(?:\${)?DS(_([A-Z])+)+(?:})?"'
     replace: '"{{ item.datasource }}"'
   delegate_to: localhost
-  run_once: yes
+  run_once: true
   with_items: "{{ grafana_dashboards }}"
 
 - name: import grafana dashboards
@@ -68,10 +68,10 @@
     url: "{{ grafana_url }}/api/dashboards/db"
     user: "{{ grafana_security.admin_user }}"
     password: "{{ grafana_security.admin_password }}"
-    force_basic_auth: yes
+    force_basic_auth: true
     method: POST
     body_format: json
     body: '{ "dashboard": {{ lookup("file", item) }}, "overwrite": true }'
-  no_log: True
+  no_log: true
   with_fileglob:
     - /tmp/dashboards/*

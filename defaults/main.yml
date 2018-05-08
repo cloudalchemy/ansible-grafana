@@ -21,7 +21,7 @@ grafana_server:
   socket: ""
   cert_key: ""
   cert_file: ""
-  enable_gzip: False
+  enable_gzip: false
   static_root_path: public
   router_logging: false
 
@@ -34,7 +34,7 @@ grafana_security:
 #  login_remember_days: 7
 #  cookie_username: grafana_user
 #  cookie_remember_name: grafana_remember
-#  disable_gravatar: True
+#  disable_gravatar: true
 #  data_source_proxy_whitelist:
 
 # Database setup
@@ -55,8 +55,8 @@ grafana_database:
 grafana_welcome_email_on_sign_up: False
 grafana_users:
   allow_sign_up: False
-#  allow_org_create: True
-#  auto_assign_org: True
+#  allow_org_create: true
+#  auto_assign_org: true
   auto_assign_org_role: Viewer
 #  login_hint: "email or username"
   default_theme: dark
@@ -74,14 +74,14 @@ grafana_auth: {}
 #  ldap:
 #    config_file: "/etc/grafana/ldap.toml"
 #    allow_sign_up: False
-#  basic: True
+#  basic: true
 
 grafana_session: {}
 #  provider: file
 #  provider_config: "sessions"
 
 grafana_analytics: {}
-#  reporting_enabled: True
+#  reporting_enabled: true
 #  google_analytics_ua_id: ""
 
 # Set this for mail notifications
@@ -92,7 +92,7 @@ grafana_smtp: {}
 #  from_address:
 
 # Enable grafana alerting mechanism
-grafana_alerting: True
+grafana_alerting: true
 
 # Internal grafana metrics system
 grafana_metrics: {}
@@ -109,10 +109,10 @@ grafana_tracing: {}
 #  sampler_param: 1
 
 grafana_snapshots: {}
-#  external_enabled: True
+#  external_enabled: true
 #  external_snapshot_url: "https://snapshots-origin.raintank.io"
 #  external_snapshot_name: "Publish to snapshot.raintank.io"
-#  snapshot_remove_expired: True
+#  snapshot_remove_expired: true
 #  snapshot_TTL_days: 90
 
 # External image store

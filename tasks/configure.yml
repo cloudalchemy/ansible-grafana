@@ -35,6 +35,6 @@
 - name: Enable and start Grafana systemd unit
   systemd:
     name: grafana-server
-    enabled: yes
+    enabled: true
     state: started
-    daemon_reload: yes
+    daemon_reload: true
