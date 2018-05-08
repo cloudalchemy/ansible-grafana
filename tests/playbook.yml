@@ -1,8 +1,0 @@
----
-- hosts: all
-  any_errors_fatal: yes
-  pre_tasks:
-    - name: Include vars
-      include_vars: vars.yml
-  roles:
-    - ansible-grafana
