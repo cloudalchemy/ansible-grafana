@@ -1,3 +1,4 @@
+---
 - name: Check datasources list
   uri:
     url: "{{ grafana_url }}/api/datasources"
