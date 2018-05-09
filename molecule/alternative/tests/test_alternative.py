@@ -1,6 +1,8 @@
-from testinfra.utils.ansible_runner import AnsibleRunner
+import os
+import testinfra.utils.ansible_runner
 
-testinfra_hosts = AnsibleRunner('.molecule/ansible_inventory').get_hosts('all')
+testinfra_hosts = testinfra.utils.ansible_runner.AnsibleRunner(
+    os.environ['MOLECULE_INVENTORY_FILE']).get_hosts('all')
 
 
 def test_directories(host):
@@ -34,7 +36,7 @@ def test_service(host):
 def test_packages(host):
     p = host.package("grafana")
     assert p.is_installed
-    assert p.version == "5.0.0"
+    assert p.version == "5.1.0"
 
 
 def test_socket(host):

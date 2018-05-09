@@ -1,7 +1,8 @@
+---
 - name: Check which plugins are installed
   find:
     file_type: directory
-    recurse: no
+    recurse: false
     paths: "{{ grafana_data_dir }}/plugins"
   register: installed_plugins
 

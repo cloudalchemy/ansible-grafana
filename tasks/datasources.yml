@@ -1,11 +1,12 @@
+---
 - name: Check datasources list
   uri:
     url: "{{ grafana_url }}/api/datasources"
     user: "{{ grafana_security.admin_user }}"
     password: "{{ grafana_security.admin_password }}"
-    force_basic_auth: yes
-    return_content: yes
-  no_log: True
+    force_basic_auth: true
+    return_content: true
+  no_log: true
   register: datasources
 
 - name: Create grafana datasource
@@ -13,12 +14,12 @@
     url: "{{ grafana_url }}/api/datasources"
     user: "{{ grafana_security.admin_user }}"
     password: "{{ grafana_security.admin_password }}"
-    force_basic_auth: yes
+    force_basic_auth: true
     method: POST
     body_format: json
     body: "{{ item | to_json }}"
   with_items: "{{ grafana_datasources }}"
-  no_log: True
+  no_log: true
   when: ((datasources['json'] | selectattr("name", "equalto", item['name'])) | list) | length == 0
 
 - name: Create datasources file
@@ -28,5 +29,5 @@
       delete_datasources: []
       datasources:
       {{ grafana_datasources | to_nice_yaml }}
-    backup: no
+    backup: false
   notify: restart grafana

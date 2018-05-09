@@ -8,9 +8,9 @@ env:
   - ANSIBLE='ansible>=2.4.0,<2.5.0'
   - ANSIBLE='ansible>=2.5.0,<2.6.0'
 install:
-  - pip install ${ANSIBLE} 'ansible-lint>=3.4.15' 'molecule==1.25.0' docker git-semver 'testinfra>=1.7.0,<=1.10.1'
+  - pip install ${ANSIBLE} 'ansible-lint>=3.4.15' 'molecule>=2.13.0' docker git-semver 'testinfra>=1.7.0'
 script:
-  - molecule test
+  - molecule test --all
 deploy:
   provider: script
   skip_cleanup: true

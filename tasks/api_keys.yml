@@ -1,5 +1,6 @@
+---
 - name: Ensure grafana key directory exists
-  become: no
+  become: false
   file:
     path: "{{ grafana_api_keys_dir }}/{{ inventory_hostname }}"
     state: directory
@@ -10,9 +11,9 @@
     url: "{{ grafana_url }}/api/auth/keys"
     user: "{{ grafana_security.admin_user }}"
     password: "{{ grafana_security.admin_password }}"
-    force_basic_auth: yes
-    return_content: yes
-  no_log: True
+    force_basic_auth: true
+    return_content: true
+  no_log: true
   register: existing_api_keys
 
 - name: Create grafana api keys
@@ -20,21 +21,21 @@
     url: "{{ grafana_url }}/api/auth/keys"
     user: "{{ grafana_security.admin_user }}"
     password: "{{ grafana_security.admin_password }}"
-    force_basic_auth: yes
+    force_basic_auth: true
     method: POST
     body_format: json
     body: "{{ item | to_json }}"
   with_items: "{{ grafana_api_keys }}"
-  no_log: True
+  no_log: true
   when: ((existing_api_keys['json'] | selectattr("name", "equalto", item['name'])) | list) | length == 0
   register: new_api_keys
 
 - name: Create api keys file to allow the keys to be seen and used by other automation
-  become: no
+  become: false
   copy:
     dest: "{{ grafana_api_keys_dir }}/{{ inventory_hostname }}/{{ item['item']['name'] }}.key"
     content: "{{ item['json']['key'] }}"
-    backup: no
+    backup: false
   when: item['json'] is defined
   with_items: "{{ new_api_keys['results'] }}"
   delegate_to: localhost

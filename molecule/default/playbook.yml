@@ -1,0 +1,9 @@
+---
+- hosts: all
+  any_errors_fatal: true
+  roles:
+    - ansible-grafana
+  vars:
+    grafana_security:
+      admin_user: admin
+      admin_password: "password"
