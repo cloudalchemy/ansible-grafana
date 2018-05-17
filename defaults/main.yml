@@ -1,5 +1,6 @@
 ---
 grafana_version: latest
+grafana_ubuntu_repo: "deb https://packagecloud.io/grafana/stable/debian/ jessie main"
 
 grafana_instance: "{{ ansible_fqdn | default(ansible_host) | default(inventory_hostname) }}"
 
