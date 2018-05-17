@@ -11,5 +11,8 @@
   args:
     creates: "{{ grafana_data_dir }}/plugins/{{ item }}"
   with_items: "{{ grafana_plugins | difference(installed_plugins.files) }}"
+  environment:
+    http_proxy: "{{ http_proxy | default('') }}"
+    https_proxy: "{{ https_proxy | default('') }}"
   notify:
     - restart grafana

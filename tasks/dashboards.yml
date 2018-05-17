@@ -19,6 +19,9 @@
   delay: 2
   delegate_to: localhost
   run_once: true
+  environment:
+    http_proxy: "{{ deploy_http_proxy | default('') }}"
+    https_proxy: "{{ deploy_https_proxy | default('') }}"
   with_items: "{{ grafana_dashboards }}"
 
 # As noted in [1] an exported dashboard replaces the exporter's datasource
