@@ -2,12 +2,18 @@
 
 ## [**Next release**](https://galaxy.ansible.com/cloudalchemy/grafana)
 
+**Closed issues:**
+
+- Dashboard datasource regex does not match for some dashboards [\#59](https://github.com/cloudalchemy/ansible-grafana/issues/59)
+
+## [0.8.2](https://galaxy.ansible.com/cloudalchemy/grafana) (2018-05-22)
 **Fixed bugs:**
 
 - Incorrect location for datasources provisioning directory [\#55](https://github.com/cloudalchemy/ansible-grafana/issues/55)
 
 **Merged pull requests:**
 
+- Update datasource regex match to include dashes and numbers [\#60](https://github.com/cloudalchemy/ansible-grafana/pull/60) ([odyssey4me](https://github.com/odyssey4me))
 - upgrade to molecule 2.x [\#57](https://github.com/cloudalchemy/ansible-grafana/pull/57) ([paulfantom](https://github.com/paulfantom))
 - fix incorrect provisioning directory placing [\#56](https://github.com/cloudalchemy/ansible-grafana/pull/56) ([paulfantom](https://github.com/paulfantom))
 - extending regex to match multiple subsequent words in datasource placeholder [\#53](https://github.com/cloudalchemy/ansible-grafana/pull/53) ([aman0019](https://github.com/aman0019))
@@ -213,15 +219,15 @@
 - Old [\#1](https://github.com/cloudalchemy/ansible-grafana/pull/1) ([paulfantom](https://github.com/paulfantom))
 
 ## [0.4.0](https://galaxy.ansible.com/cloudalchemy/grafana) (2017-10-16)
-## [0.3.3](https://galaxy.ansible.com/cloudalchemy/grafana) (2017-07-27)
 ## [0.3.2](https://galaxy.ansible.com/cloudalchemy/grafana) (2017-07-27)
+## [0.3.3](https://galaxy.ansible.com/cloudalchemy/grafana) (2017-07-27)
 ## [0.3.1](https://galaxy.ansible.com/cloudalchemy/grafana) (2017-07-27)
 ## [0.3.0](https://galaxy.ansible.com/cloudalchemy/grafana) (2017-07-21)
 ## [0.2.1](https://galaxy.ansible.com/cloudalchemy/grafana) (2017-07-13)
 ## [0.2.0](https://galaxy.ansible.com/cloudalchemy/grafana) (2017-07-13)
 ## [0.1.3](https://galaxy.ansible.com/cloudalchemy/grafana) (2017-07-13)
-## [0.1.1](https://galaxy.ansible.com/cloudalchemy/grafana) (2017-06-14)
 ## [0.1.2](https://galaxy.ansible.com/cloudalchemy/grafana) (2017-06-14)
+## [0.1.1](https://galaxy.ansible.com/cloudalchemy/grafana) (2017-06-14)
 ## [0.1.0](https://galaxy.ansible.com/cloudalchemy/grafana) (2017-06-05)
 ## [0.0.4](https://galaxy.ansible.com/cloudalchemy/grafana) (2017-05-15)
 ## [0.0.3](https://galaxy.ansible.com/cloudalchemy/grafana) (2017-05-05)
