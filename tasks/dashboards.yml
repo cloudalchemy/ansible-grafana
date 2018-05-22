@@ -47,17 +47,17 @@
 # 2. Non-capturing optional group matches for the ${} bits which may, or
 #    or may not, be there..
 # 3. A case-sensitive literal match for DS .
-# 4. One or more case-sensitive matches for groups of alphabetical characters
-#    where each group is preceded by an underscore.
+# 4. A one-or-more case-sensitive match for the part that follows the
+#    underscore, with only A-Z, 0-9 and - or _ allowed.
 #
 # This regex can be tested and understood better by looking at the
-# matches and non-matches in https://regex101.com/r/f4Gkvg/4
+# matches and non-matches in https://regex101.com/r/f4Gkvg/6
 
 - name: Set the correct data source name in the dashboard
   become: false
   replace:
     dest: "/tmp/dashboards/{{ item.dashboard_id }}.json"
-    regexp: '"(?:\${)?DS(_([A-Z])+)+(?:})?"'
+    regexp: '"(?:\${)?DS_[A-Z0-9_-]+(?:})?"'
     replace: '"{{ item.datasource }}"'
   delegate_to: localhost
   run_once: true
