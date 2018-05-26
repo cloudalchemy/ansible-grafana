@@ -6,6 +6,10 @@
 
 - Dashboard datasource regex does not match for some dashboards [\#59](https://github.com/cloudalchemy/ansible-grafana/issues/59)
 
+**Merged pull requests:**
+
+- add ability to define notification channels [\#61](https://github.com/cloudalchemy/ansible-grafana/pull/61) ([sarphram](https://github.com/sarphram))
+
 ## [0.8.2](https://galaxy.ansible.com/cloudalchemy/grafana) (2018-05-22)
 **Fixed bugs:**
 
