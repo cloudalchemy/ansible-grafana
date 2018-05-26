@@ -1,4 +1,11 @@
 ---
+- name: Check variable types
+  assert:
+    that:
+      - grafana_server is mapping
+      - grafana_database is mapping
+      - grafana_security is mapping
+
 - name: Fail on unsupported system architectures
   fail:
     msg: "Sorry grafana doesn't support {{ ansible_architecture }} on this OS family ({{ ansible_os_family }}). Exiting."
