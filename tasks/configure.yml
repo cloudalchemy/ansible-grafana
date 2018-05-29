@@ -9,7 +9,7 @@
     - "/etc/grafana/provisioning"
     - "/etc/grafana/provisioning/datasources"
 
-- name: Copy the template
+- name: Create grafana main configuration file
   template:
     src: grafana.ini.j2
     dest: /etc/grafana/grafana.ini
