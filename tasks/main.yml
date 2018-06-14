@@ -11,30 +11,53 @@
     - always
 
 - include: preflight.yml
+  tags:
+    - always
 
 - include: install.yml
+  tags:
+    - install
 
 - include: configure.yml
+  tags:
+    - configure
 
 - include: plugins.yml
   when: grafana_plugins != []
+  tags:
+    - configure
 
 - name: Restart grafana before configuring datasources and dashboards
   meta: flush_handlers
+  tags:
+    - always
 
 - name: Wait for grafana to start
   wait_for:
     host: "{{ grafana_address }}"
     port: "{{ grafana_port }}"
+  tags:
+    - always
 
 - include: api_keys.yml
   when: grafana_api_keys | length > 0
+  tags:
+    - configure
 
 - include: datasources.yml
   when: grafana_datasources != []
+  tags:
+    - configure
+    - datasources
 
 - include: notifications.yml
   when: grafana_alert_notifications | length > 0
+  tags:
+    - configure
+    - notifications
 
 - include: dashboards.yml
   when: grafana_dashboards | length > 0
+  tags:
+    - configure
+    - dashboards
