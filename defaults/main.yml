@@ -73,17 +73,17 @@ grafana_auth: {}
 #    org_role: Viewer
 #  ldap:
 #    config_file: "/etc/grafana/ldap.toml"
-#    allow_sign_up: False
+#    allow_sign_up: false
 #  basic: true
 
 grafana_ldap: {}
-#  verbose_logging: False
+#  verbose_logging: false
 #  servers:
 #    host: 127.0.0.1
 #    port: 389 # 636 for SSL
-#    use_ssl: False
-#    start_tls: False
-#    ssl_skip_verify: False
+#    use_ssl: false
+#    start_tls: false
+#    ssl_skip_verify: false
 #    root_ca_cert: /path/to/certificate.crt
 #    bind_dn: "cn=admin,dc=grafana,dc=org"
 #    bind_password: grafana
