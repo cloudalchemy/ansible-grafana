@@ -76,6 +76,45 @@ grafana_auth: {}
 #    allow_sign_up: False
 #  basic: true
 
+grafana_ldap: {}
+#  verbose_logging: False
+#  servers:
+#    host: 127.0.0.1
+#    port: 389 # 636 for SSL
+#    use_ssl: False
+#    start_tls: False
+#    ssl_skip_verify: False
+#    root_ca_cert: /path/to/certificate.crt
+#    bind_dn: "cn=admin,dc=grafana,dc=org"
+#    bind_password: grafana
+#    search_filter: "(cn=%s)" # "(sAMAccountName=%s)" on AD
+#    search_base_dns:
+#      - "dc=grafana,dc=org"
+#    group_search_filter: "(&(objectClass=posixGroup)(memberUid=%s))"
+#    group_search_base_dns:
+#      - "ou=groups,dc=grafana,dc=org"
+#    attributes:
+#      name: givenName
+#      surname: sn
+#      username: sAMAccountName
+#      member_of: memberOf
+#      email: mail
+#  group_mappings:
+#    - name: Main Org.
+#      id: 1
+#      groups:
+#        - group_dn: "cn=admins,ou=groups,dc=grafana,dc=org"
+#          org_role: Admin
+#        - group_dn: "cn=editors,ou=groups,dc=grafana,dc=org"
+#          org_role: Editor
+#        - group_dn: "*"
+#          org_role: Viewer
+#    - name: Alternative Org
+#      id: 2
+#      groups:
+#        - group_dn: "cn=alternative_admins,ou=groups,dc=grafana,dc=org"
+#          org_role: Admin
+
 grafana_session: {}
 #  provider: file
 #  provider_config: "sessions"
