@@ -8,6 +8,7 @@
 
 **Merged pull requests:**
 
+- add tags [\#64](https://github.com/cloudalchemy/ansible-grafana/pull/64) ([paulfantom](https://github.com/paulfantom))
 - fix non-informative task name [\#62](https://github.com/cloudalchemy/ansible-grafana/pull/62) ([paulfantom](https://github.com/paulfantom))
 - add ability to define notification channels [\#61](https://github.com/cloudalchemy/ansible-grafana/pull/61) ([sarphram](https://github.com/sarphram))
 
