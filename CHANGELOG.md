@@ -1,13 +1,14 @@
 # Change Log
 
-## [**Next release**](https://galaxy.ansible.com/cloudalchemy/grafana)
-
+## [0.9.0](https://galaxy.ansible.com/cloudalchemy/grafana) (2018-06-16)
 **Closed issues:**
 
 - Dashboard datasource regex does not match for some dashboards [\#59](https://github.com/cloudalchemy/ansible-grafana/issues/59)
+- Add LDAP configuration support [\#11](https://github.com/cloudalchemy/ansible-grafana/issues/11)
 
 **Merged pull requests:**
 
+- Add LDAP configuration tasks [\#65](https://github.com/cloudalchemy/ansible-grafana/pull/65) ([lae](https://github.com/lae))
 - add tags [\#64](https://github.com/cloudalchemy/ansible-grafana/pull/64) ([paulfantom](https://github.com/paulfantom))
 - fix non-informative task name [\#62](https://github.com/cloudalchemy/ansible-grafana/pull/62) ([paulfantom](https://github.com/paulfantom))
 - add ability to define notification channels [\#61](https://github.com/cloudalchemy/ansible-grafana/pull/61) ([sarphram](https://github.com/sarphram))
