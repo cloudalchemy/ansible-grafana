@@ -19,6 +19,19 @@
   no_log: true
   notify: restart grafana
 
+- name: Create grafana LDAP configuration file
+  template:
+    src: ldap.toml.j2
+    dest: "{{ grafana_auth.ldap.config_file | default('/etc/grafana/ldap.toml') }}"
+    owner: root
+    group: grafana
+    mode: 0640
+  when:
+    - "'ldap' in grafana_auth"
+    - "'enabled' not in grafana_auth.ldap or grafana_auth.ldap.enabled"
+  no_log: true
+  notify: restart grafana
+
 - name: Create grafana directories
   file:
     path: "{{ item }}"

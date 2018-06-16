@@ -15,7 +15,8 @@ def test_directories(host):
         "/var/lib/grafana/plugins/raintank-worldping-app"
     ]
     files = [
-        "/etc/grafana/grafana.ini"
+        "/etc/grafana/grafana.ini",
+        "/etc/grafana/ldap.toml"
     ]
     for directory in dirs:
         d = host.file(directory)

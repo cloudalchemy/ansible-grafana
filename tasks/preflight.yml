@@ -53,3 +53,10 @@
   when:
     - item.role not in ['Viewer', 'Editor', 'Admin']
   with_items: "{{ grafana_api_keys }}"
+
+- name: Fail when grafana_ldap isn't set when grafana_auth.ldap is
+  fail:
+    msg: "You need to configure grafana_ldap.servers and grafana_ldap.group_mappings when grafana_auth.ldap is set"
+  when:
+    - "'ldap' in grafana_auth"
+    - grafana_ldap is not defined or ('servers' not in grafana_ldap or 'group_mappings' not in grafana_ldap)
