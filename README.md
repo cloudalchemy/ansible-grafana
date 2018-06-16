@@ -49,6 +49,26 @@ All variables which can be overridden are stored in [defaults/main.yml](defaults
 | `grafana_dashboards` | [] | List of dashboards which should be imported |
 | `grafana_datasources` | [] | List of datasources which should be configured |
 
+Datasources example:
+
+```
+    grafana_datasources:
+      - name: prometheus
+        type: prometheus
+        access: proxy
+        url: 'http://{{ prometheus_web_listen_address }}'
+        basicAuth: false
+```
+
+Dashboards example:
+
+```
+    grafana_dashboards:
+      - dashboard_id: 111
+        revision_id: 1
+        datasource: prometheus
+```
+
 ## Supported CPU Architectures
 
 Detection is done automatically and packages are taken from different channels according to CPU architecture:
