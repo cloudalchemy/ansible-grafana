@@ -5,3 +5,4 @@
 .cache
 *.kate-swp
 __pycache__/
+.tox
