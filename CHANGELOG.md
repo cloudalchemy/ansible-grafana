@@ -1,5 +1,11 @@
 # Change Log
 
+## [0.10.0](https://galaxy.ansible.com/cloudalchemy/grafana) (2018-07-01)
+**Merged pull requests:**
+
+- use tox, ansible 2.6, and allow using remote docker host [\#67](https://github.com/cloudalchemy/ansible-grafana/pull/67) ([paulfantom](https://github.com/paulfantom))
+- Add examples for datasource and dashboard configs [\#66](https://github.com/cloudalchemy/ansible-grafana/pull/66) ([bitfag](https://github.com/bitfag))
+
 ## [0.9.0](https://galaxy.ansible.com/cloudalchemy/grafana) (2018-06-16)
 **Closed issues:**
 
