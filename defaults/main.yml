@@ -1,6 +1,9 @@
 ---
 grafana_version: latest
 
+# Should we use the provisioning capability when possible (provisioning require grafana >= 5.0)
+grafana_use_provisioning: true
+
 grafana_instance: "{{ ansible_fqdn | default(ansible_host) | default(inventory_hostname) }}"
 
 grafana_logs_dir: "/var/log/grafana"
