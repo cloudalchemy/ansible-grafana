@@ -18,10 +18,19 @@
     msg: "You need to specify datasources for dashboards!!!"
   when: grafana_dashboards != [] and grafana_datasources == []
 
+- name: Fail when grafana admin user isn't set
+  fail:
+    msg: "Please specify grafana admin user (grafana_security.admin_user)"
+  when:
+    - grafana_security.admin_user == '' or
+      grafana_security.admin_user is not defined
+
 - name: Fail when grafana admin password isn't set
   fail:
     msg: "Please specify grafana admin password (grafana_security.admin_password)"
-  when: grafana_security.admin_password == ''
+  when:
+    - grafana_security.admin_password == '' or
+      grafana_security.admin_password is not defined
 
 - name: Fail on incorrect variable types in datasource definitions
   fail:
@@ -60,3 +69,10 @@
   when:
     - "'ldap' in grafana_auth"
     - grafana_ldap is not defined or ('servers' not in grafana_ldap or 'group_mappings' not in grafana_ldap)
+
+- name: Force grafana_use_provisioning to false if grafana_version is < 5.0 ( grafana_version is set to '{{ grafana_version }}' )
+  set_fact:
+    grafana_use_provisioning: false
+  when:
+    - grafana_version != 'latest'
+    - grafana_version is version_compare('5.0', '<')

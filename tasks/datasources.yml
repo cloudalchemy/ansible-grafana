@@ -1,28 +1,49 @@
 ---
-- name: Check datasources list
-  uri:
-    url: "{{ grafana_url }}/api/datasources"
-    user: "{{ grafana_security.admin_user }}"
-    password: "{{ grafana_security.admin_password }}"
-    force_basic_auth: true
-    return_content: true
-  no_log: true
-  register: datasources
+- block:
+    - name: Check datasources list (api)
+      uri:
+        url: "{{ grafana_url }}/api/datasources"
+        user: "{{ grafana_security.admin_user }}"
+        password: "{{ grafana_security.admin_password }}"
+        force_basic_auth: true
+        return_content: true
+      no_log: true
+      register: datasources
 
-- name: Create grafana datasource
-  uri:
-    url: "{{ grafana_url }}/api/datasources"
-    user: "{{ grafana_security.admin_user }}"
-    password: "{{ grafana_security.admin_password }}"
-    force_basic_auth: true
-    method: POST
-    body_format: json
-    body: "{{ item | to_json }}"
-  with_items: "{{ grafana_datasources }}"
-  no_log: true
-  when: ((datasources['json'] | selectattr("name", "equalto", item['name'])) | list) | length == 0
+    - name: Create grafana datasources (api)
+      uri:
+        url: "{{ grafana_url }}/api/datasources"
+        user: "{{ grafana_security.admin_user }}"
+        password: "{{ grafana_security.admin_password }}"
+        force_basic_auth: true
+        method: POST
+        body_format: json
+        body: "{{ item | to_json }}"
+      with_items: "{{ grafana_datasources }}"
+      no_log: true
+      when: ((datasources['json'] | selectattr("name", "equalto", item['name'])) | list) | length == 0
 
-- name: Create datasources file
+    - name: Update grafana datasources (api)
+      uri:
+        url: "{{ grafana_url }}/api/datasources/{{ (
+                                                    datasources['json'] |
+                                                    selectattr('name', 'equalto', item['name']) |
+                                                    map(attribute='id') |
+                                                    unique |
+                                                    join()
+                                                   ) }}"
+        user: "{{ grafana_security.admin_user }}"
+        password: "{{ grafana_security.admin_password }}"
+        force_basic_auth: true
+        method: PUT
+        body_format: json
+        body: "{{ item | to_json }}"
+      with_items: "{{ grafana_datasources }}"
+      no_log: true
+      when: ((datasources['json'] | selectattr("name", "equalto", item['name'])) | list) | length != 0
+  when: not grafana_use_provisioning
+
+- name: Create/Update datasources file (provisioning)
   copy:
     dest: "/etc/grafana/provisioning/datasources/ansible.yml"
     content: |
@@ -30,4 +51,6 @@
       datasources:
       {{ grafana_datasources | to_nice_yaml }}
     backup: false
+  become: true
   notify: restart grafana
+  when: grafana_use_provisioning
