@@ -1,5 +1,16 @@
 # Change Log
 
+## [**Next release**](https://galaxy.ansible.com/cloudalchemy/grafana)
+
+**Fixed bugs:**
+
+- \[Question\] Dashboard add is done twice [\#68](https://github.com/cloudalchemy/ansible-grafana/issues/68)
+
+## [0.10.1](https://galaxy.ansible.com/cloudalchemy/grafana) (2018-07-07)
+**Merged pull requests:**
+
+- Use 'provisioning' capability when possible [\#69](https://github.com/cloudalchemy/ansible-grafana/pull/69) ([rockandska](https://github.com/rockandska))
+
 ## [0.10.0](https://galaxy.ansible.com/cloudalchemy/grafana) (2018-07-01)
 **Merged pull requests:**
 
