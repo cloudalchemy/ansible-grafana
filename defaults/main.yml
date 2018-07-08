@@ -14,6 +14,7 @@ grafana_port: 3000
 
 # External Grafana address. Variable maps to "root_url" in grafana server section
 grafana_url: "http://{{ grafana_address }}:{{ grafana_port }}"
+grafana_api_url: "{{ grafana_url }}"
 grafana_domain: "{{ ansible_fqdn | default(ansible_host) | default('localhost') }}"
 
 # Additional options for grafana "server" section

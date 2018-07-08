@@ -8,7 +8,7 @@
 
 - name: Check api key list
   uri:
-    url: "{{ grafana_url }}/api/auth/keys"
+    url: "{{ grafana_api_url }}/api/auth/keys"
     user: "{{ grafana_security.admin_user }}"
     password: "{{ grafana_security.admin_password }}"
     force_basic_auth: true
@@ -18,7 +18,7 @@
 
 - name: Create grafana api keys
   uri:
-    url: "{{ grafana_url }}/api/auth/keys"
+    url: "{{ grafana_api_url }}/api/auth/keys"
     user: "{{ grafana_security.admin_user }}"
     password: "{{ grafana_security.admin_password }}"
     force_basic_auth: true

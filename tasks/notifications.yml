@@ -1,7 +1,7 @@
 ---
 - name: Check alert notifications list
   uri:
-    url: "{{ grafana_url }}/api/alert-notifications"
+    url: "{{ grafana_api_url }}/api/alert-notifications"
     user: "{{ grafana_security.admin_user }}"
     password: "{{ grafana_security.admin_password }}"
     force_basic_auth: true
@@ -11,7 +11,7 @@
 
 - name: Create grafana alert notification channels
   uri:
-    url: "{{ grafana_url }}/api/alert-notifications"
+    url: "{{ grafana_api_url }}/api/alert-notifications"
     user: "{{ grafana_security.admin_user }}"
     password: "{{ grafana_security.admin_password }}"
     force_basic_auth: true
