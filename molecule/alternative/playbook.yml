@@ -90,3 +90,30 @@
         basicAuthPassword: "password"
         isDefault: true
         jsonData: '{"tlsAuth":false,"tlsAuthWithCACert":false,"tlsSkipVerify":true}'
+    grafana_organisations:
+      - name: "Company A"
+      - name: "Company B"
+        address:
+          address1: "company B road"
+          address2:
+          city: "City B"
+          zipCode: "0000"
+          state:
+          country: "Country B"
+      - name: "Company C"
+    grafana_accounts:
+      - name: "UserA"
+        email: "user@companyA.com"
+        login: "user_company_A"
+        password: "userpassword"
+        organisations:
+          - name: "Company A"
+            role: "Admin"
+          - name: "Company B"
+      - name: "UserB"
+        email: "user@companyB.com"
+        login: "user_company_B"
+        password: "userpassword"
+        organisations:
+          - name: "Company B"
+    grafana_accounts_perpage: 1

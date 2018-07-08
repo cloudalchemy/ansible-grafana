@@ -50,6 +50,9 @@ All variables which can be overridden are stored in [defaults/main.yml](defaults
 | `grafana_image_storage` | {} | [image storage](http://docs.grafana.org/installation/configuration/#external-image-storage) configuration section |
 | `grafana_dashboards` | [] | List of dashboards which should be imported |
 | `grafana_datasources` | [] | List of datasources which should be configured |
+| `grafana_organisations:` | [] | List of organisations which should be configured |
+| `grafana_accounts:` | [] | List of accounts which should be configured |
+| `grafana_accounts_perpage:` | 1000 | How many users which should retrieved by api call |
 
 Datasource example:
 
@@ -69,6 +72,47 @@ grafana_dashboards:
   - dashboard_id: 111
     revision_id: 1
     datasource: prometheus
+```
+
+Organisations example:
+
+```yaml
+grafana_organisations:
+  - name: "Company A"
+  - name: "Company B"
+    address:
+      address1: "company B road"
+      address2:
+      city: "City A"
+      zipCode: "00001"
+      state:
+      country: "Country A"
+  - name: "Company C"
+```
+
+Accounts example:
+```yaml
+grafana_accounts:
+  - name: "UserA"
+     email: "user@companyA.com"
+     login: "user_company_A"
+     password: "userpassword"
+     organisations:
+       - name: "Company A"
+         role: "Admin"
+       - name: "Company B"
+  - name: "UserB"
+     email: "user@companyB.com"
+     login: "user_company_B"
+     password: "userpassword"
+     organisations:
+       - name: "Company B"
+         role: "Admin"
+  - name: "UserC"
+     email: "user@companyC.com"
+     login: "user_company_C"
+     password: "userpassword"
+     organisations: []
 ```
 
 ## Supported CPU Architectures

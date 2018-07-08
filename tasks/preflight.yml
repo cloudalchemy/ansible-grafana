@@ -76,3 +76,104 @@
   when:
     - grafana_version != 'latest'
     - grafana_version is version_compare('5.0', '<')
+
+- name: Fail if an organisation is present twice into the organisations definition
+  fail:
+    msg: "An organisation is present twice into grafana_organisations"
+  when:
+    (
+      grafana_organisations
+      | map(attribute='name') | list
+      | length
+    )
+    !=
+    (
+      grafana_organisations
+      | map(attribute='name')
+      | unique | list
+      | length
+    )
+
+- name: Fail if a user doesn't have an email set
+  fail:
+    msg: "A user doesn't have an email set"
+  when:
+    (
+      grafana_accounts
+      | length
+    )
+    !=
+    (
+      grafana_accounts
+      | selectattr('email','defined')
+      | list
+      | length
+    )
+
+- name: Fail if a user doesn't have a login set
+  fail:
+    msg: "A user doesn't have a login set"
+  when:
+    (
+      grafana_accounts
+      | length
+    )
+    !=
+    (
+      grafana_accounts
+      | selectattr('login','defined')
+      | list
+      | length
+    )
+
+- name: Fail if a login is present twice into the users definition
+  fail:
+    msg: "A login is present twice into grafana_accounts"
+  when:
+    (
+      grafana_accounts
+      | map(attribute='login')
+      | list
+      | length
+    )
+    !=
+    (
+      grafana_accounts
+      | map(attribute='login')
+      | unique | list
+      | length
+    )
+
+- name: Fail if an email is present twice into the users definition
+  fail:
+    msg: "An email is present twice into grafana_accounts"
+  when:
+    (
+      grafana_accounts
+      | map(attribute='email') | list
+      | length
+    )
+    !=
+    (
+      grafana_accounts
+      | map(attribute='email')
+      | unique | list
+      | length
+    )
+
+- name: Fail if an organisation exist in accounts definition but not in organisations definition
+  fail:
+    msg: "An organisation describe into grafana_accounts doesn't exist into grafana_organisations"
+  when:
+    (
+      grafana_accounts
+      | sum(attribute='organisations',start=[]) | list
+      | map(attribute='name') | list
+      | unique | list
+    )
+    | difference(
+        grafana_organisations
+        | map(attribute='name') | list
+        | unique | list
+      )
+    | length != 0

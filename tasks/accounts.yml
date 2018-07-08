@@ -1,0 +1,165 @@
+---
+- name: Fetch the number of page of users to parse (api)
+  uri:
+    url: "{{ grafana_api_url }}/api/users/search?perpage=1&page=1"
+    user: "{{ grafana_security.admin_user }}"
+    password: "{{ grafana_security.admin_password }}"
+    force_basic_auth: true
+    body_format: json
+  no_log: true
+  register: _grafana_accounts_first_page
+
+- name: Debug _grafana_accounts_first_page
+  debug:
+    var: _grafana_accounts_first_page
+  when:
+    - _grafana_accounts_first_page is defined
+  tags:
+    - never
+    - debug
+
+- name: Fetch all users (api)
+  uri:
+    url: "{{ grafana_api_url }}/api/users/search?perpage={{ grafana_accounts_perpage }}&page={{ item }}"
+    user: "{{ grafana_security.admin_user }}"
+    password: "{{ grafana_security.admin_password }}"
+    force_basic_auth: true
+    body_format: json
+  no_log: true
+  register: _grafana_accounts
+  with_items: "{{range(
+                        1,
+                        (
+                          (_grafana_accounts_first_page.json.totalCount / grafana_accounts_perpage )
+                          | round(0,'ceil')
+                          | int
+                        ) + 1
+                      )
+                      | list
+              }}"
+
+- name: Debug _grafana_accounts
+  debug:
+    var: _grafana_accounts
+  when:
+    - _grafana_accounts is defined
+  tags:
+    - never
+    - debug
+
+- name: Create users not already present (api)
+  uri:
+    url: "{{ grafana_api_url }}/api/admin/users"
+    user: "{{ grafana_security.admin_user }}"
+    password: "{{ grafana_security.admin_password }}"
+    force_basic_auth: true
+    method: POST
+    body_format: json
+    body: "{{ item | to_json }}"
+  no_log: true
+  register: _grafana_accounts_created
+  changed_when: true
+  with_items:
+    # If the email or the login are not already present
+    - "{{
+          grafana_accounts
+          | rejectattr('login','match', (
+                                          _grafana_accounts.results
+                                          | sum(attribute='json.users',start=[])
+                                          | map(attribute='login')
+                                          | join('|')
+                                        )
+                      )
+          | rejectattr('email','match', (
+                                          _grafana_accounts.results
+                                          | sum(attribute='json.users',start=[])
+                                          | map(attribute='email')
+                                          | map('regex_escape')
+                                          | join('|')
+                                        )
+                      )
+          | list
+      }}"
+
+- name: Debug _grafana_accounts_created
+  debug:
+    var: _grafana_accounts_created
+  when:
+    - _grafana_accounts_created is defined
+    - _grafana_accounts_created.results != []
+  tags:
+    - never
+    - debug
+
+- name: Update users if needed
+  uri:
+    url: "{{ grafana_api_url }}/api/users/{{
+                                      (
+                                      _grafana_accounts.results
+                                      | sum(attribute='json.users',start=[])
+                                      | selectattr('login','equalto', item.login)
+                                      | map(attribute='id') | list
+                                      +
+                                      _grafana_accounts.results
+                                      | sum(attribute='json.users',start=[])
+                                      | selectattr('email','equalto', item.email)
+                                      | map(attribute='id') | list
+                                      ) | first
+                                      }}"
+    user: "{{ grafana_security.admin_user }}"
+    password: "{{ grafana_security.admin_password }}"
+    force_basic_auth: true
+    method: PUT
+    body_format: json
+    body: "{{ item | to_json }}"
+  no_log: true
+  register: _grafana_accounts_updated
+  changed_when: true
+  with_items:
+    # If the user already exist
+    - "{{
+    (
+    grafana_accounts
+    | selectattr('login','match', (
+                                    _grafana_accounts.results
+                                    | sum(attribute='json.users',start=[])
+                                    | map(attribute='login')
+                                    | map('regex_escape')
+                                    | join('|')
+                                  )
+    ) | list
+    +
+    grafana_accounts
+    | selectattr('email','match', (
+                                    _grafana_accounts.results
+                                    | sum(attribute='json.users',start=[])
+                                    | map(attribute='email')
+                                    | map('regex_escape')
+                                    | join('|')
+                                  )
+    ) | list
+    ) | unique | list
+    }}"
+  when:
+    # Only if name / login / email changed
+    - _grafana_accounts.results
+        | sum(attribute='json.users',start=[])
+        | selectattr('name','equalto',item.name)
+        | list | length == 0
+      or _grafana_accounts.results
+        | sum(attribute='json.users',start=[])
+        | selectattr('login','equalto',item.login)
+        | list | length == 0
+      or _grafana_accounts.results
+        | sum(attribute='json.users',start=[])
+        | selectattr('email','equalto',item.email)
+        | list | length == 0
+
+- name: Debug _grafana_accounts_updated
+  debug:
+    var: _grafana_accounts_updated
+  when:
+    - _grafana_accounts_updated is defined
+  tags:
+    - never
+    - debug

@@ -1,0 +1,152 @@
+---
+- include_tasks: organisations.yml
+  when:
+    - _grafana_organisations_created.results  | length > 0
+
+- include_tasks: accounts.yml
+  when:
+    - _grafana_accounts_created.results | length > 0
+    - _grafana_accounts_updated.results | length > 0
+
+- name: Fetch all users <-> organisations links (api)
+  uri:
+    url: "{{ grafana_api_url }}/api/org/users"
+    user: "{{ grafana_security.admin_user }}"
+    password: "{{ grafana_security.admin_password }}"
+    force_basic_auth: true
+    body_format: json
+    headers:
+      X-Grafana-Org-Id: "{{ item }}"
+  no_log: true
+  register: _grafana_accounts_organisations_links
+  with_items: "{{ _grafana_organisations.json | map(attribute='id') | list }}"
+
+- name: Debug _grafana_accounts_organisations_links
+  debug:
+    var: _grafana_accounts_organisations_links
+  when:
+    - _grafana_accounts_organisations_links is defined
+  tags:
+    - never
+    - debug
+
+- name: Add users to the needed organisations (api)
+  uri:
+    url: "{{ grafana_api_url }}/api/orgs/{{
+                                      _grafana_organisations.json
+                                      | selectattr('name','equalto', item.1.name)
+                                      | map(attribute='id')
+                                      | unique
+                                      | join()
+                                      | int
+                                    }}/users"
+    user: "{{ grafana_security.admin_user }}"
+    password: "{{ grafana_security.admin_password }}"
+    force_basic_auth: true
+    method: POST
+    body_format: json
+    body: |
+      {
+        "loginOrEmail": "{{ item.0.login }}",
+        "role": "{{
+                    item.1.role
+                    | default(grafana_users.auto_assign_org_role)
+                 }}"
+      }
+  no_log: true
+  register: _grafana_accounts_organisations_links_created
+  changed_when: true
+  with_subelements:
+    - "{{ grafana_accounts }}"
+    - organisations
+  when:
+    # If the user is not already present in the organisation
+    - _grafana_accounts_organisations_links.results | sum(attribute='json', start=[])
+      | selectattr('email', 'equalto', item.0.email)
+      | selectattr('orgId', 'equalto',
+          (
+            _grafana_organisations.json
+            | selectattr('name', 'equalto', item.1.name)
+            | map(attribute='id')
+            | unique
+            | join()
+            | int
+          )
+        )
+      | list
+      | length == 0
+
+- name: Debug _grafana_accounts_organisations_links_created
+  debug:
+    var: _grafana_accounts_organisations_links_created
+  when:
+    - _grafana_accounts_organisations_links_created is defined
+  tags:
+    - never
+    - debug
+
+- name: Update users role if needed (api)
+  uri:
+    url: "{{ grafana_api_url }}/api/orgs/{{
+                                      _grafana_organisations.json
+                                      | selectattr('name','equalto', item.1.name)
+                                      | map(attribute='id')
+                                      | unique
+                                      | join()
+                                      | int
+                                    }}/users/{{
+                                      _grafana_accounts.results
+                                      | sum(attribute='json.users', start=[])
+                                      | selectattr('login', 'equalto', item.0.login)
+                                      | map(attribute='id')
+                                      | unique
+                                      | join()
+                                      | int
+                                    }}"
+    user: "{{ grafana_security.admin_user }}"
+    password: "{{ grafana_security.admin_password }}"
+    force_basic_auth: true
+    method: PATCH
+    body_format: json
+    body: |
+      {
+        "role": "{{
+                    item.1.role
+                    | default(grafana_users.auto_assign_org_role)
+                }}"
+      }
+  no_log: true
+  register: _grafana_accounts_organisations_links_updated
+  changed_when: true
+  with_subelements:
+    - "{{ grafana_accounts }}"
+    - organisations
+  when:
+    # If user exist in this organisation and the role is not the same
+    - _grafana_accounts_organisations_links.results
+      | sum(attribute='json', start=[])
+      | selectattr('email', 'equalto', item.0.email)
+      | selectattr('orgId', 'equalto', (
+                                        _grafana_organisations.json
+                                        | selectattr('name', 'equalto', item.1.name)
+                                        | map(attribute='id')
+                                        | unique
+                                        | join()
+                                        | int
+                                      )
+        )
+      | rejectattr('role', 'equalto', (
+                                        item.1.role
+                                        | default(grafana_users.auto_assign_org_role, True)
+                                      )
+        )
+      | list | length > 0
+
+- name: Debug _grafana_accounts_organisations_links_updated
+  debug:
+    var: _grafana_accounts_organisations_links_updated
+  when:
+    - _grafana_accounts_organisations_links_updated is defined
+  tags:
+    - never
+    - debug

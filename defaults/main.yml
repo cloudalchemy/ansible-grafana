@@ -170,7 +170,38 @@ grafana_image_storage: {}
 # Plugins from https://grafana.com/plugins
 grafana_plugins: []
 #  - raintank-worldping-app
-#
+
+# Organisations to configure
+grafana_organisations: []
+#  - name: "Company A"
+#  - name: "Company B"
+#    address:
+#      address1: "company B road"
+#      address2:
+#      city: "City A"
+#      zipCode: "00001"
+#      state:
+#      country: "Country A"
+#  - name: "Company C"
+
+# Users to configure
+grafana_accounts: []
+#  - name: "User"
+#    email: "user@companyA.com"
+#    login: "user_company_A"
+#    password: "userpassword"
+#    organisations:
+#      - name: "Company A"
+#        role: "Admin"
+#      - name: "Company B"
+#  - name: "User"
+#    email: "user@companyB.com"
+#    login: "user_company_B"
+#    password: "userpassword"
+#    organisations:
+#      - name: "Company B"
+grafana_accounts_perpage: 1000
+
 # Dashboards from https://grafana.com/dashboards
 grafana_dashboards: []
 #  - dashboard_id: '4271'
