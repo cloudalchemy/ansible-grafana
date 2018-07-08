@@ -8,6 +8,7 @@
     - "/etc/grafana/datasources"
     - "/etc/grafana/provisioning"
     - "/etc/grafana/provisioning/datasources"
+  become: true
 
 - name: Create grafana main configuration file
   template:
@@ -18,6 +19,7 @@
     mode: 0640
   no_log: true
   notify: restart grafana
+  become: true
 
 - name: Create grafana LDAP configuration file
   template:
@@ -31,6 +33,7 @@
     - "'enabled' not in grafana_auth.ldap or grafana_auth.ldap.enabled"
   no_log: true
   notify: restart grafana
+  become: true
 
 - name: Create grafana directories
   file:
@@ -44,6 +47,7 @@
     - "{{ grafana_data_dir }}"
     - "{{ grafana_data_dir }}/dashboards"
     - "{{ grafana_data_dir }}/plugins"
+  become: true
 
 - name: Enable and start Grafana systemd unit
   systemd:
@@ -51,3 +55,4 @@
     enabled: true
     state: started
     daemon_reload: true
+  become: true

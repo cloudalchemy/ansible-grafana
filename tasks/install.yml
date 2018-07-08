@@ -7,6 +7,7 @@
   until: _install_dep_packages is succeeded
   retries: 5
   delay: 2
+  become: true
 
 - name: Remove conflicting grafana packages
   package:
@@ -21,6 +22,7 @@
   when:
     - old_grafana_pkgs is changed
     - ansible_pkg_mgr == "apt"
+  become: true
 
 - name: Add Grafana repository file [RHEL/CentOS]
   template:
@@ -29,6 +31,7 @@
     force: true
     backup: true
   when: ansible_pkg_mgr in ['yum', 'dnf']
+  become: true
 
 - block:
     - name: Import Grafana GPG signing key [Debian/Ubuntu]
@@ -86,6 +89,7 @@
       delay: 2
   when:
     - ansible_pkg_mgr == "apt"
+  become: true
 
 - name: Install Grafana
   package:
@@ -96,3 +100,4 @@
   retries: 5
   delay: 2
   notify: restart grafana
+  become: true
