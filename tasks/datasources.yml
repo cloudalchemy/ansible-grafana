@@ -2,7 +2,7 @@
 - block:
     - name: Check datasources list (api)
       uri:
-        url: "{{ grafana_url }}/api/datasources"
+        url: "{{ grafana_api_url }}/api/datasources"
         user: "{{ grafana_security.admin_user }}"
         password: "{{ grafana_security.admin_password }}"
         force_basic_auth: true
@@ -12,7 +12,7 @@
 
     - name: Create grafana datasources (api)
       uri:
-        url: "{{ grafana_url }}/api/datasources"
+        url: "{{ grafana_api_url }}/api/datasources"
         user: "{{ grafana_security.admin_user }}"
         password: "{{ grafana_security.admin_password }}"
         force_basic_auth: true
@@ -25,7 +25,7 @@
 
     - name: Update grafana datasources (api)
       uri:
-        url: "{{ grafana_url }}/api/datasources/{{ (
+        url: "{{ grafana_api_url }}/api/datasources/{{ (
                                                     datasources['json'] |
                                                     selectattr('name', 'equalto', item['name']) |
                                                     map(attribute='id') |
