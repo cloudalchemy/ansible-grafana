@@ -2,9 +2,17 @@
 
 ## [**Next release**](https://galaxy.ansible.com/cloudalchemy/grafana)
 
+**Implemented enhancements:**
+
+- Issues provisioning datasources on Grafana in private subnet [\#70](https://github.com/cloudalchemy/ansible-grafana/issues/70)
+
 **Fixed bugs:**
 
 - \[Question\] Dashboard add is done twice [\#68](https://github.com/cloudalchemy/ansible-grafana/issues/68)
+
+**Merged pull requests:**
+
+- Add separate grafana\_api\_url variable [\#71](https://github.com/cloudalchemy/ansible-grafana/pull/71) ([thejchap](https://github.com/thejchap))
 
 ## [0.10.1](https://galaxy.ansible.com/cloudalchemy/grafana) (2018-07-07)
 **Merged pull requests:**
