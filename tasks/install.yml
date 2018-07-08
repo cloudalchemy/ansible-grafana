@@ -47,7 +47,7 @@
 
     - name: Add Grafana repository [Debian/Ubuntu]
       apt_repository:
-        repo: deb https://packagecloud.io/grafana/stable/debian/ jessie main
+        repo: "{{ grafana_ubuntu_repo }}"
         state: present
         update_cache: false
       register: _apt_add_repo_x86

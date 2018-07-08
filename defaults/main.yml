@@ -1,5 +1,6 @@
 ---
 grafana_version: latest
+grafana_ubuntu_repo: "deb https://packagecloud.io/grafana/stable/debian/ jessie main"
 
 # Should we use the provisioning capability when possible (provisioning require grafana >= 5.0)
 grafana_use_provisioning: true
