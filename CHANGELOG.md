@@ -10,8 +10,14 @@
 
 - \[Question\] Dashboard add is done twice [\#68](https://github.com/cloudalchemy/ansible-grafana/issues/68)
 
+**Closed issues:**
+
+- adding datasource fails  [\#72](https://github.com/cloudalchemy/ansible-grafana/issues/72)
+- preflight checks [\#8](https://github.com/cloudalchemy/ansible-grafana/issues/8)
+
 **Merged pull requests:**
 
+- Drop ansible 2.4 support [\#78](https://github.com/cloudalchemy/ansible-grafana/pull/78) ([paulfantom](https://github.com/paulfantom))
 - Add separate grafana\_api\_url variable [\#71](https://github.com/cloudalchemy/ansible-grafana/pull/71) ([thejchap](https://github.com/thejchap))
 
 ## [0.10.1](https://galaxy.ansible.com/cloudalchemy/grafana) (2018-07-07)
