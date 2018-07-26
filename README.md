@@ -12,7 +12,7 @@ Provision and manage [grafana](https://github.com/grafana/grafana) - platform fo
 
 ## Requirements
 
-- Ansible >= 2.4
+- Ansible >= 2.5
 - libselinux-python on deployer host (only when deployer machine has SELinux)
 
 ## Role Variables
