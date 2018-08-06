@@ -76,14 +76,28 @@
   run_once: true
 
 - name: import grafana dashboards
-  grafana_dashboard:
-    grafana_url: "{{ grafana_api_url }}"
-    grafana_user: "{{ grafana_security.admin_user }}"
-    grafana_password: "{{ grafana_security.admin_password }}"
-    path: "/tmp/dashboards/{{ item }}"
-    message: Updated by ansible
-    state: present
-    overwrite: true
+  uri:
+    url: "{{ grafana_api_url }}/api/dashboards/db"
+    user: "{{ grafana_security.admin_user }}"
+    password: "{{ grafana_security.admin_password }}"
+    force_basic_auth: true
+    method: POST
+    body_format: json
+    body: '{ "dashboard": {{ lookup("file", item) }}, "overwrite": true, "message": "Updated by ansible" }'
   no_log: true
   with_fileglob:
     - "/tmp/dashboards/*"
+
+# TODO: uncomment this when ansible 2.7 will be min supported version
+#- name: import grafana dashboards
+#  grafana_dashboard:
+#    grafana_url: "{{ grafana_api_url }}"
+#    grafana_user: "{{ grafana_security.admin_user }}"
+#    grafana_password: "{{ grafana_security.admin_password }}"
+#    path: "/tmp/dashboards/{{ item }}"
+#    message: Updated by ansible
+#    state: present
+#    overwrite: true
+#  no_log: true
+#  with_fileglob:
+#    - "/tmp/dashboards/*"
