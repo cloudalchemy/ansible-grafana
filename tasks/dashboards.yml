@@ -8,7 +8,7 @@
   delegate_to: localhost
   run_once: true
 
-- name: download grafana dashboard to local folder
+- name: download grafana dashboard from grafana.net to local folder
   become: false
   get_url:
     url: "https://grafana.com/api/dashboards/{{ item.dashboard_id }}/revisions/{{ item.revision_id }}/download"
@@ -63,15 +63,25 @@
   run_once: true
   with_items: "{{ grafana_dashboards }}"
 
+- name: copy local grafana dashboards
+  become: false
+  copy:
+    src: "{{ item }}.json"
+    dest: "/tmp/dashboards/{{ item }}.json"
+  with_fileglob:
+    - "dashboards/*.json"
+  delegate_to: localhost
+  run_once: true
+
 - name: import grafana dashboards
-  uri:
-    url: "{{ grafana_api_url }}/api/dashboards/db"
-    user: "{{ grafana_security.admin_user }}"
-    password: "{{ grafana_security.admin_password }}"
-    force_basic_auth: true
-    method: POST
-    body_format: json
-    body: '{ "dashboard": {{ lookup("file", item) }}, "overwrite": true }'
+  grafana_dashboard:
+    grafana_url: "{{ grafana_api_url }}"
+    grafana_user: "{{ grafana_security.admin_user }}"
+    grafana_password: "{{ grafana_security.admin_password }}"
+    path: "/tmp/dashboards/{{ item }}"
+    message: Updated by ansible
+    state: present
+    overwrite: true
   no_log: true
   with_fileglob:
-    - /tmp/dashboards/*
+    - "/tmp/dashboards/*"
