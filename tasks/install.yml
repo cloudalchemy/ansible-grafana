@@ -16,8 +16,6 @@
 
 - name: Clean apt cache
   command: apt clean
-  #  tags:
-  #    - ansible_skip_lint
   when:
     - old_grafana_pkgs is changed
     - ansible_pkg_mgr == "apt"
