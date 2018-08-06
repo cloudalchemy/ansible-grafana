@@ -69,7 +69,7 @@
     src: "{{ item }}.json"
     dest: "/tmp/dashboards/{{ item }}.json"
   with_fileglob:
-    - "dashboards/*.json"
+    - "{{ grafana_dashboards_dir }}/*.json"
   delegate_to: localhost
   run_once: true
 
@@ -82,6 +82,6 @@
     message: Updated by ansible
     state: present
     overwrite: true
-  no_log: true
+#  no_log: true
   with_fileglob:
     - "/tmp/dashboards/*"

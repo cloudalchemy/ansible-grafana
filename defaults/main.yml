@@ -170,7 +170,6 @@ grafana_image_storage: {}
 # Plugins from https://grafana.com/plugins
 grafana_plugins: []
 #  - raintank-worldping-app
-#
 # Dashboards from https://grafana.com/dashboards
 grafana_dashboards: []
 #  - dashboard_id: '4271'
@@ -182,6 +181,8 @@ grafana_dashboards: []
 #  - dashboard_id: '358'
 #    revision_id: '1'
 #    datasource: 'Prometheus'
+
+grafana_dashboards_dir: "dashboards"
 
 # Alert notification channels to configure
 grafana_alert_notifications: []
