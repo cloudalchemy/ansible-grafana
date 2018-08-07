@@ -18,6 +18,7 @@
   copy:
     dest: "/etc/grafana/provisioning/datasources/ansible.yml"
     content: |
+      apiVersion: 1
       delete_datasources: []
       datasources:
       {{ grafana_datasources | to_nice_yaml }}
