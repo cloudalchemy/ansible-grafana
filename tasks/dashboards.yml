@@ -8,7 +8,7 @@
   delegate_to: localhost
   run_once: true
 
-- name: download grafana dashboard to local folder
+- name: download grafana dashboard from grafana.net to local folder
   become: false
   get_url:
     url: "https://grafana.com/api/dashboards/{{ item.dashboard_id }}/revisions/{{ item.revision_id }}/download"
@@ -20,6 +20,7 @@
   delegate_to: localhost
   run_once: true
   with_items: "{{ grafana_dashboards }}"
+  when: grafana_dashboards | length > 0
 
 # As noted in [1] an exported dashboard replaces the exporter's datasource
 # name with a representative name, something like 'DS_GRAPHITE'. The name
@@ -62,6 +63,17 @@
   delegate_to: localhost
   run_once: true
   with_items: "{{ grafana_dashboards }}"
+  when: grafana_dashboards | length > 0
+
+- name: copy local grafana dashboards
+  become: false
+  copy:
+    src: "{{ item }}"
+    dest: "/tmp/dashboards/{{ item | basename }}"
+  with_fileglob:
+    - "{{ grafana_dashboards_dir }}/*.json"
+  delegate_to: localhost
+  run_once: true
 
 - name: import grafana dashboards
   uri:
@@ -71,7 +83,21 @@
     force_basic_auth: true
     method: POST
     body_format: json
-    body: '{ "dashboard": {{ lookup("file", item) }}, "overwrite": true }'
+    body: '{ "dashboard": {{ lookup("file", item) }}, "overwrite": true, "message": "Updated by ansible" }'
   no_log: true
   with_fileglob:
-    - /tmp/dashboards/*
+    - "/tmp/dashboards/*"
+
+# TODO: uncomment this when ansible 2.7 will be min supported version
+# - name: import grafana dashboards
+#   grafana_dashboard:
+#     grafana_url: "{{ grafana_api_url }}"
+#     grafana_user: "{{ grafana_security.admin_user }}"
+#     grafana_password: "{{ grafana_security.admin_password }}"
+#     path: "/tmp/dashboards/{{ item }}"
+#     message: Updated by ansible
+#     state: present
+#     overwrite: true
+#   no_log: true
+#   with_fileglob:
+#     - "/tmp/dashboards/*"

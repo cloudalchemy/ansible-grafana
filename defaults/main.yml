@@ -183,6 +183,8 @@ grafana_dashboards: []
 #    revision_id: '1'
 #    datasource: 'Prometheus'
 
+grafana_dashboards_dir: "dashboards"
+
 # Alert notification channels to configure
 grafana_alert_notifications: []
 #   - name: "Email Alert"
