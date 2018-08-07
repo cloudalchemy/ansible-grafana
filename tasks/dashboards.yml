@@ -68,8 +68,8 @@
 - name: copy local grafana dashboards
   become: false
   copy:
-    src: "{{ item }}.json"
-    dest: "{{ item }}"
+    src: "{{ item }}"
+    dest: "/tmp/dashboards/{{ item | basename }}"
   with_fileglob:
     - "{{ grafana_dashboards_dir }}/*.json"
   delegate_to: localhost
