@@ -5,6 +5,7 @@
 **Implemented enhancements:**
 
 - Issues provisioning datasources on Grafana in private subnet [\#70](https://github.com/cloudalchemy/ansible-grafana/issues/70)
+- Provision dashboards from file in addition to Grafana Dashboards [\#54](https://github.com/cloudalchemy/ansible-grafana/issues/54)
 
 **Fixed bugs:**
 
@@ -17,6 +18,8 @@
 
 **Merged pull requests:**
 
+- use grafana\_datasource [\#81](https://github.com/cloudalchemy/ansible-grafana/pull/81) ([paulfantom](https://github.com/paulfantom))
+- allow importing local dashboards [\#80](https://github.com/cloudalchemy/ansible-grafana/pull/80) ([paulfantom](https://github.com/paulfantom))
 - Drop ansible 2.4 support [\#78](https://github.com/cloudalchemy/ansible-grafana/pull/78) ([paulfantom](https://github.com/paulfantom))
 - Add separate grafana\_api\_url variable [\#71](https://github.com/cloudalchemy/ansible-grafana/pull/71) ([thejchap](https://github.com/thejchap))
 
