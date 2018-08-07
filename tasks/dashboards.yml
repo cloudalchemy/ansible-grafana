@@ -69,7 +69,7 @@
   become: false
   copy:
     src: "{{ item }}.json"
-    dest: "/tmp/dashboards/{{ item | basename }}.json"
+    dest: "{{ item }}"
   with_fileglob:
     - "{{ grafana_dashboards_dir }}/*.json"
   delegate_to: localhost
