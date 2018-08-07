@@ -1,46 +1,17 @@
 ---
-- block:
-    - name: Check datasources list (api)
-      uri:
-        url: "{{ grafana_api_url }}/api/datasources"
-        user: "{{ grafana_security.admin_user }}"
-        password: "{{ grafana_security.admin_password }}"
-        force_basic_auth: true
-        return_content: true
-      no_log: true
-      register: datasources
-
-    - name: Create grafana datasources (api)
-      uri:
-        url: "{{ grafana_api_url }}/api/datasources"
-        user: "{{ grafana_security.admin_user }}"
-        password: "{{ grafana_security.admin_password }}"
-        force_basic_auth: true
-        method: POST
-        body_format: json
-        body: "{{ item | to_json }}"
-      with_items: "{{ grafana_datasources }}"
-      no_log: true
-      when: ((datasources['json'] | selectattr("name", "equalto", item['name'])) | list) | length == 0
-
-    - name: Update grafana datasources (api)
-      uri:
-        url: "{{ grafana_api_url }}/api/datasources/{{ (
-                                                    datasources['json'] |
-                                                    selectattr('name', 'equalto', item['name']) |
-                                                    map(attribute='id') |
-                                                    unique |
-                                                    join()
-                                                   ) }}"
-        user: "{{ grafana_security.admin_user }}"
-        password: "{{ grafana_security.admin_password }}"
-        force_basic_auth: true
-        method: PUT
-        body_format: json
-        body: "{{ item | to_json }}"
-      with_items: "{{ grafana_datasources }}"
-      no_log: true
-      when: ((datasources['json'] | selectattr("name", "equalto", item['name'])) | list) | length != 0
+- name: Ensure datasources exist (via API)
+  grafana_datasource:
+    grafana_url: "{{ grafana_api_url }}"
+    grafana_user: "{{ grafana_security.admin_user }}"
+    grafana_password: "{{ grafana_security.admin_password }}"
+    name: "{{ item.name }}"
+    url: "{{ item.url }}"
+    ds_type: "{{ item.type }}"
+    access: "{{ item.access | default(omit) }}"
+    is_default: "{{ item.isDefault | default(omit) }}"
+    basic_auth_user: "{{ item.basicAuthUser | default(omit) }}"
+    basic_auth_password: "{{ item.basicAuthPassword | default(omit) }}"
+  with_items: "{{ grafana_datasources }}"
   when: not grafana_use_provisioning
 
 - name: Create/Update datasources file (provisioning)
