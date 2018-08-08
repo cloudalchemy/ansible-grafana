@@ -12,12 +12,12 @@
   package:
     name: grafana-data
     state: absent
-  register: old_grafana_pkgs
+  register: _old_grafana_pkgs
 
 - name: Clean apt cache
   command: apt clean
   when:
-    - old_grafana_pkgs is changed
+    - _old_grafana_pkgs is changed
     - ansible_pkg_mgr == "apt"
 
 - name: Add Grafana repository file [RHEL/CentOS]
@@ -34,50 +34,16 @@
         url: "https://packagecloud.io/gpg.key"
         state: present
         validate_certs: false
-      register: _add_apt_key_x86
-      until: _add_apt_key_x86 is succeeded
+      register: _add_apt_key
+      until: _add_apt_key is succeeded
       retries: 5
       delay: 2
-      environment:
-        http_proxy: "{{ http_proxy | default('') }}"
-        https_proxy: "{{ https_proxy | default('') }}"
-      when: ansible_architecture == "x86_64"
 
     - name: Add Grafana repository [Debian/Ubuntu]
       apt_repository:
-        repo: deb https://packagecloud.io/grafana/stable/debian/ jessie main
+        repo: deb https://packagecloud.io/grafana/stable/debian/ stretch main
         state: present
-        update_cache: false
-      register: _apt_add_repo_x86
-      when: ansible_architecture == "x86_64"
-
-    - name: Import Grafana GPG signing key [Raspbian]
-      apt_key:
-        url: "https://bintray.com/user/downloadSubjectPublicKey?username=bintray"
-        state: present
-        validate_certs: false
-      register: _add_apt_key_arm
-      until: _add_apt_key_arm is succeeded
-      retries: 5
-      delay: 2
-      when: ansible_architecture == "armv6l" or ansible_architecture == "armv7l"
-
-    - name: Add Grafana repository [Raspbian]
-      apt_repository:
-        repo: "deb {% if ansible_architecture == 'armv6l' %}https://dl.bintray.com/fg2it/deb-rpi-1b{% else %}https://dl.bintray.com/fg2it/deb{% endif %} {{ ansible_distribution_release }} main"
-        state: present
-        update_cache: false
-      register: _apt_add_repo_arm
-      when: ansible_architecture == "armv6l" or ansible_architecture == "armv7l"
-
-    - name: Update Apt cache
-      apt:
         update_cache: true
-      when:
-        - ( _apt_add_repo_x86 is changed ) or
-          ( _apt_add_repo_arm is changed ) or
-          ( _add_apt_key_x86 is changed ) or
-          ( _add_apt_key_arm is changed )
       register: _update_apt_cache
       until: _update_apt_cache is succeeded
       retries: 5
