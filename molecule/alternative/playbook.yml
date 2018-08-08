@@ -89,4 +89,7 @@
         basicAuthUser: "admin"
         basicAuthPassword: "password"
         isDefault: true
-        jsonData: '{"tlsAuth":false,"tlsAuthWithCACert":false,"tlsSkipVerify":true}'
+        jsonData:
+          tlsAuth: false
+          tlsAuthWithCACert: false
+          tlsSkipVerify: true
