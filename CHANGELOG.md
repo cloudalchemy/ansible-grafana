@@ -6,6 +6,7 @@
 
 - Issues provisioning datasources on Grafana in private subnet [\#70](https://github.com/cloudalchemy/ansible-grafana/issues/70)
 - Provision dashboards from file in addition to Grafana Dashboards [\#54](https://github.com/cloudalchemy/ansible-grafana/issues/54)
+- Provisioning folders [\#30](https://github.com/cloudalchemy/ansible-grafana/issues/30)
 
 **Fixed bugs:**
 
@@ -13,6 +14,7 @@
 
 **Closed issues:**
 
+- Datasource provision does not specify the apiVersion [\#73](https://github.com/cloudalchemy/ansible-grafana/issues/73)
 - adding datasource fails  [\#72](https://github.com/cloudalchemy/ansible-grafana/issues/72)
 - preflight checks [\#8](https://github.com/cloudalchemy/ansible-grafana/issues/8)
 
@@ -21,6 +23,7 @@
 - use grafana\_datasource [\#81](https://github.com/cloudalchemy/ansible-grafana/pull/81) ([paulfantom](https://github.com/paulfantom))
 - allow importing local dashboards [\#80](https://github.com/cloudalchemy/ansible-grafana/pull/80) ([paulfantom](https://github.com/paulfantom))
 - Drop ansible 2.4 support [\#78](https://github.com/cloudalchemy/ansible-grafana/pull/78) ([paulfantom](https://github.com/paulfantom))
+- datasource format fix [\#76](https://github.com/cloudalchemy/ansible-grafana/pull/76) ([XooR](https://github.com/XooR))
 - Add separate grafana\_api\_url variable [\#71](https://github.com/cloudalchemy/ansible-grafana/pull/71) ([thejchap](https://github.com/thejchap))
 
 ## [0.10.1](https://galaxy.ansible.com/cloudalchemy/grafana) (2018-07-07)
