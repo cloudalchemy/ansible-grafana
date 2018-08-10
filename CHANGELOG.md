@@ -1,7 +1,6 @@
-# Change Log 
+# Change Log
 
-## [**Next release**](https://galaxy.ansible.com/cloudalchemy/grafana)
-
+## [0.11.0](https://galaxy.ansible.com/cloudalchemy/grafana) (2018-08-10)
 **Implemented enhancements:**
 
 - Issues provisioning datasources on Grafana in private subnet [\#70](https://github.com/cloudalchemy/ansible-grafana/issues/70)
@@ -14,6 +13,7 @@
 
 **Closed issues:**
 
+- Use official repository for ARM builds [\#82](https://github.com/cloudalchemy/ansible-grafana/issues/82)
 - Datasource provision does not specify the apiVersion [\#73](https://github.com/cloudalchemy/ansible-grafana/issues/73)
 - adding datasource fails  [\#72](https://github.com/cloudalchemy/ansible-grafana/issues/72)
 - preflight checks [\#8](https://github.com/cloudalchemy/ansible-grafana/issues/8)
@@ -21,6 +21,7 @@
 **Merged pull requests:**
 
 - repeat plugin installation on network failure [\#84](https://github.com/cloudalchemy/ansible-grafana/pull/84) ([paulfantom](https://github.com/paulfantom))
+- simplify installation and use official ARM builds [\#83](https://github.com/cloudalchemy/ansible-grafana/pull/83) ([paulfantom](https://github.com/paulfantom))
 - use grafana\_datasource [\#81](https://github.com/cloudalchemy/ansible-grafana/pull/81) ([paulfantom](https://github.com/paulfantom))
 - allow importing local dashboards [\#80](https://github.com/cloudalchemy/ansible-grafana/pull/80) ([paulfantom](https://github.com/paulfantom))
 - Drop ansible 2.4 support [\#78](https://github.com/cloudalchemy/ansible-grafana/pull/78) ([paulfantom](https://github.com/paulfantom))
@@ -264,8 +265,8 @@
 - Old [\#1](https://github.com/cloudalchemy/ansible-grafana/pull/1) ([paulfantom](https://github.com/paulfantom))
 
 ## [0.4.0](https://galaxy.ansible.com/cloudalchemy/grafana) (2017-10-16)
-## [0.3.2](https://galaxy.ansible.com/cloudalchemy/grafana) (2017-07-27)
 ## [0.3.3](https://galaxy.ansible.com/cloudalchemy/grafana) (2017-07-27)
+## [0.3.2](https://galaxy.ansible.com/cloudalchemy/grafana) (2017-07-27)
 ## [0.3.1](https://galaxy.ansible.com/cloudalchemy/grafana) (2017-07-27)
 ## [0.3.0](https://galaxy.ansible.com/cloudalchemy/grafana) (2017-07-21)
 ## [0.2.1](https://galaxy.ansible.com/cloudalchemy/grafana) (2017-07-13)
