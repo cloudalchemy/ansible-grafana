@@ -1,5 +1,12 @@
 # Change Log
 
+## [**Next release**](https://galaxy.ansible.com/cloudalchemy/grafana)
+
+**Merged pull requests:**
+
+- cheat ansible idempotency when downloading dashboards [\#87](https://github.com/cloudalchemy/ansible-grafana/pull/87) ([paulfantom](https://github.com/paulfantom))
+- Adding possibility to get right ownership on configuration files [\#86](https://github.com/cloudalchemy/ansible-grafana/pull/86) ([zonArt](https://github.com/zonArt))
+
 ## [0.11.0](https://galaxy.ansible.com/cloudalchemy/grafana) (2018-08-10)
 **Implemented enhancements:**
 
