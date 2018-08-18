@@ -23,6 +23,8 @@
       datasources:
       {{ grafana_datasources | to_nice_yaml }}
     backup: false
+    owner: root
+    group: grafana
   become: true
   notify: restart grafana
   when: grafana_use_provisioning
