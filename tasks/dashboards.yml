@@ -8,11 +8,27 @@
   delegate_to: localhost
   run_once: true
 
-- name: download grafana dashboard from grafana.net to local folder
+# - name: download grafana dashboard from grafana.net to local folder
+#   become: false
+#   get_url:
+#     url: "https://grafana.com/api/dashboards/{{ item.dashboard_id }}/revisions/{{ item.revision_id }}/download"
+#     dest: "/tmp/dashboards/{{ item.dashboard_id }}.json"
+#   register: _download_dashboards
+#   until: _download_dashboards is succeeded
+#   retries: 5
+#   delay: 2
+#   delegate_to: localhost
+#   run_once: true
+#   changed_when: false
+#   with_items: "{{ grafana_dashboards }}"
+#   when: grafana_dashboards | length > 0
+
+# Use curl to solve issue #77
+- name: download grafana dashboard from grafana.net to local directory
   become: false
-  get_url:
-    url: "https://grafana.com/api/dashboards/{{ item.dashboard_id }}/revisions/{{ item.revision_id }}/download"
-    dest: "/tmp/dashboards/{{ item.dashboard_id }}.json"
+  command: "curl --compressed https://grafana.com/api/dashboards/{{ item.dashboard_id }}/revisions/{{ item.revision_id }}/download -o /tmp/dashboards/{{ item.dashboard_id }}.json"
+  args:
+    creates: "/tmp/dashboards/{{ item.dashboard_id }}.json"
   register: _download_dashboards
   until: _download_dashboards is succeeded
   retries: 5
