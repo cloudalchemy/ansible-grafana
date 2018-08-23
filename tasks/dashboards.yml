@@ -38,6 +38,8 @@
   changed_when: false
   with_items: "{{ grafana_dashboards }}"
   when: grafana_dashboards | length > 0
+  tags:
+    - skip_ansible_lint
 
 # As noted in [1] an exported dashboard replaces the exporter's datasource
 # name with a representative name, something like 'DS_GRAPHITE'. The name
