@@ -29,7 +29,7 @@
   command: "curl --compressed https://grafana.com/api/dashboards/{{ item.dashboard_id }}/revisions/{{ item.revision_id }}/download -o /tmp/dashboards/{{ item.dashboard_id }}.json"
   args:
     creates: "/tmp/dashboards/{{ item.dashboard_id }}.json"
-    warn: False
+    warn: false
   register: _download_dashboards
   until: _download_dashboards is succeeded
   retries: 5
