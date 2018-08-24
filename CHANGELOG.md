@@ -2,8 +2,15 @@
 
 ## [**Next release**](https://galaxy.ansible.com/cloudalchemy/grafana)
 
+**Closed issues:**
+
+- Config for Elasticsearch datasource [\#89](https://github.com/cloudalchemy/ansible-grafana/issues/89)
+- Pass variables through playbook [\#88](https://github.com/cloudalchemy/ansible-grafana/issues/88)
+- Issue with grafana restart when including one or more datasources [\#85](https://github.com/cloudalchemy/ansible-grafana/issues/85)
+
 **Merged pull requests:**
 
+- Fixed syntax in default/main.yml to avoid unmarshal errors [\#93](https://github.com/cloudalchemy/ansible-grafana/pull/93) ([Dreeg](https://github.com/Dreeg))
 - cheat ansible idempotency when downloading dashboards [\#87](https://github.com/cloudalchemy/ansible-grafana/pull/87) ([paulfantom](https://github.com/paulfantom))
 - Adding possibility to get right ownership on configuration files [\#86](https://github.com/cloudalchemy/ansible-grafana/pull/86) ([zonArt](https://github.com/zonArt))
 
