@@ -203,7 +203,10 @@ grafana_datasources: []
 #    basicAuthUser: "admin"
 #    basicAuthPassword: "password"
 #    isDefault: true
-#    jsonData: '{"tlsAuth":false,"tlsAuthWithCACert":false,"tlsSkipVerify":true}'
+#    jsonData:
+#      tlsAuth: false
+#      tlsAuthWithCACert: false
+#      tlsSkipVerify: true
 
 # API keys to configure
 grafana_api_keys: []
