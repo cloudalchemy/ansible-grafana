@@ -35,7 +35,6 @@
   delay: 2
   delegate_to: localhost
   run_once: true
-  changed_when: false
   with_items: "{{ grafana_dashboards }}"
   when: grafana_dashboards | length > 0
   tags:
