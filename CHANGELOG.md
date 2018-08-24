@@ -2,6 +2,11 @@
 
 ## [**Next release**](https://galaxy.ansible.com/cloudalchemy/grafana)
 
+**Fixed bugs:**
+
+- import grafana dashboards failed [\#77](https://github.com/cloudalchemy/ansible-grafana/issues/77)
+
+## [0.11.1](https://galaxy.ansible.com/cloudalchemy/grafana) (2018-08-24)
 **Closed issues:**
 
 - Config for Elasticsearch datasource [\#89](https://github.com/cloudalchemy/ansible-grafana/issues/89)
@@ -11,6 +16,7 @@
 **Merged pull requests:**
 
 - Fixed syntax in default/main.yml to avoid unmarshal errors [\#93](https://github.com/cloudalchemy/ansible-grafana/pull/93) ([Dreeg](https://github.com/Dreeg))
+- Use curl instead of get\_url to download dashboards [\#92](https://github.com/cloudalchemy/ansible-grafana/pull/92) ([paulfantom](https://github.com/paulfantom))
 - cheat ansible idempotency when downloading dashboards [\#87](https://github.com/cloudalchemy/ansible-grafana/pull/87) ([paulfantom](https://github.com/paulfantom))
 - Adding possibility to get right ownership on configuration files [\#86](https://github.com/cloudalchemy/ansible-grafana/pull/86) ([zonArt](https://github.com/zonArt))
 
