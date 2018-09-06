@@ -1,0 +1,3 @@
+---
+grafana_package: "grafana{{ (grafana_version != 'latest') | ternary('-' ~ grafana_version, '') }}"
+grafana_dependencies: []
