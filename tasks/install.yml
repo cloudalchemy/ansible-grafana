@@ -1,6 +1,5 @@
 ---
 - name: Install dependencies
-  become: true
   package:
     name: "{{ grafana_dependencies }}"
     state: present
@@ -10,7 +9,6 @@
   delay: 2
 
 - name: Remove conflicting grafana packages
-  become: true
   package:
     name: grafana-data
     state: absent
@@ -54,7 +52,6 @@
     - ansible_pkg_mgr == "apt"
 
 - name: Install Grafana
-  become: true
   package:
     name: "{{ grafana_package }}"
     state: "{{ (grafana_version == 'latest') | ternary('latest', 'present') }}"

@@ -1,6 +1,5 @@
 ---
 - name: Ensure grafana configuration directories exist
-  become: true
   file:
     path: "{{ item }}"
     state: directory
@@ -13,7 +12,6 @@
     - "/etc/grafana/provisioning/datasources"
 
 - name: Create grafana main configuration file
-  become: true
   template:
     src: grafana.ini.j2
     dest: /etc/grafana/grafana.ini
@@ -24,7 +22,6 @@
   notify: restart grafana
 
 - name: Create grafana LDAP configuration file
-  become: true
   template:
     src: ldap.toml.j2
     dest: "{{ grafana_auth.ldap.config_file | default('/etc/grafana/ldap.toml') }}"
@@ -38,7 +35,6 @@
   notify: restart grafana
 
 - name: Create grafana directories
-  become: true
   file:
     path: "{{ item }}"
     state: directory

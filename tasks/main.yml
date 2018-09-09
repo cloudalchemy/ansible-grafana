@@ -15,10 +15,12 @@
     - always
 
 - include: install.yml
+  become: true
   tags:
     - install
 
 - include: configure.yml
+  become: true
   tags:
     - configure
 
