@@ -15,6 +15,7 @@
   when: not grafana_use_provisioning
 
 - name: Create/Update datasources file (provisioning)
+  become: true
   copy:
     dest: "/etc/grafana/provisioning/datasources/ansible.yml"
     content: |

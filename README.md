@@ -86,7 +86,6 @@ Detection is done automatically and packages are taken from different channels a
 
 ```yaml
 - hosts: all
-  become: true
   roles:
     - cloudalchemy.grafana
 ```
