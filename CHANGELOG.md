@@ -8,6 +8,7 @@
 
 **Merged pull requests:**
 
+- Add become:yes to allow this module to be used in include\_role task [\#97](https://github.com/cloudalchemy/ansible-grafana/pull/97) ([jdbaldry](https://github.com/jdbaldry))
 - Add vars file for openSUSE 42.x [\#96](https://github.com/cloudalchemy/ansible-grafana/pull/96) ([kaiokassiano](https://github.com/kaiokassiano))
 
 ## [0.11.1](https://galaxy.ansible.com/cloudalchemy/grafana) (2018-08-24)
