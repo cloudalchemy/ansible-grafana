@@ -25,7 +25,7 @@
     backup: false
     owner: root
     group: grafana
-    mode: u=rw,g=r
+    mode: 0640
   become: true
   notify: restart grafana
   when: grafana_use_provisioning
