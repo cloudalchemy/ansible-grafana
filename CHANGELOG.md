@@ -1,7 +1,6 @@
 # Change Log
 
-## [**Next release**](https://galaxy.ansible.com/cloudalchemy/grafana)
-
+## [0.11.2](https://galaxy.ansible.com/cloudalchemy/grafana) (2018-09-12)
 **Fixed bugs:**
 
 - import grafana dashboards failed [\#77](https://github.com/cloudalchemy/ansible-grafana/issues/77)
@@ -10,6 +9,7 @@
 
 - Add become:yes to allow this module to be used in include\_role task [\#97](https://github.com/cloudalchemy/ansible-grafana/pull/97) ([jdbaldry](https://github.com/jdbaldry))
 - Add vars file for openSUSE 42.x [\#96](https://github.com/cloudalchemy/ansible-grafana/pull/96) ([kaiokassiano](https://github.com/kaiokassiano))
+- fixing issue \#94 [\#95](https://github.com/cloudalchemy/ansible-grafana/pull/95) ([nicosto](https://github.com/nicosto))
 
 ## [0.11.1](https://galaxy.ansible.com/cloudalchemy/grafana) (2018-08-24)
 **Closed issues:**
