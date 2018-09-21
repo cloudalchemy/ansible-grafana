@@ -1,5 +1,19 @@
 # Change Log
 
+## [**Next release**](https://galaxy.ansible.com/cloudalchemy/grafana)
+
+**Fixed bugs:**
+
+- wrong file perm for datasources/ansible.yml [\#94](https://github.com/cloudalchemy/ansible-grafana/issues/94)
+
+**Closed issues:**
+
+- Enable jsonData in grafana\_datasources [\#100](https://github.com/cloudalchemy/ansible-grafana/issues/100)
+
+**Merged pull requests:**
+
+- use `become` where needed [\#98](https://github.com/cloudalchemy/ansible-grafana/pull/98) ([paulfantom](https://github.com/paulfantom))
+
 ## [0.11.2](https://galaxy.ansible.com/cloudalchemy/grafana) (2018-09-12)
 **Fixed bugs:**
 
