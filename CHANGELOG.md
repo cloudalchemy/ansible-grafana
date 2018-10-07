@@ -1,7 +1,6 @@
 # Change Log
 
-## [**Next release**](https://galaxy.ansible.com/cloudalchemy/grafana)
-
+## [0.11.3](https://galaxy.ansible.com/cloudalchemy/grafana) (2018-10-07)
 **Fixed bugs:**
 
 - wrong file perm for datasources/ansible.yml [\#94](https://github.com/cloudalchemy/ansible-grafana/issues/94)
@@ -12,6 +11,7 @@
 
 **Merged pull requests:**
 
+- move to ansible 2.7 [\#102](https://github.com/cloudalchemy/ansible-grafana/pull/102) ([paulfantom](https://github.com/paulfantom))
 - use `become` where needed [\#98](https://github.com/cloudalchemy/ansible-grafana/pull/98) ([paulfantom](https://github.com/paulfantom))
 
 ## [0.11.2](https://galaxy.ansible.com/cloudalchemy/grafana) (2018-09-12)
