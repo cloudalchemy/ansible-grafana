@@ -26,7 +26,11 @@ verbose_logging = {{ 'true' if grafana_ldap.verbose_logging else 'false' }}
 [[servers.group_mappings]]
 org_id = {{ org.id }}
 {%     for k,v in group.items() %}
+{%   if v in [True, False] %}
+{{ k }} = {{ 'true' if v else 'false' }}
+{%   else %}
 {{ k }} = "{{ v }}"
+{%   endif %}
 {%     endfor %}
 
 {%   endfor %}
