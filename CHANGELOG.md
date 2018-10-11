@@ -1,5 +1,16 @@
 # Change Log
 
+## [**Next release**](https://galaxy.ansible.com/cloudalchemy/grafana)
+
+**Closed issues:**
+
+- grafana\_admin ldap config template not handling boolean correctly [\#103](https://github.com/cloudalchemy/ansible-grafana/issues/103)
+
+## [0.11.4](https://galaxy.ansible.com/cloudalchemy/grafana) (2018-10-11)
+**Merged pull requests:**
+
+- fixes for handling LDAP template booleans in grafana groups section \(issue \#103\) [\#104](https://github.com/cloudalchemy/ansible-grafana/pull/104) ([madeinoz67](https://github.com/madeinoz67))
+
 ## [0.11.3](https://galaxy.ansible.com/cloudalchemy/grafana) (2018-10-07)
 **Fixed bugs:**
 
@@ -308,9 +319,9 @@
 ## [0.3.2](https://galaxy.ansible.com/cloudalchemy/grafana) (2017-07-27)
 ## [0.3.1](https://galaxy.ansible.com/cloudalchemy/grafana) (2017-07-27)
 ## [0.3.0](https://galaxy.ansible.com/cloudalchemy/grafana) (2017-07-21)
-## [0.2.1](https://galaxy.ansible.com/cloudalchemy/grafana) (2017-07-13)
-## [0.2.0](https://galaxy.ansible.com/cloudalchemy/grafana) (2017-07-13)
 ## [0.1.3](https://galaxy.ansible.com/cloudalchemy/grafana) (2017-07-13)
+## [0.2.0](https://galaxy.ansible.com/cloudalchemy/grafana) (2017-07-13)
+## [0.2.1](https://galaxy.ansible.com/cloudalchemy/grafana) (2017-07-13)
 ## [0.1.2](https://galaxy.ansible.com/cloudalchemy/grafana) (2017-06-14)
 ## [0.1.1](https://galaxy.ansible.com/cloudalchemy/grafana) (2017-06-14)
 ## [0.1.0](https://galaxy.ansible.com/cloudalchemy/grafana) (2017-06-05)
