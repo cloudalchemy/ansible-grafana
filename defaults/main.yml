@@ -42,13 +42,21 @@ grafana_security:
 #  data_source_proxy_whitelist:
 
 # Database setup
+
+# Automatically create grafana DB & db user, only for Postgresql 
+# grafana_db_creation:
+#  enabled: True
+#  master_user: 
+#  master_password: 
+#  host: 
+#  port: 5432
 grafana_database:
   type: sqlite3
-#  host: 127.0.0.1:3306
-#  name: grafana
-#  user: root
-#  password: ""
-#  url: ""
+#  type: postgres
+#  host: "{{ grafana_db_creation['host'] }}:{{ grafana_db_creation['port'] }}"
+#  user: 
+#  name: 
+#  password: 
 #  ssl_mode: disable
 #  path: grafana.db
 #  max_idle_conn: 2

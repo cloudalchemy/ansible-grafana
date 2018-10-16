@@ -1,0 +1,40 @@
+- name: "Debian | Install PostgreSQL Client package"
+  apt:
+    name: postgresql-client
+    state: present
+  when:
+    - grafana_database['type'] == "postgres"
+    - grafana_db_creation['enabled']
+  tags:
+    - grafana
+    - database
+
+- name: "PostgreSQL | Remote"
+  block:
+    - name: "PostgreSQL | Remote | Create database"
+      postgresql_db:
+        login_host: "{{ grafana_db_creation['host'] | default(omit)}}"
+        login_user: "{{ grafana_db_creation['master_user'] | default(omit) }}"
+        login_password: "{{ grafana_db_creation['master_password'] | default(omit) }}"
+        login_unix_socket: "{{ grafana_db_creation['unix_socket'] | default(omit) }}"
+        name: "{{ grafana_database['name'] }}"
+        port: "{{ grafana_db_creation['port'] }}"
+        state: present
+    - name: "PostgreSQL | Remote | Create database user"
+      postgresql_user:
+        login_host: "{{ grafana_db_creation['host'] | default(omit)}}"
+        login_user: "{{ grafana_db_creation['master_user']| default(omit) }}"
+        login_password: "{{ grafana_db_creation['master_password'] | default(omit) }}"
+        db: "{{ grafana_database['name'] }}"
+        name: "{{ grafana_database['user'] }}"
+        password: "md5{{ (grafana_database['password'] + grafana_database['user'])|hash('md5') }}"
+        port: "{{ grafana_db_creation['port'] }}"
+        priv: ALL
+        state: present
+        encrypted: yes
+  when:
+    - grafana_database['type'] == "postgres"
+    - grafana_db_creation['enabled']
+  tags:
+    - grafana
+    - database
