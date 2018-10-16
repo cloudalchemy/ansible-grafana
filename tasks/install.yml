@@ -60,3 +60,9 @@
   retries: 5
   delay: 2
   notify: restart grafana
+
+- name: "Installing the postgresql database"
+  include: "postgresql.yml"
+  when:
+    - grafana_database['type'] == "postgres"
+    - grafana_db_creation['enabled']
