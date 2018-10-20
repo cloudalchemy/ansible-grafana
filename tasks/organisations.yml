@@ -9,15 +9,6 @@
   no_log: true
   register: _grafana_organisations
 
-- name: Debug _grafana_organisations
-  debug:
-    var: _grafana_organisations
-  when:
-    - _grafana_organisations is defined
-  tags:
-    - never
-    - debug
-
 - name: Create orgs not already present (api)
   uri:
     url: "{{ grafana_api_url }}/api/orgs"
@@ -26,32 +17,8 @@
     force_basic_auth: true
     method: POST
     body_format: json
-    body: "{{
-              grafana_organisations
-              | selectattr('name', 'equalto', item) | first | to_json
-          }}"
+    body: "{{ item | to_json }}"
   no_log: true
   register: _grafana_organisations_created
   changed_when: true
-  with_items:
-    - "{{
-          (
-            grafana_organisations
-            | map(attribute='name')
-            | list
-          )
-          | difference(
-                _grafana_organisations['json']
-                | map(attribute='name')
-                | list
-            )
-      }}"
-
-- name: Debug _grafana_organisations_created
-  debug:
-    var: _grafana_organisations_created
-  when:
-    - _grafana_organisations_created is defined
-  tags:
-    - never
-    - debug
+  with_items: "{{ _grafana_organisations | grafana_missing_orgs(grafana_organisations) }}"
