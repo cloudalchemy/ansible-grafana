@@ -6,6 +6,10 @@
 
 - grafana\_admin ldap config template not handling boolean correctly [\#103](https://github.com/cloudalchemy/ansible-grafana/issues/103)
 
+**Merged pull requests:**
+
+- Fix: make curl fail when we encounter a 404 [\#107](https://github.com/cloudalchemy/ansible-grafana/pull/107) ([till](https://github.com/till))
+
 ## [0.11.4](https://galaxy.ansible.com/cloudalchemy/grafana) (2018-10-11)
 **Merged pull requests:**
 
