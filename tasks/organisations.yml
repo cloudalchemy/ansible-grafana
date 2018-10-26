@@ -9,6 +9,9 @@
   no_log: true
   register: _grafana_organisations
 
+- debug:
+    msg: "{{ _grafana_organisations }}"
+
 - name: Create orgs not already present (api)
   uri:
     url: "{{ grafana_api_url }}/api/orgs"
@@ -22,3 +25,17 @@
   register: _grafana_organisations_created
   changed_when: true
   with_items: "{{ _grafana_organisations | grafana_missing_orgs(grafana_organisations) }}"
+
+- name: Update orgs who need to be updated (api)
+  uri:
+    url: "{{ grafana_api_url }}/api/orgs/{{ item.id }}"
+    user: "{{ grafana_security.admin_user }}"
+    password: "{{ grafana_security.admin_password }}"
+    force_basic_auth: true
+    method: PUT
+    body_format: json
+    body: "{{ item | to_json }}"
+  no_log: true
+  register: _grafana_organisations_updated
+  changed_when: true
+  with_items: "{{ _grafana_organisations | grafana_orgs2update(grafana_organisations) }}"

@@ -90,7 +90,10 @@ grafana_organisations:
   - name: "Company C"
 ```
 
+***Since not all fields could be updated (see [Grafana doc](http://docs.grafana.org/http_api/org/#update-organisation)), the use of them will result in trying each time to update the organisation and will break the idempotency of the role***
+
 Accounts example:
+
 ```yaml
 grafana_accounts:
   - name: "UserA"
