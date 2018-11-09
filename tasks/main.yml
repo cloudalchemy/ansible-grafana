@@ -75,6 +75,7 @@
     - grafana_notifications
 
 - include: dashboards.yml
+  when: grafana_manage_dashboards
   tags:
     - grafana_configure
     - grafana_dashboards
