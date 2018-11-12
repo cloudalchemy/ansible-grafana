@@ -77,7 +77,7 @@
 - name: "Check if there are any dashboards in {{ grafana_dashboards_dir }}"
   find:
     paths: "{{ grafana_dashboards_dir }}"
-    patterns: '*.*'
+    patterns: '*.json'
   register: found_dashboards
 
 - include: dashboards.yml
