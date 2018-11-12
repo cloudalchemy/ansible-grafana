@@ -52,6 +52,7 @@ All variables which can be overridden are stored in [defaults/main.yml](defaults
 | `grafana_dashboards` | [] | List of dashboards which should be imported |
 | `grafana_dashboards_dir` | "dashboards" | Path to a local directory containing dashboards files in `json` format |
 | `grafana_datasources` | [] | List of datasources which should be configured |
+| `grafana_environment` | {} | Optional Environment param for Grafana installation, usefull ie for setting http_proxy |
 
 Datasource example:
 

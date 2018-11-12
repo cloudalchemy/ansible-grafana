@@ -170,7 +170,7 @@ grafana_image_storage: {}
 # Plugins from https://grafana.com/plugins
 grafana_plugins: []
 #  - raintank-worldping-app
-#
+
 # Dashboards from https://grafana.com/dashboards
 grafana_dashboards: []
 #  - dashboard_id: '4271'
@@ -219,3 +219,5 @@ grafana_api_keys: []
 
 # The location where the keys should be stored.
 grafana_api_keys_dir: "{{ lookup('env', 'HOME') }}/grafana/keys"
+
+grafana_environment: {}

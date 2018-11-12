@@ -7,6 +7,7 @@
     mode: 0755
   delegate_to: localhost
   run_once: true
+  check_mode: false
 
 # - name: download grafana dashboard from grafana.net to local folder
 #   become: false
@@ -40,6 +41,7 @@
   when: grafana_dashboards | length > 0
   tags:
     - skip_ansible_lint
+  check_mode: false
 
 # As noted in [1] an exported dashboard replaces the exporter's datasource
 # name with a representative name, something like 'DS_GRAPHITE'. The name

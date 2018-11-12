@@ -50,6 +50,7 @@
       delay: 2
   when:
     - ansible_pkg_mgr == "apt"
+  environment: "{{ grafana_environment }}"
 
 - name: Install Grafana
   package:
