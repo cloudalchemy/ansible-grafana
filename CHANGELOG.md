@@ -2,12 +2,18 @@
 
 ## [**Next release**](https://galaxy.ansible.com/cloudalchemy/grafana)
 
+**Fixed bugs:**
+
+- Preflight "tags: always" conflicts with --tags option [\#101](https://github.com/cloudalchemy/ansible-grafana/issues/101)
+
 **Closed issues:**
 
+- Dashboard title cannot be empty [\#108](https://github.com/cloudalchemy/ansible-grafana/issues/108)
 - grafana\_admin ldap config template not handling boolean correctly [\#103](https://github.com/cloudalchemy/ansible-grafana/issues/103)
 
 **Merged pull requests:**
 
+- Replaced tag always, which colidate when including role.  [\#109](https://github.com/cloudalchemy/ansible-grafana/pull/109) ([krzyzakp](https://github.com/krzyzakp))
 - Fix: make curl fail when we encounter a 404 [\#107](https://github.com/cloudalchemy/ansible-grafana/pull/107) ([till](https://github.com/till))
 
 ## [0.11.4](https://galaxy.ansible.com/cloudalchemy/grafana) (2018-10-11)
