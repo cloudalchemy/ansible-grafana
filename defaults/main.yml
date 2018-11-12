@@ -171,9 +171,6 @@ grafana_image_storage: {}
 grafana_plugins: []
 #  - raintank-worldping-app
 
-# Should grafana dashboards be managed by Ansible
-grafana_manage_dashboards: true
-
 # Dashboards from https://grafana.com/dashboards
 grafana_dashboards: []
 #  - dashboard_id: '4271'
