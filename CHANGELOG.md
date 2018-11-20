@@ -13,6 +13,7 @@
 
 **Merged pull requests:**
 
+- Only set alerting if variable is false [\#112](https://github.com/cloudalchemy/ansible-grafana/pull/112) ([wvh-github](https://github.com/wvh-github))
 - Few smaller improvements, backward compatible [\#110](https://github.com/cloudalchemy/ansible-grafana/pull/110) ([krzyzakp](https://github.com/krzyzakp))
 - Replaced tag always, which colidate when including role.  [\#109](https://github.com/cloudalchemy/ansible-grafana/pull/109) ([krzyzakp](https://github.com/krzyzakp))
 - Fix: make curl fail when we encounter a 404 [\#107](https://github.com/cloudalchemy/ansible-grafana/pull/107) ([till](https://github.com/till))
