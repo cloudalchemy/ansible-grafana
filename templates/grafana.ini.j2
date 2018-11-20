@@ -96,9 +96,9 @@ enabled = true
 path = {{ grafana_data_dir }}/dashboards
 
 # Alerting
-{% if grafana_alerting %}
+{% if not grafana_alerting %}
 [alerting]
-enabled = True
+enabled = false
 ;execute_alerts = true
 {% endif %}
 
