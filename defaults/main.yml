@@ -69,46 +69,46 @@ grafana_users:
   # external_manage_info: ""
 
 # grafana authentication mechanisms
-grafana_auth: {}
+grafana_auth:
 #  disable_login_form: false
 #  disable_signout_menu: false
 #  anonymous:
 #    org_name: "Main Organization"
 #    org_role: Viewer
-#  ldap:
-#    config_file: "/etc/grafana/ldap.toml"
-#    allow_sign_up: false
+  ldap:
+    config_file: "/etc/grafana/ldap.toml"
+    allow_sign_up: false
 #  basic: true
 
-grafana_ldap: {}
+grafana_ldap:
 #  verbose_logging: false
-#  servers:
-#    host: 127.0.0.1
-#    port: 389 # 636 for SSL
+  servers:
+    host: 10.20.50.60
+    port: 389 # 636 for SSL
 #    use_ssl: false
 #    start_tls: false
 #    ssl_skip_verify: false
 #    root_ca_cert: /path/to/certificate.crt
-#    bind_dn: "cn=admin,dc=grafana,dc=org"
-#    bind_password: grafana
-#    search_filter: "(cn=%s)" # "(sAMAccountName=%s)" on AD
-#    search_base_dns:
-#      - "dc=grafana,dc=org"
-#    group_search_filter: "(&(objectClass=posixGroup)(memberUid=%s))"
-#    group_search_base_dns:
-#      - "ou=groups,dc=grafana,dc=org"
-#    attributes:
-#      name: givenName
-#      surname: sn
-#      username: sAMAccountName
-#      member_of: memberOf
-#      email: mail
-#  group_mappings:
-#    - name: Main Org.
-#      id: 1
-#      groups:
-#        - group_dn: "cn=admins,ou=groups,dc=grafana,dc=org"
-#          org_role: Admin
+    bind_dn: "cn=grafanasrv,dc=seedcx,dc=com"
+    bind_password: "{{ grafana_bind_password }}"
+    search_filter: "(cn=%s)" # "(sAMAccountName=%s)" on AD
+    search_base_dns:
+      - "dc=seedcx,dc=com"
+    group_search_filter: "(&(objectClass=posixGroup)(memberUid=%s))"
+    group_search_base_dns:
+      - "ou=Prometheus Users,dc=seedcx,dc=com"
+    attributes:
+      name: givenName
+      surname: sn
+      username: sAMAccountName
+      member_of: memberOf
+      email: mail
+  group_mappings:
+    - name: SeedCX
+      id: 1
+      groups:
+        - group_dn: "cn=Prometheus Users,ou=groups,dc=seedcx,dc=com"
+          org_role: Admin
 #        - group_dn: "cn=editors,ou=groups,dc=grafana,dc=org"
 #          org_role: Editor
 #        - group_dn: "*"
