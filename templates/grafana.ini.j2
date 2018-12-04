@@ -96,11 +96,13 @@ enabled = true
 path = {{ grafana_data_dir }}/dashboards
 
 # Alerting
-{% if not grafana_alerting %}
 [alerting]
+{% if grafana_alerting %}
+enabled = true
+{% else %}
 enabled = false
-;execute_alerts = true
 {% endif %}
+;execute_alerts = true
 
 # SMTP and email config
 {% if grafana_smtp != {} %}
