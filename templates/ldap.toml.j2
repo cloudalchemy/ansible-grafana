@@ -1,4 +1,4 @@
-# {{ ansible_managed }}
+{{ ansible_managed | comment }}
 # Documentation: http://docs.grafana.org/installation/ldap/
 {% if 'verbose_logging' in grafana_ldap %}
 verbose_logging = {{ 'true' if grafana_ldap.verbose_logging else 'false' }}
