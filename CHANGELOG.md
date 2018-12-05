@@ -1,5 +1,11 @@
 # Change Log
 
+## [**Next release**](https://galaxy.ansible.com/cloudalchemy/grafana)
+
+**Merged pull requests:**
+
+- Add support for multi-line ansible\_managed strings [\#116](https://github.com/cloudalchemy/ansible-grafana/pull/116) ([etcet](https://github.com/etcet))
+
 ## [0.12.0](https://galaxy.ansible.com/cloudalchemy/grafana) (2018-12-04)
 **Fixed bugs:**
 
