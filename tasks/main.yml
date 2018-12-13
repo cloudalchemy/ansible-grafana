@@ -75,10 +75,13 @@
     - grafana_notifications
 
 - name: "Check if there are any dashboards in {{ grafana_dashboards_dir }}"
+  become: false
   find:
     paths: "{{ grafana_dashboards_dir }}"
     patterns: '*.json'
   register: found_dashboards
+  delegate_to: localhost
+  run_once: true
 
 - include: dashboards.yml
   when: grafana_dashboards | length > 0 or found_dashboards.matched > 0
