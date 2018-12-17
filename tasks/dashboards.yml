@@ -1,4 +1,15 @@
 ---
+- name: Empty local grafana dashboard directory
+  become: false
+  file:
+    path: /tmp/dashboards
+    state: absent
+  delegate_to: localhost
+  run_once: true
+  check_mode: false
+  changed_when: false
+  when: grafana_use_provisioning and grafana_provisioning_synced
+
 - name: Create local grafana dashboard directories
   become: false
   file:
@@ -8,6 +19,7 @@
   delegate_to: localhost
   run_once: true
   check_mode: false
+  changed_when: false
 
 # - name: download grafana dashboard from grafana.net to local folder
 #   become: false
@@ -96,8 +108,9 @@
     - "{{ grafana_dashboards_dir }}/*.json"
   delegate_to: localhost
   run_once: true
+  changed_when: false
 
-- name: import grafana dashboards
+- name: import grafana dashboards through API
   uri:
     url: "{{ grafana_api_url }}/api/dashboards/db"
     user: "{{ grafana_security.admin_user }}"
@@ -109,6 +122,7 @@
   no_log: true
   with_fileglob:
     - "/tmp/dashboards/*"
+  when: not grafana_use_provisioning
 
 # TODO: uncomment this when ansible 2.7 will be min supported version
 # - name: import grafana dashboards
@@ -123,3 +137,63 @@
 #   no_log: true
 #   with_fileglob:
 #     - "/tmp/dashboards/*"
+
+- name: Create/Update dashboards file (provisioning)
+  become: true
+  copy:
+    dest: "/etc/grafana/provisioning/dashboards/ansible.yml"
+    content: |
+      apiVersion: 1
+      providers:
+       - name: 'default'
+         orgId: 1
+         folder: ''
+         type: file
+         options:
+           path: /var/lib/grafana/dashboards
+    backup: false
+    owner: root
+    group: grafana
+    mode: 0640
+  notify: restart grafana
+  when: grafana_use_provisioning
+
+#- name: import grafana dashboards through provisioning
+#  copy:
+#    src: "/tmp/dashboards/"
+#    dest: "/var/lib/grafana/dashboards"
+#    owner: root
+#    group: grafana
+#    mode: 0640
+#  when: grafana_use_provisioning and not grafana_provisioning_synced
+
+- name: import grafana dashboards through provisioning
+  synchronize:
+    src: "/tmp/dashboards/"
+    dest: "/var/lib/grafana/dashboards"
+    archive: false
+    checksum: true
+    recursive: true
+    delete: "{{ grafana_provisioning_synced }}"
+    rsync_opts:
+      - "--no-motd"
+  when: grafana_use_provisioning
+
+- name: set privileges on provisioned dashboards
+  file:
+    path: "/var/lib/grafana/dashboards"
+    recurse: true
+    owner: root
+    group: grafana
+    mode: 0640
+
+- name: set privileges on provisioned dashboards
+  file:
+    path: "/var/lib/grafana/dashboards"
+    state: directory
+    recurse: false
+    owner: root
+    group: grafana
+    mode: 0755
+
+
