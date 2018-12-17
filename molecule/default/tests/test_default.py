@@ -39,3 +39,9 @@ def test_packages(host):
 
 def test_socket(host):
     assert host.socket("tcp://0.0.0.0:3000").is_listening
+
+
+def test_yum_repo(host):
+    if host.system_info.distribution in ['centos', 'redhat', 'fedora']:
+        f = host.file("/etc/yum.repos.d/grafana.repo")
+        assert f.exists

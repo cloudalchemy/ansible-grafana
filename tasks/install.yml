@@ -22,8 +22,8 @@
 
 - name: Add Grafana repository file [RHEL/CentOS]
   template:
-    src: grafana.yum.repo.j2
-    dest: /etc/yum.repos.d/grafana.repo
+    src: "{{ grafana_yum_repo_template }}"
+    dest: "/etc/yum.repos.d/{{ grafana_yum_repo_template | basename | regex_replace('\\.j2$', '') }}"
     force: true
     backup: true
   when: ansible_pkg_mgr in ['yum', 'dnf']

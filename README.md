@@ -27,6 +27,7 @@ All variables which can be overridden are stored in [defaults/main.yml](defaults
 | `grafana_system_user` | grafana | Grafana server system user |
 | `grafana_system_group` | grafana | Grafana server system group |
 | `grafana_version` | latest | Grafana package version |
+| `grafana_yum_repo_template` | etc/yum.repos.d/grafana.repo.j2 | Yum template to use |
 | `grafana_instance` | {{ ansible_fqdn \| default(ansible_host) \| default(inventory_hostname) }} | Grafana instance name |
 | `grafana_logs_dir` | /var/log/grafana | Path to logs directory |
 | `grafana_data_dir` | /var/lib/grafana | Path to database directory |
@@ -74,6 +75,24 @@ grafana_dashboards:
     revision_id: 1
     datasource: prometheus
 ```
+Use a custom Grafana Yum repo template example:
+
+- Put your template next to your playbook under `templates` folder
+
+- Use a different path than the default one, because ansible , when using relative path, use the first template found and look under the role directory at first then the playbook directory.
+
+- The template expansion will be put under  `/etc/yum.repos.d/` , and will have as a name, the `basename` of the template path without the .j2
+
+  Example:
+
+  ```yaml
+  grafana_yum_repo_template: my_yum_repos/grafana.repo.j2
+
+  # [playbook_dir]/templates/my_yum_repos/grafana.repo.j2
+  # will be put under
+  # /etc/yum.repos.d/grafana.repo
+  # on the remote host
+  ```
 
 ## Supported CPU Architectures
 
