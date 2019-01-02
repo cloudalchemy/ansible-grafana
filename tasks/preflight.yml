@@ -76,3 +76,10 @@
   when:
     - grafana_version != 'latest'
     - grafana_version is version_compare('5.0', '<')
+
+- name: Fail if grafana_port is lower then 1024 and grafana_cap_net_bind_service is not true
+  fail:
+    msg: Trying to use a port lower then 1024 without setting grafana_cap_net_bind_service.
+  when:
+    - grafana_port <= 1024
+    - not grafana_cap_net_bind_service
