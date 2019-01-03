@@ -4,6 +4,7 @@
 
 **Merged pull requests:**
 
+- Enable the use of ports below 1024 [\#122](https://github.com/cloudalchemy/ansible-grafana/pull/122) ([wvh-github](https://github.com/wvh-github))
 - dashboard check should run on localhost [\#119](https://github.com/cloudalchemy/ansible-grafana/pull/119) ([wvh-github](https://github.com/wvh-github))
 - Add support for multi-line ansible\_managed strings [\#116](https://github.com/cloudalchemy/ansible-grafana/pull/116) ([etcet](https://github.com/etcet))
 - Fix \(\#99\) : allow custom yum repo template [\#105](https://github.com/cloudalchemy/ansible-grafana/pull/105) ([rockandska](https://github.com/rockandska))
