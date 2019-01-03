@@ -174,20 +174,21 @@
     rsync_opts:
       - "--no-motd"
   when: grafana_use_provisioning
+  register: synchronize_result
 
 - name: Set privileges on provisioned dashboards
   file:
     path: "/var/lib/grafana/dashboards"
     recurse: true
-    owner: root
+    owner: grafana
     group: grafana
     mode: 0640
+  when: grafana_use_provisioning and synchronize_result.changed
 
-- name: Set privileges on provisioned dashboards
+- name: Set privileges on provisioned dashboards directory
   file:
     path: "/var/lib/grafana/dashboards"
     state: directory
     recurse: false
-    owner: root
-    group: grafana
     mode: 0755
+  when: grafana_use_provisioning and synchronize_result.changed
