@@ -47,6 +47,15 @@
     - "{{ grafana_data_dir }}/dashboards"
     - "{{ grafana_data_dir }}/plugins"
 
+- name: Enable grafana to ports lower than port 1024
+  capabilities:
+    path: /usr/sbin/grafana-server
+    capability: CAP_NET_BIND_SERVICE+ep
+    state: present
+  when:
+    - grafana_port <= 1024
+    - grafana_cap_net_bind_service
+
 - name: Enable and start Grafana systemd unit
   systemd:
     name: grafana-server
