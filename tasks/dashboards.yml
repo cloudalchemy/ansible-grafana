@@ -158,15 +158,6 @@
   notify: restart grafana
   when: grafana_use_provisioning
 
-#- name: import grafana dashboards through provisioning
-#  copy:
-#    src: "/tmp/dashboards/"
-#    dest: "/var/lib/grafana/dashboards"
-#    owner: root
-#    group: grafana
-#    mode: 0640
-#  when: grafana_use_provisioning and not grafana_provisioning_synced
-
 - name: import grafana dashboards through provisioning
   synchronize:
     src: "/tmp/dashboards/"
@@ -195,5 +186,3 @@
     owner: root
     group: grafana
     mode: 0755
-
-
