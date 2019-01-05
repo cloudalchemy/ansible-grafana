@@ -2,4 +2,8 @@
 - name: Prepare
   hosts: all
   gather_facts: false
-  tasks: []
+  tasks:
+    - name: Install rsync for grafana dashboard provisioning
+      package:
+        name: ["rsync"]
+      when: grafana_use_provisioning

@@ -22,7 +22,7 @@ All variables which can be overridden are stored in [defaults/main.yml](defaults
 
 | Name           | Default Value | Description                        |
 | -------------- | ------------- | -----------------------------------|
-| `grafana_use_provisioning` | true | Use Grafana provisioning capalibity when possible (**grafana_version=latest will assume >= 5.0**) |
+| `grafana_use_provisioning` | true | Use Grafana provisioning capalibity when possible (**grafana_version=latest will assume >= 5.0**). This option need rsync to be installed on both deployer and target machines. |
 | `grafana_provisioning_synced` | false | Ensure no previously provisioned dashboards are kept if not referenced anymore. |
 | `grafana_system_user` | grafana | Grafana server system user |
 | `grafana_system_group` | grafana | Grafana server system group |

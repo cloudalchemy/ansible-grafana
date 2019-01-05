@@ -158,11 +158,6 @@
   notify: restart grafana
   when: grafana_use_provisioning
 
-- name: Install rsync
-  package:
-    name: ["rsync"]
-  when: grafana_use_provisioning
-
 - name: Import grafana dashboards through provisioning
   synchronize:
     src: "/tmp/dashboards/"
