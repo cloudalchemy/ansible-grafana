@@ -14,7 +14,7 @@
     group: grafana
     mode: 0640
   listen: "provisioned dashboards changed"
-    
+
 - name: Set privileges on provisioned dashboards directory
   become: true
   file:
