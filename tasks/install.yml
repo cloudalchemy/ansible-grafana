@@ -56,6 +56,7 @@
   package:
     name: "{{ grafana_package }}"
     state: "{{ (grafana_version == 'latest') | ternary('latest', 'present') }}"
+    allow_unauthenticated: yes
   register: _install_packages
   until: _install_packages is succeeded
   retries: 5
