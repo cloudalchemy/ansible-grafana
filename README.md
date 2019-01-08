@@ -15,6 +15,7 @@ Provision and manage [grafana](https://github.com/grafana/grafana) - platform fo
 - Ansible >= 2.5
 - libselinux-python on deployer host (only when deployer machine has SELinux)
 - grafana >= 5.1 (for older grafana versions use this role in version 0.10.1 or earlier)
+- rsync if you plan to use grafana provisioning
 
 ## Role Variables
 
@@ -22,7 +23,7 @@ All variables which can be overridden are stored in [defaults/main.yml](defaults
 
 | Name           | Default Value | Description                        |
 | -------------- | ------------- | -----------------------------------|
-| `grafana_use_provisioning` | true | Use Grafana provisioning capalibity when possible (**grafana_version=latest will assume >= 5.0**). This option need rsync to be installed on both deployer and target machines. |
+| `grafana_use_provisioning` | true | Use Grafana provisioning capalibity when possible (**grafana_version=latest will assume >= 5.0**). |
 | `grafana_provisioning_synced` | false | Ensure no previously provisioned dashboards are kept if not referenced anymore. |
 | `grafana_system_user` | grafana | Grafana server system user |
 | `grafana_system_group` | grafana | Grafana server system group |
