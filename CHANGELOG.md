@@ -2,8 +2,13 @@
 
 ## [**Next release**](https://galaxy.ansible.com/cloudalchemy/grafana)
 
+**Closed issues:**
+
+- Problem installing on debian. Problems with repo and it's gpg key. [\#124](https://github.com/cloudalchemy/ansible-grafana/issues/124)
+
 **Merged pull requests:**
 
+- Replaced packagecloud repo with official Grafana repo [\#125](https://github.com/cloudalchemy/ansible-grafana/pull/125) ([wiktor2200](https://github.com/wiktor2200))
 - Fixed quotation marks to backtick in README.md [\#123](https://github.com/cloudalchemy/ansible-grafana/pull/123) ([wvh-github](https://github.com/wvh-github))
 - Enable the use of ports below 1024 [\#122](https://github.com/cloudalchemy/ansible-grafana/pull/122) ([wvh-github](https://github.com/wvh-github))
 - dashboard check should run on localhost [\#119](https://github.com/cloudalchemy/ansible-grafana/pull/119) ([wvh-github](https://github.com/wvh-github))
