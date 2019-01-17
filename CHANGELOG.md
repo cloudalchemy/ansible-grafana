@@ -1,5 +1,11 @@
 # Change Log
 
+## [**Next release**](https://galaxy.ansible.com/cloudalchemy/grafana)
+
+**Merged pull requests:**
+
+- Become root to import dashboards [\#129](https://github.com/cloudalchemy/ansible-grafana/pull/129) ([nikosmeds](https://github.com/nikosmeds))
+
 ## [0.13.0](https://galaxy.ansible.com/cloudalchemy/grafana) (2019-01-08)
 **Closed issues:**
 
