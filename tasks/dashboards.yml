@@ -159,6 +159,7 @@
   when: grafana_use_provisioning
 
 - name: Import grafana dashboards through provisioning
+  become: true
   synchronize:
     src: "/tmp/dashboards/"
     dest: "/var/lib/grafana/dashboards"
