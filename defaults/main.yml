@@ -1,4 +1,6 @@
 ---
+
+grafana_official_repo: true
 grafana_version: latest
 grafana_yum_repo_template: etc/yum.repos.d/grafana.repo.j2
 
