@@ -1,6 +1,5 @@
 ---
-- name: Locally prepare doashboards for upload
-  become: false
+- become: false
   delegate_to: localhost
   run_once: true
   block:
@@ -116,8 +115,7 @@
 #   with_fileglob:
 #     - "/tmp/dashboards/*"
 
-- name: Upload dashboards with Grafana provisioning system
-  when: grafana_use_provisioning
+- when: grafana_use_provisioning
   block:
     - name: Create/Update dashboards file (provisioning)
       become: true
