@@ -15,9 +15,9 @@
     - name: download grafana dashboard from grafana.net to local directory
       become: false
       command: >
-        "curl --fail --compressed
+        curl --fail --compressed
         https://grafana.com/api/dashboards/{{ item.dashboard_id }}/revisions/{{ item.revision_id }}/download
-        -o {{ _tmp_dashboards.path }}/{{ item.dashboard_id }}.json"
+        -o {{ _tmp_dashboards.path }}/{{ item.dashboard_id }}.json
       args:
         creates: "{{ _tmp_dashboards.path }}/{{ item.dashboard_id }}.json"
         warn: false
@@ -91,11 +91,11 @@
     method: POST
     body_format: json
     body: >
-      '{
+      {
         "dashboard": {{ lookup("file", item) }},
         "overwrite": true,
         "message": "Updated by ansible"
-      }'
+      }
   no_log: true
   with_fileglob:
     - "{{ _tmp_dashboards.path }}/*"
