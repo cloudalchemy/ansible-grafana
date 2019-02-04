@@ -120,6 +120,8 @@
   delegate_to: localhost
   run_once: true
   changed_when: false
+  register: result
+  failed_when: not (result is success  or 'is undefined' in result.msg)
 
 - name: copy local grafana dashboards
   become: false
