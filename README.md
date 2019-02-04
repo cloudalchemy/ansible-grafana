@@ -76,6 +76,8 @@ grafana_dashboards:
   - dashboard_id: 111
     revision_id: 1
     datasource: prometheus
+    variables:
+      CUSTOM_VAR: 'value'
 ```
 Use a custom Grafana Yum repo template example:
 

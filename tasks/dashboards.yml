@@ -99,6 +99,28 @@
   with_items: "{{ grafana_dashboards }}"
   when: grafana_dashboards | length > 0
 
+- name: Set custom variables in the dashboard
+  become: false
+  replace:
+    dest: "/tmp/dashboards/{{ item.dashboard_id }}.json"
+    regexp: '"(?:\${)(VAR_[A-Z0-9_-]+)(?:})"'
+    replace: '"{{ "{{" }} grafana_dashboards | selectattr("dashboard_id", "equalto", {{ item.dashboard_id }}) | map(attribute="variables.\1") | list | first {{ "}}" }}"'
+  delegate_to: localhost
+  run_once: true
+  changed_when: false
+  with_items: "{{ grafana_dashboards }}"
+  when: grafana_dashboards | length > 0
+
+- name: template local grafana dashboards
+  become: false
+  template:
+    src: "/tmp/dashboards/{{ item.dashboard_id }}.json"
+    dest: "/tmp/dashboards/{{ item.dashboard_id }}.json"
+  with_items: "{{ grafana_dashboards }}"
+  delegate_to: localhost
+  run_once: true
+  changed_when: false
+
 - name: copy local grafana dashboards
   become: false
   copy:
