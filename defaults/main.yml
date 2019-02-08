@@ -13,7 +13,7 @@ grafana_apt_repo: deb https://packages.grafana.com/oss/deb stable main
 #  ...
 #  =/2Mf
 # -----END PGP PUBLIC KEY BLOCK-----
-grafana_apt_repo_gpg_key_data: False
+grafana_apt_repo_gpg_key_data: false
 
 grafana_apt_repo_gpg_key_url: https://packages.grafana.com/gpg.key
 grafana_apt_repo_gpg_key_url_validate_cert: false
