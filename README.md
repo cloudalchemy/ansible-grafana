@@ -29,6 +29,10 @@ All variables which can be overridden are stored in [defaults/main.yml](defaults
 | `grafana_system_group` | grafana | Grafana server system group |
 | `grafana_version` | latest | Grafana package version |
 | `grafana_yum_repo_template` | etc/yum.repos.d/grafana.repo.j2 | Yum template to use |
+| `grafana_apt_repo` | `deb https://packages.grafana.com/oss/deb stable main` | Apt mirror to use (Debian/Ubuntu) |
+| `grafana_apt_repo_gpg_key_data` | `False` | GPG key value to use for apt mirror |
+| `grafana_apt_repo_gpg_key_url` | `https://packages.grafana.com/gpg.key` | URL to download GPG key to apt |
+| `grafana_apt_repo_gpg_key_url_validate_cert` | False | If TLS certificate validation needed at GPG key download time for apt |
 | `grafana_instance` | {{ ansible_fqdn \| default(ansible_host) \| default(inventory_hostname) }} | Grafana instance name |
 | `grafana_logs_dir` | /var/log/grafana | Path to logs directory |
 | `grafana_data_dir` | /var/lib/grafana | Path to database directory |
