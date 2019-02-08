@@ -1,6 +1,22 @@
 ---
 grafana_version: latest
 grafana_yum_repo_template: etc/yum.repos.d/grafana.repo.j2
+grafana_apt_repo: deb https://packages.grafana.com/oss/deb stable main
+
+# Set to a value of GPG key for a private mirror
+# if set to non-false value, disables grafana_apt_gpg_key_url
+# example:
+# grafana_apt_repo_gpg_key_data: |
+#   -----BEGIN PGP PUBLIC KEY BLOCK-----
+#   Version: GnuPG v1.4.12 (GNU/Linux)
+#  mQENBFGs....
+#  ...
+#  =/2Mf
+# -----END PGP PUBLIC KEY BLOCK-----
+grafana_apt_repo_gpg_key_data: False
+
+grafana_apt_repo_gpg_key_url: https://packages.grafana.com/gpg.key
+grafana_apt_repo_gpg_key_url_validate_cert: false
 
 # Should we use the provisioning capability when possible (provisioning require grafana >= 5.0)
 grafana_use_provisioning: true

@@ -28,20 +28,32 @@
     backup: true
   when: ansible_pkg_mgr in ['yum', 'dnf']
 
+# Debian/ubuntu installation from public mirror
 - block:
-    - name: Import Grafana GPG signing key [Debian/Ubuntu]
+    - name: Import Grafana repo GPG signing key by URL [Debian/Ubuntu]
       apt_key:
-        url: "https://packages.grafana.com/gpg.key"
+        url: '{{ grafana_apt_repo_gpg_key_url }}'
         state: present
-        validate_certs: false
+        validate_certs: '{{ grafana_apt_repo_gpg_key_url_validate_cert }}'
       register: _add_apt_key
       until: _add_apt_key is succeeded
       retries: 5
       delay: 2
+      when: grafana_apt_repo_gpg_key_data == False
+
+    - name: Import Grafana repo GPG signing key by value [Debian/Ubuntu]
+      apt_key:
+        data: '{{ grafana_apt_repo_gpg_key_data }}'
+        state: present
+      register: _add_apt_key
+      until: _add_apt_key is succeeded
+      retries: 5
+      delay: 2
+      when: grafana_apt_repo_gpg_key_data != False
 
     - name: Add Grafana repository [Debian/Ubuntu]
       apt_repository:
-        repo: deb https://packages.grafana.com/oss/deb stable main
+        repo: '{{ grafana_apt_repo }}'
         state: present
         update_cache: true
       register: _update_apt_cache
