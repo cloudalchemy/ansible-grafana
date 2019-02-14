@@ -102,7 +102,7 @@ enabled = true
 {% else %}
 enabled = false
 {% endif %}
-;execute_alerts = true
+execute_alerts = {{ grafana_alering_execute_alerts }}
 
 # SMTP and email config
 {% if grafana_smtp != {} %}

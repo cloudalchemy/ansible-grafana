@@ -145,6 +145,9 @@ grafana_smtp: {}
 # Enable grafana alerting mechanism
 grafana_alerting: true
 
+# Execute grafana alerts
+grafana_alering_execute_alerts: true
+
 # Internal grafana metrics system
 grafana_metrics: {}
 #  interval_seconds: 10
