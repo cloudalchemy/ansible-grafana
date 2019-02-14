@@ -56,9 +56,17 @@
     - grafana_port <= 1024
     - grafana_cap_net_bind_service
 
+- name: Enable and start Grafana systemd unit (amazon linux 1)
+  service:
+    name: grafana-server
+    enabled: true
+    state: started
+  when: ansible_distribution_major_version == "NA" and ansible_distribution == "Amazon"
+
 - name: Enable and start Grafana systemd unit
   systemd:
     name: grafana-server
     enabled: true
     state: started
     daemon_reload: true
+  when: ansible_distribution_major_version != "NA" and ansible_distribution != "Amazon"
