@@ -143,10 +143,11 @@ grafana_smtp: {}
 #  from_address:
 
 # Enable grafana alerting mechanism
-grafana_alerting: true
-
-# Execute grafana alerts
-grafana_alering_execute_alerts: true
+grafana_alerting:
+  execute_alerts: true
+#  error_or_timeout: 'alerting'
+#  nodata_or_nullvalues: 'no_data'
+#  concurrent_render_limit: 5
 
 # Internal grafana metrics system
 grafana_metrics: {}
