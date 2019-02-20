@@ -39,7 +39,7 @@
 # Use curl to solve issue #77
 - name: download grafana dashboard from grafana.net to local directory
   become: false
-  command: "curl --fail --compressed https://grafana.com/api/dashboards/{{ item.dashboard_id }}/revisions/{{ item.revision_id }}/download -o /tmp/dashboards/{{ item.dashboard_id }}.json"
+  command: "curl --fail --compressed https://grafana.com/api/dashboards/{{ item.dashboard_id }}/revisions/{{ item.revision_id }}/download -o /tmp/dashboards/{{ item.dashboard_id }}.json"  # noqa 204
   args:
     creates: "/tmp/dashboards/{{ item.dashboard_id }}.json"
     warn: false
