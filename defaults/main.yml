@@ -86,7 +86,7 @@ grafana_auth: {}
 #  ldap:
 #    config_file: "/etc/grafana/ldap.toml"
 #    allow_sign_up: false
-#  basic: 
+#  basic:
 #    enabled: true
 
 grafana_ldap: {}
