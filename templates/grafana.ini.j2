@@ -58,15 +58,13 @@ disable_login_form = {{ grafana_auth.disable_login_form | default('False') }}
 disable_signout_menu = {{ grafana_auth.disable_signout_menu | default('False') }}
 {%  for section, options in grafana_auth.items() %}
 {%    if section in ['disable_login_form', 'disable_signout_menu'] %}
-{%    elif section == 'basic' %}
-[auth.basic]
-enabled = True
 {%    else %}
 [auth.{{ section }}]
+{%      if "enabled" not in options %}
 enabled = True
+{%      endif %}
 {%      for k, v in options.items() %}
-{%        if k != 'enabled' %}{{ k }} = {{ v }}
-{%        endif %}
+{{ k }} = {{ v }}
 {%      endfor %}
 {%    endif %}
 {%  endfor %}
