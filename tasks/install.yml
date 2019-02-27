@@ -39,7 +39,7 @@
       until: _add_apt_key is succeeded
       retries: 5
       delay: 2
-      when: grafana_apt_repo_gpg_key_data == False
+      when: grafana_apt_repo_gpg_key_data
 
     - name: Import Grafana repo GPG signing key by value [Debian/Ubuntu]
       apt_key:
@@ -49,7 +49,7 @@
       until: _add_apt_key is succeeded
       retries: 5
       delay: 2
-      when: grafana_apt_repo_gpg_key_data != False
+      when: not grafana_apt_repo_gpg_key_data
 
     - name: Add Grafana repository [Debian/Ubuntu]
       apt_repository:
