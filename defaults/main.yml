@@ -149,6 +149,11 @@ grafana_alerting:
 #  nodata_or_nullvalues: 'no_data'
 #  concurrent_render_limit: 5
 
+# Grafana logging configuration
+grafana_log:
+# mode: 'console file'
+# level: info
+
 # Internal grafana metrics system
 grafana_metrics: {}
 #  interval_seconds: 10
