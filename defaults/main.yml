@@ -150,10 +150,8 @@ grafana_alerting:
 #  concurrent_render_limit: 5
 
 # Grafana logging configuration
-grafana_logging:
-# mode:
-#   - console
-#   - file
+grafana_log:
+# mode: 'console file'
 # level: info
 
 # Internal grafana metrics system

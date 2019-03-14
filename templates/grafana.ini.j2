@@ -124,8 +124,8 @@ enabled = True
 
 # Logging
 [log]
-mode = {{ grafana_logging.mode | default(['console', 'file']) | join(' ') }}
-level = {{ grafana_logging.level | default('info') }}
+mode = {{ grafana_log.mode | default('console, file') }}
+level = {{ grafana_log.level | default('info') }}
 
 # Metrics
 {% if grafana_metrics != {} %}
