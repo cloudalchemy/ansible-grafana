@@ -12,6 +12,7 @@
 
 **Merged pull requests:**
 
+- Add logging configuration options [\#142](https://github.com/cloudalchemy/ansible-grafana/pull/142) ([boutetnico](https://github.com/boutetnico))
 - Add option to disable alert execution [\#139](https://github.com/cloudalchemy/ansible-grafana/pull/139) ([Duologic](https://github.com/Duologic))
 - Remove files/dashboards directory [\#137](https://github.com/cloudalchemy/ansible-grafana/pull/137) ([amarao](https://github.com/amarao))
 - Become root to import dashboards [\#129](https://github.com/cloudalchemy/ansible-grafana/pull/129) ([nikosmeds](https://github.com/nikosmeds))
