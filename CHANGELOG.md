@@ -2,9 +2,14 @@
 
 ## [**Next release**](https://galaxy.ansible.com/cloudalchemy/grafana)
 
+**Implemented enhancements:**
+
+- Use `tempfile` for `/tmp/dashboards` [\#90](https://github.com/cloudalchemy/ansible-grafana/issues/90)
+
 **Fixed bugs:**
 
 - WTF bug with grafana\_dashboards\_dir == dashboards [\#136](https://github.com/cloudalchemy/ansible-grafana/issues/136)
+- Dashboard provisioning is interactive [\#128](https://github.com/cloudalchemy/ansible-grafana/issues/128)
 
 **Closed issues:**
 
@@ -15,6 +20,7 @@
 - Add logging configuration options [\#142](https://github.com/cloudalchemy/ansible-grafana/pull/142) ([boutetnico](https://github.com/boutetnico))
 - Add option to disable alert execution [\#139](https://github.com/cloudalchemy/ansible-grafana/pull/139) ([Duologic](https://github.com/Duologic))
 - Remove files/dashboards directory [\#137](https://github.com/cloudalchemy/ansible-grafana/pull/137) ([amarao](https://github.com/amarao))
+- Refactor dashboard provisioning [\#134](https://github.com/cloudalchemy/ansible-grafana/pull/134) ([paulfantom](https://github.com/paulfantom))
 - Become root to import dashboards [\#129](https://github.com/cloudalchemy/ansible-grafana/pull/129) ([nikosmeds](https://github.com/nikosmeds))
 
 ## [0.13.0](https://galaxy.ansible.com/cloudalchemy/grafana) (2019-01-08)
