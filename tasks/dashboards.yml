@@ -4,7 +4,6 @@
   run_once: true
   block:
     - name: Create local grafana dashboard directory
-      become: false
       tempfile:
         state: directory
       register: _tmp_dashboards
@@ -13,7 +12,6 @@
 
     # Use curl to solve issue #77
     - name: download grafana dashboard from grafana.net to local directory
-      become: false
       command: >
         curl --fail --compressed
         https://grafana.com/api/dashboards/{{ item.dashboard_id }}/revisions/{{ item.revision_id }}/download
@@ -65,7 +63,6 @@
     # matches and non-matches in https://regex101.com/r/f4Gkvg/6
 
     - name: Set the correct data source name in the dashboard
-      become: false
       replace:
         dest: "{{ _tmp_dashboards.path }}/{{ item.dashboard_id }}.json"
         regexp: '"(?:\${)?DS_[A-Z0-9_-]+(?:})?"'
