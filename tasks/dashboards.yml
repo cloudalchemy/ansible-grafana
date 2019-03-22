@@ -27,6 +27,7 @@
       delay: 2
       with_items: "{{ grafana_dashboards }}"
       when: grafana_dashboards | length > 0
+      changed_when: false
       check_mode: false
       tags:
         - skip_ansible_lint
@@ -73,15 +74,6 @@
       with_items: "{{ grafana_dashboards }}"
       when: grafana_dashboards | length > 0
 
-    - name: Copy grafana dashboards to temporary directory
-      become: false
-      copy:
-        src: "{{ item }}"
-        dest: "{{ _tmp_dashboards.path }}/{{ item | basename }}"
-      changed_when: false
-      with_fileglob:
-        - "{{ grafana_dashboards_dir }}/*.json"
-
 - name: Import grafana dashboards through API
   uri:
     url: "{{ grafana_api_url }}/api/dashboards/db"
@@ -99,6 +91,7 @@
   no_log: true
   with_fileglob:
     - "{{ _tmp_dashboards.path }}/*"
+    - "{{ grafana_dashboards_dir }}/*.json"
   when: not grafana_use_provisioning
 
 # TODO: uncomment this when ansible 2.7 will be min supported version
@@ -152,6 +145,7 @@
         dest: "/var/lib/grafana/dashboards/{{ item | basename }}"
       with_fileglob:
         - "{{ _tmp_dashboards.path }}/*"
+        - "{{ grafana_dashboards_dir }}/*.json"
       register: _dashboards_copied
       notify: "provisioned dashboards changed"
 
