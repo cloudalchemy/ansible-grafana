@@ -94,3 +94,6 @@
           tlsAuth: false
           tlsAuthWithCACert: false
           tlsSkipVerify: true
+    grafana_log:
+      mode: syslog
+      level: warn
