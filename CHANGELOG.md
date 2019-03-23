@@ -190,6 +190,7 @@
 **Merged pull requests:**
 
 - fix plugins installation in non-default directory [\#47](https://github.com/cloudalchemy/ansible-grafana/pull/47) ([paulfantom](https://github.com/paulfantom))
+- local task should be ran only once [\#43](https://github.com/cloudalchemy/ansible-grafana/pull/43) ([paulfantom](https://github.com/paulfantom))
 
 ## [0.7.14](https://galaxy.ansible.com/cloudalchemy/grafana) (2018-03-25)
 **Merged pull requests:**
@@ -207,10 +208,6 @@
 - vars: Handle the use of grafana\_version='latest' properly [\#44](https://github.com/cloudalchemy/ansible-grafana/pull/44) ([odyssey4me](https://github.com/odyssey4me))
 
 ## [0.7.11](https://galaxy.ansible.com/cloudalchemy/grafana) (2018-03-22)
-**Merged pull requests:**
-
-- local task should be ran only once [\#43](https://github.com/cloudalchemy/ansible-grafana/pull/43) ([paulfantom](https://github.com/paulfantom))
-
 ## [0.7.10](https://galaxy.ansible.com/cloudalchemy/grafana) (2018-03-22)
 **Merged pull requests:**
 
