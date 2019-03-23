@@ -2,6 +2,7 @@
 
 ## [**Next release**](https://galaxy.ansible.com/cloudalchemy/grafana)
 
+
 **Implemented enhancements:**
 
 - Use `tempfile` for `/tmp/dashboards` [\#90](https://github.com/cloudalchemy/ansible-grafana/issues/90)
