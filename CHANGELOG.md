@@ -2,7 +2,6 @@
 
 ## [**Next release**](https://galaxy.ansible.com/cloudalchemy/grafana)
 
-
 **Implemented enhancements:**
 
 - Use `tempfile` for `/tmp/dashboards` [\#90](https://github.com/cloudalchemy/ansible-grafana/issues/90)
@@ -19,6 +18,7 @@
 **Merged pull requests:**
 
 - Add logging configuration options [\#142](https://github.com/cloudalchemy/ansible-grafana/pull/142) ([boutetnico](https://github.com/boutetnico))
+- Allow to override enabled parameter in auth block [\#141](https://github.com/cloudalchemy/ansible-grafana/pull/141) ([Igorshp](https://github.com/Igorshp))
 - Add option to disable alert execution [\#139](https://github.com/cloudalchemy/ansible-grafana/pull/139) ([Duologic](https://github.com/Duologic))
 - Remove files/dashboards directory [\#137](https://github.com/cloudalchemy/ansible-grafana/pull/137) ([amarao](https://github.com/amarao))
 - Refactor dashboard provisioning [\#134](https://github.com/cloudalchemy/ansible-grafana/pull/134) ([paulfantom](https://github.com/paulfantom))
