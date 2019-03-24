@@ -1,5 +1,11 @@
 # Change Log
 
+## [**Next release**](https://galaxy.ansible.com/cloudalchemy/grafana)
+
+**Merged pull requests:**
+
+- Synchronize files from cloudalchemy/skeleton. [\#146](https://github.com/cloudalchemy/ansible-grafana/pull/146) ([cloudalchemybot](https://github.com/cloudalchemybot))
+
 ## [0.14.1](https://galaxy.ansible.com/cloudalchemy/grafana) (2019-03-24)
 **Merged pull requests:**
 
