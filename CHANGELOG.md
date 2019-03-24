@@ -1,5 +1,10 @@
 # Change Log
 
+## [0.14.1](https://galaxy.ansible.com/cloudalchemy/grafana) (2019-03-24)
+**Merged pull requests:**
+
+- default to only coping dashboards and not removing them [\#145](https://github.com/cloudalchemy/ansible-grafana/pull/145) ([paulfantom](https://github.com/paulfantom))
+
 ## [0.14.0](https://galaxy.ansible.com/cloudalchemy/grafana) (2019-03-23)
 **Implemented enhancements:**
 
@@ -365,8 +370,8 @@
 - Old [\#1](https://github.com/cloudalchemy/ansible-grafana/pull/1) ([paulfantom](https://github.com/paulfantom))
 
 ## [0.4.0](https://galaxy.ansible.com/cloudalchemy/grafana) (2017-10-16)
-## [0.3.3](https://galaxy.ansible.com/cloudalchemy/grafana) (2017-07-27)
 ## [0.3.2](https://galaxy.ansible.com/cloudalchemy/grafana) (2017-07-27)
+## [0.3.3](https://galaxy.ansible.com/cloudalchemy/grafana) (2017-07-27)
 ## [0.3.1](https://galaxy.ansible.com/cloudalchemy/grafana) (2017-07-27)
 ## [0.3.0](https://galaxy.ansible.com/cloudalchemy/grafana) (2017-07-21)
 ## [0.1.3](https://galaxy.ansible.com/cloudalchemy/grafana) (2017-07-13)
