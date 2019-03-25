@@ -2,8 +2,14 @@
 
 ## [**Next release**](https://galaxy.ansible.com/cloudalchemy/grafana)
 
+**Closed issues:**
+
+- Importing dashboards will fail if datadir != /var/lib/grafana [\#147](https://github.com/cloudalchemy/ansible-grafana/issues/147)
+
+## [0.14.2](https://galaxy.ansible.com/cloudalchemy/grafana) (2019-03-25)
 **Merged pull requests:**
 
+- Replace hardcoded paths with data dir variable [\#148](https://github.com/cloudalchemy/ansible-grafana/pull/148) ([boutetnico](https://github.com/boutetnico))
 - Synchronize files from cloudalchemy/skeleton. [\#146](https://github.com/cloudalchemy/ansible-grafana/pull/146) ([cloudalchemybot](https://github.com/cloudalchemybot))
 
 ## [0.14.1](https://galaxy.ansible.com/cloudalchemy/grafana) (2019-03-24)
