@@ -119,7 +119,7 @@
              folder: ''
              type: file
              options:
-               path: /var/lib/grafana/dashboards
+               path: "{{ grafana_data_dir }}/dashboards"
         backup: false
         owner: root
         group: grafana
@@ -128,7 +128,7 @@
 
     - name: Register previously copied dashboards
       find:
-        paths: "/var/lib/grafana/dashboards"
+        paths: "{{ grafana_data_dir }}/dashboards"
         hidden: true
         patterns:
           - "*.json"
@@ -139,7 +139,7 @@
       become: true
       copy:
         src: "{{ item }}"
-        dest: "/var/lib/grafana/dashboards/{{ item | basename }}"
+        dest: "{{ grafana_data_dir }}/dashboards/{{ item | basename }}"
       with_fileglob:
         - "{{ _tmp_dashboards.path }}/*"
         - "{{ grafana_dashboards_dir }}/*.json"

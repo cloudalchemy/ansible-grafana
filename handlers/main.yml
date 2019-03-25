@@ -8,7 +8,7 @@
 - name: Set privileges on provisioned dashboards
   become: true
   file:
-    path: "/var/lib/grafana/dashboards"
+    path: "{{ grafana_data_dir }}/dashboards"
     recurse: true
     owner: grafana
     group: grafana
@@ -18,7 +18,7 @@
 - name: Set privileges on provisioned dashboards directory
   become: true
   file:
-    path: "/var/lib/grafana/dashboards"
+    path: "{{ grafana_data_dir }}/dashboards"
     state: directory
     recurse: false
     mode: 0755
