@@ -99,10 +99,7 @@ Use a custom Grafana Yum repo template example:
 
 ## Supported CPU Architectures
 
-Detection is done automatically and packages are taken from different channels according to CPU architecture:
-
-- amd64 - via official grafana packages ([1](http://docs.grafana.org/installation/debian/#installing-on-debian-ubuntu), [2](http://docs.grafana.org/installation/rpm/))
-- armv6/armv7 and aarch64/arm64 - via [unofficial packages distributed by fg2it](https://github.com/fg2it/grafana-on-raspberry)
+Historically packages were taken from different channels according to CPU architecture. Specifically, armv6/armv7 and aarch64/arm64 packages were via [unofficial packages distributed by fg2it](https://github.com/fg2it/grafana-on-raspberry). Now that Grafana publishes official ARM builds, all packages are taken from the official [Debian/Ubuntu](http://docs.grafana.org/installation/debian/#installing-on-debian-ubuntu) or [RPM](http://docs.grafana.org/installation/rpm/) packages.
 
 ## Example
 
