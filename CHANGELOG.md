@@ -6,6 +6,10 @@
 
 - Importing dashboards will fail if datadir != /var/lib/grafana [\#147](https://github.com/cloudalchemy/ansible-grafana/issues/147)
 
+**Merged pull requests:**
+
+- Correct package source for ARM in README. [\#149](https://github.com/cloudalchemy/ansible-grafana/pull/149) ([jcoleman](https://github.com/jcoleman))
+
 ## [0.14.2](https://galaxy.ansible.com/cloudalchemy/grafana) (2019-03-25)
 **Merged pull requests:**
 
