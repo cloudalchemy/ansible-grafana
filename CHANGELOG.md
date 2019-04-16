@@ -8,6 +8,7 @@
 
 **Merged pull requests:**
 
+- Add tag `grafana\_run` to give flexibility [\#151](https://github.com/cloudalchemy/ansible-grafana/pull/151) ([bryanspears](https://github.com/bryanspears))
 - Correct package source for ARM in README. [\#149](https://github.com/cloudalchemy/ansible-grafana/pull/149) ([jcoleman](https://github.com/jcoleman))
 
 ## [0.14.2](https://galaxy.ansible.com/cloudalchemy/grafana) (2019-03-25)
