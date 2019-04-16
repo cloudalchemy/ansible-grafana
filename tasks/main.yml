@@ -45,7 +45,7 @@
     - grafana_datasources
     - grafana_notifications
     - grafana_dashboards
-    - grafana_started
+    - grafana_run
 
 - name: Wait for grafana to start
   wait_for:
@@ -57,27 +57,27 @@
     - grafana_datasources
     - grafana_notifications
     - grafana_dashboards
-    - grafana_started
+    - grafana_run
 
 - include: api_keys.yml
   when: grafana_api_keys | length > 0
   tags:
     - grafana_configure
-    - grafana_started
+    - grafana_run
 
 - include: datasources.yml
   when: grafana_datasources != []
   tags:
     - grafana_configure
     - grafana_datasources
-    - grafana_started
+    - grafana_run
 
 - include: notifications.yml
   when: grafana_alert_notifications | length > 0
   tags:
     - grafana_configure
     - grafana_notifications
-    - grafana_started
+    - grafana_run
 
 - name: "Check if there are any dashboards in {{ grafana_dashboards_dir }}"
   become: false
@@ -90,11 +90,11 @@
   tags:
     - grafana_configure
     - grafana_dashboards
-    - grafana_started
+    - grafana_run
 
 - include: dashboards.yml
   when: grafana_dashboards | length > 0 or found_dashboards.matched > 0
   tags:
     - grafana_configure
     - grafana_dashboards
-    - grafana_started
+    - grafana_run
