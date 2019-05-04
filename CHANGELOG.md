@@ -8,6 +8,7 @@
 
 **Merged pull requests:**
 
+- Synchronize files from cloudalchemy/skeleton [\#152](https://github.com/cloudalchemy/ansible-grafana/pull/152) ([cloudalchemybot](https://github.com/cloudalchemybot))
 - Add tag `grafana\_run` to give flexibility [\#151](https://github.com/cloudalchemy/ansible-grafana/pull/151) ([bryanspears](https://github.com/bryanspears))
 - Correct package source for ARM in README. [\#149](https://github.com/cloudalchemy/ansible-grafana/pull/149) ([jcoleman](https://github.com/jcoleman))
 
