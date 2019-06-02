@@ -5,3 +5,4 @@ grafana_dependencies:
   - adduser
   - ca-certificates
   - libfontconfig
+  - gnupg2
