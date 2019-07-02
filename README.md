@@ -105,10 +105,16 @@ Historically packages were taken from different channels according to CPU archit
 
 ### Playbook
 
+Fill in the admin password field with your choice, the Grafana web page won't ask to change it at the first login.
+
 ```yaml
 - hosts: all
   roles:
-    - cloudalchemy.grafana
+    - role: cloudalchemy.grafana
+      vars:
+        grafana_security:
+          admin_user: admin
+          admin_password: enter_your_secure_password
 ```
 
 ### Demo site
