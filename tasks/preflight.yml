@@ -83,3 +83,10 @@
   when:
     - grafana_port <= 1024
     - not grafana_cap_net_bind_service
+
+- name: Fail if grafana_server.socket not defined when in socket mode
+  fail:
+    mag: "You need to configure grafana_server.socket when grafana_server.protocol is set to 'socket'"
+  when:
+    - grafana_server.protocol is defined and grafana_server.protocol == 'socket'
+    - grafana_server.socket is undefined or grafana_server.socket == ''

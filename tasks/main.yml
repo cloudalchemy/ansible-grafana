@@ -47,10 +47,23 @@
     - grafana_dashboards
     - grafana_run
 
-- name: Wait for grafana to start
+- name: Wait for grafana to start (http/s)
   wait_for:
     host: "{{ grafana_address }}"
     port: "{{ grafana_port }}"
+  when: grafana_server.protocol is undefined or grafana_server.protocol in ['http', 'https']
+  tags:
+    - grafana_install
+    - grafana_configure
+    - grafana_datasources
+    - grafana_notifications
+    - grafana_dashboards
+    - grafana_run
+
+- name: Wait for grafana to start (socket)
+  wait_for:
+    path: "{{ grafana_server.socket }}"
+  when: grafana_server.protocol is defined and grafana_server.protocol == 'socket'
   tags:
     - grafana_install
     - grafana_configure
