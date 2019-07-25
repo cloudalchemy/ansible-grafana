@@ -4,10 +4,15 @@
 
 **Closed issues:**
 
+- Support for installing plugins [\#159](https://github.com/cloudalchemy/ansible-grafana/issues/159)
+- documentation example missing admin user requirement [\#156](https://github.com/cloudalchemy/ansible-grafana/issues/156)
 - Importing dashboards will fail if datadir != /var/lib/grafana [\#147](https://github.com/cloudalchemy/ansible-grafana/issues/147)
 
 **Merged pull requests:**
 
+- Add support for running in socket mode [\#161](https://github.com/cloudalchemy/ansible-grafana/pull/161) ([RichardHeelin](https://github.com/RichardHeelin))
+- Add documentation for var `grafana\_plugins` [\#160](https://github.com/cloudalchemy/ansible-grafana/pull/160) ([thescouser89](https://github.com/thescouser89))
+- Update the playbook example \(\#156\) [\#157](https://github.com/cloudalchemy/ansible-grafana/pull/157) ([andrasbabos](https://github.com/andrasbabos))
 - Add GnuPG2 as a dependency on Debian/Ubuntu  [\#154](https://github.com/cloudalchemy/ansible-grafana/pull/154) ([FinweVI](https://github.com/FinweVI))
 - Synchronize files from cloudalchemy/skeleton [\#152](https://github.com/cloudalchemy/ansible-grafana/pull/152) ([cloudalchemybot](https://github.com/cloudalchemybot))
 - Add tag `grafana\_run` to give flexibility [\#151](https://github.com/cloudalchemy/ansible-grafana/pull/151) ([bryanspears](https://github.com/bryanspears))
@@ -107,7 +112,7 @@
 **Merged pull requests:**
 
 - Add become:yes to allow this module to be used in include\_role task [\#97](https://github.com/cloudalchemy/ansible-grafana/pull/97) ([jdbaldry](https://github.com/jdbaldry))
-- Add vars file for openSUSE 42.x [\#96](https://github.com/cloudalchemy/ansible-grafana/pull/96) ([kaiokassiano](https://github.com/kaiokassiano))
+- Add vars file for openSUSE 42.x [\#96](https://github.com/cloudalchemy/ansible-grafana/pull/96) ([kaiokmo](https://github.com/kaiokmo))
 - fixing issue \#94 [\#95](https://github.com/cloudalchemy/ansible-grafana/pull/95) ([nicosto](https://github.com/nicosto))
 
 ## [0.11.1](https://galaxy.ansible.com/cloudalchemy/grafana) (2018-08-24)
