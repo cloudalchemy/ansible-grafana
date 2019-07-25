@@ -4,7 +4,7 @@
   roles:
     - ansible-grafana
   vars:
-    grafana_version: 5.1.0
+    grafana_version: 6.2.5
     grafana_yum_repo_template: alternative.grafana.yum.repo.j2
     grafana_security:
       admin_user: admin
