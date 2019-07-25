@@ -47,6 +47,26 @@
     - "{{ grafana_data_dir }}/dashboards"
     - "{{ grafana_data_dir }}/plugins"
 
+- block:
+    - name: Create grafana socket directory
+      file:
+        path: "{{ grafana_server.socket | dirname }}"
+        state: directory
+        mode: 0775
+        owner: "grafana"
+        group: "grafana"
+
+    - name: Ensure grafana socket directory created on startup
+      template:
+        src: tmpfiles.j2
+        dest: /etc/tmpfiles.d/grafana.conf
+        owner: root
+        group: root
+        mode: 0644
+  when:
+    - grafana_server.protocol is defined and grafana_server.protocol == 'socket'
+    - grafana_server.socket | dirname != '/var/run'
+
 - name: Enable grafana to ports lower than port 1024
   capabilities:
     path: /usr/sbin/grafana-server
