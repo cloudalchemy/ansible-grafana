@@ -21,6 +21,7 @@ http_port = {{ grafana_port }}
 {% endif %}
 domain = {{ grafana_domain }}
 root_url = {{ grafana_url }}
+serve_from_sub_path = {{ grafana_serve_from_sub_path }}
 {% for k,v in grafana_server.items() %}
 {%   if not k in ['http_addr', 'http_port', 'domain', 'root_url'] %}
 {{ k }} = {{ v }}

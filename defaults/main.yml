@@ -15,6 +15,10 @@ grafana_data_dir: "/var/lib/grafana"
 
 grafana_address: "0.0.0.0"
 grafana_port: 3000
+
+# If behind a reverse proxy and served on a subpath (e.g. /grafana) this should be set to True
+grafana_serve_from_sub_path = False
+
 # To enable the use of ports below 1024 for unprivileged processes linux needs to set CAP_NET_BIND_SERVICE.
 # This has some security implications, and should be a conscious choice.
 # Get informed by reading: http://man7.org/linux/man-pages/man7/capabilities.7.html
