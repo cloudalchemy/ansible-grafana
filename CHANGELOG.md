@@ -4,12 +4,14 @@
 
 **Closed issues:**
 
+- playbook fails to starts the grafana server [\#163](https://github.com/cloudalchemy/ansible-grafana/issues/163)
 - Support for installing plugins [\#159](https://github.com/cloudalchemy/ansible-grafana/issues/159)
 - documentation example missing admin user requirement [\#156](https://github.com/cloudalchemy/ansible-grafana/issues/156)
 - Importing dashboards will fail if datadir != /var/lib/grafana [\#147](https://github.com/cloudalchemy/ansible-grafana/issues/147)
 
 **Merged pull requests:**
 
+- Synchronize files from cloudalchemy/skeleton [\#164](https://github.com/cloudalchemy/ansible-grafana/pull/164) ([cloudalchemybot](https://github.com/cloudalchemybot))
 - Add support for running in socket mode [\#161](https://github.com/cloudalchemy/ansible-grafana/pull/161) ([RichardHeelin](https://github.com/RichardHeelin))
 - Add documentation for var `grafana\_plugins` [\#160](https://github.com/cloudalchemy/ansible-grafana/pull/160) ([thescouser89](https://github.com/thescouser89))
 - Update the playbook example \(\#156\) [\#157](https://github.com/cloudalchemy/ansible-grafana/pull/157) ([andrasbabos](https://github.com/andrasbabos))
