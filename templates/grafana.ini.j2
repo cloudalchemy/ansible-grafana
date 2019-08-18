@@ -57,9 +57,11 @@ welcome_email_on_sign_up = {{ grafana_welcome_email_on_sign_up }}
 {% if grafana_auth != {} %}
 [auth]
 disable_login_form = {{ grafana_auth.disable_login_form | default('False') }}
+oauth_auto_login = {{ grafana_auth.oauth_auto_login | default('False') }}
 disable_signout_menu = {{ grafana_auth.disable_signout_menu | default('False') }}
+signout_redirect_url = {{ grafana_auth.signout_redirect_url | default('') }}
 {%  for section, options in grafana_auth.items() %}
-{%    if section in ['disable_login_form', 'disable_signout_menu'] %}
+{%    if section in ['disable_login_form', 'oauth_auto_login', 'disable_signout_menu', 'signout_redirect_url'] %}
 {%    else %}
 [auth.{{ section }}]
 {%      if "enabled" not in options %}
