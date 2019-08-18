@@ -4,6 +4,7 @@
 
 **Closed issues:**
 
+- Add new auth configuration options [\#165](https://github.com/cloudalchemy/ansible-grafana/issues/165)
 - playbook fails to starts the grafana server [\#163](https://github.com/cloudalchemy/ansible-grafana/issues/163)
 - Support for installing plugins [\#159](https://github.com/cloudalchemy/ansible-grafana/issues/159)
 - documentation example missing admin user requirement [\#156](https://github.com/cloudalchemy/ansible-grafana/issues/156)
@@ -11,6 +12,7 @@
 
 **Merged pull requests:**
 
+- Add new auth configuration options. [\#166](https://github.com/cloudalchemy/ansible-grafana/pull/166) ([leitgab](https://github.com/leitgab))
 - Synchronize files from cloudalchemy/skeleton [\#164](https://github.com/cloudalchemy/ansible-grafana/pull/164) ([cloudalchemybot](https://github.com/cloudalchemybot))
 - Add support for running in socket mode [\#161](https://github.com/cloudalchemy/ansible-grafana/pull/161) ([RichardHeelin](https://github.com/RichardHeelin))
 - Add documentation for var `grafana\_plugins` [\#160](https://github.com/cloudalchemy/ansible-grafana/pull/160) ([thescouser89](https://github.com/thescouser89))
