@@ -12,7 +12,9 @@
     grafana_address: "127.0.0.1"
     grafana_auth:
       disable_login_form: false
+      oauth_auto_login: false
       disable_signout_menu: false
+      signout_redirect_url: ""
       anonymous:
         org_name: "Main Organization"
         org_role: Viewer
