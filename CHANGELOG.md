@@ -12,6 +12,8 @@
 
 **Merged pull requests:**
 
+- add default serve\_from\_sub\_path option [\#169](https://github.com/cloudalchemy/ansible-grafana/pull/169) ([paulfantom](https://github.com/paulfantom))
+- Moving to python 3 and dropping support for python 2.x \(on deployer host\) [\#168](https://github.com/cloudalchemy/ansible-grafana/pull/168) ([cloudalchemybot](https://github.com/cloudalchemybot))
 - Add new auth configuration options. [\#166](https://github.com/cloudalchemy/ansible-grafana/pull/166) ([leitgab](https://github.com/leitgab))
 - Synchronize files from cloudalchemy/skeleton [\#164](https://github.com/cloudalchemy/ansible-grafana/pull/164) ([cloudalchemybot](https://github.com/cloudalchemybot))
 - Add support for running in socket mode [\#161](https://github.com/cloudalchemy/ansible-grafana/pull/161) ([RichardHeelin](https://github.com/RichardHeelin))
