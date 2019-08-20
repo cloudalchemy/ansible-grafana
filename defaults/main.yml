@@ -36,6 +36,7 @@ grafana_server:
   enable_gzip: false
   static_root_path: public
   router_logging: false
+  serve_from_sub_path: false
 
 # Variables correspond to ones in grafana.ini configuration file
 # Security
