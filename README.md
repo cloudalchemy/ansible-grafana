@@ -135,7 +135,7 @@ tox
 ```
 To run a custom molecule command on custom environment with only default test scenario:
 ```sh
-tox -e py27-ansible25 -- molecule test -s default
+tox -e py35-ansible28 -- molecule test -s default
 ```
 For more information about molecule go to their [docs](http://molecule.readthedocs.io/en/latest/).
 
@@ -143,7 +143,7 @@ If you would like to run tests on remote docker host just specify `DOCKER_HOST` 
 
 ## Travis CI
 
-Combining molecule and travis CI allows us to test how new PRs will behave when used with multiple ansible versions and multiple operating systems. This also allows use to create test scenarios for different role configurations. As a result we have a quite large test matrix (42 parallel role executions in case of [ansible-prometheus](https://github.com/cloudalchemy/ansible-prometheus)) which will take more time than local testing, so please be patient.
+Combining molecule and travis CI allows us to test how new PRs will behave when used with multiple ansible versions and multiple operating systems. This also allows use to create test scenarios for different role configurations. As a result we have a quite large test matrix which will take more time than local testing, so please be patient.
 
 ## Contributing
 
