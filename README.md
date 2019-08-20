@@ -12,7 +12,7 @@ Provision and manage [grafana](https://github.com/grafana/grafana) - platform fo
 
 ## Requirements
 
-- Ansible >= 2.5
+- Ansible >= 2.6 (It might work on previous versions, but we cannot guarantee it)
 - libselinux-python on deployer host (only when deployer machine has SELinux)
 - grafana >= 5.1 (for older grafana versions use this role in version 0.10.1 or earlier)
 - jmespath on deployer machine. If you are using Ansible from a Python virtualenv, install *jmespath* to the same virtualenv via pip.
