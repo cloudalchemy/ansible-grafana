@@ -12,6 +12,7 @@
 
 **Merged pull requests:**
 
+- Update minimum required ansible version [\#170](https://github.com/cloudalchemy/ansible-grafana/pull/170) ([cloudalchemybot](https://github.com/cloudalchemybot))
 - add default serve\_from\_sub\_path option [\#169](https://github.com/cloudalchemy/ansible-grafana/pull/169) ([paulfantom](https://github.com/paulfantom))
 - Moving to python 3 and dropping support for python 2.x \(on deployer host\) [\#168](https://github.com/cloudalchemy/ansible-grafana/pull/168) ([cloudalchemybot](https://github.com/cloudalchemybot))
 - Add new auth configuration options. [\#166](https://github.com/cloudalchemy/ansible-grafana/pull/166) ([leitgab](https://github.com/leitgab))
