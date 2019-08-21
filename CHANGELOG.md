@@ -12,6 +12,8 @@
 
 **Merged pull requests:**
 
+- Synchronize files from cloudalchemy/skeleton [\#172](https://github.com/cloudalchemy/ansible-grafana/pull/172) ([cloudalchemybot](https://github.com/cloudalchemybot))
+- Synchronize files from cloudalchemy/skeleton [\#171](https://github.com/cloudalchemy/ansible-grafana/pull/171) ([cloudalchemybot](https://github.com/cloudalchemybot))
 - Update minimum required ansible version [\#170](https://github.com/cloudalchemy/ansible-grafana/pull/170) ([cloudalchemybot](https://github.com/cloudalchemybot))
 - add default serve\_from\_sub\_path option [\#169](https://github.com/cloudalchemy/ansible-grafana/pull/169) ([paulfantom](https://github.com/paulfantom))
 - Moving to python 3 and dropping support for python 2.x \(on deployer host\) [\#168](https://github.com/cloudalchemy/ansible-grafana/pull/168) ([cloudalchemybot](https://github.com/cloudalchemybot))
