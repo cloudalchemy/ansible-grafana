@@ -64,6 +64,9 @@ grafana_database:
 #  max_open_conn: ""
 #  log_queries: ""
 
+# Remote cache
+grafana_remote_cache: {}
+
 # User management and registration
 grafana_welcome_email_on_sign_up: false
 grafana_users:
