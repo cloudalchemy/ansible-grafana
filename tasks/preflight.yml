@@ -54,7 +54,7 @@
     msg: "Check server configuration. Please look at http://docs.grafana.org/installation/configuration/#server"
   when:
     - grafana_server.root_url is defined
-    - grafana_server.root_url | search(grafana_server.domain)
+    - grafana_server.root_url is search(grafana_server.domain)
 
 - name: Fail when grafana_api_keys uses invalid role names
   fail:
