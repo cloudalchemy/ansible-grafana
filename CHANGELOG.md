@@ -12,6 +12,7 @@
 
 **Merged pull requests:**
 
+- Using tests as filters is deprecated. Changed to "result is search". [\#176](https://github.com/cloudalchemy/ansible-grafana/pull/176) ([lossos](https://github.com/lossos))
 - Synchronize files from cloudalchemy/skeleton [\#172](https://github.com/cloudalchemy/ansible-grafana/pull/172) ([cloudalchemybot](https://github.com/cloudalchemybot))
 - Synchronize files from cloudalchemy/skeleton [\#171](https://github.com/cloudalchemy/ansible-grafana/pull/171) ([cloudalchemybot](https://github.com/cloudalchemybot))
 - Update minimum required ansible version [\#170](https://github.com/cloudalchemy/ansible-grafana/pull/170) ([cloudalchemybot](https://github.com/cloudalchemybot))
