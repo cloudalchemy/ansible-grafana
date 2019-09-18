@@ -13,12 +13,22 @@
     # Use curl to solve issue #77
     - name: download grafana dashboard from grafana.net to local directory
       command: >
-        curl --fail --compressed
-        https://grafana.com/api/dashboards/{{ item.dashboard_id }}/revisions/{{ item.revision_id }}/download
-        -o {{ _tmp_dashboards.path }}/{{ item.dashboard_id }}.json
+        curl --fail --compressed {{ url }} -o {{ _tmp_dashboards.path }}/{{ filename }}
       args:
-        creates: "{{ _tmp_dashboards.path }}/{{ item.dashboard_id }}.json"
+        creates: "{{ _tmp_dashboards.path }}/{{ filename }}"
         warn: false
+      vars:
+        source: "{{ 'url' if 'url' in item else 'grafana' }}"
+        filename: >-
+          {%- if source == "url" -%}
+          {{ item.url | urlsplit('path') | basename }}
+          {%- else -%}
+          {{ item.dashboard_id }}.json
+          {%- endif -%}
+        url: >-
+          {%- if source == "url" -%}{{ item.url }}{%- else -%}
+          https://grafana.com/api/dashboards/{{ item.dashboard_id }}/revisions/{{ item.revision_id }}/download
+          {%- endif -%}
       register: _download_dashboards
       until: _download_dashboards is succeeded
       retries: 5
@@ -64,9 +74,17 @@
 
     - name: Set the correct data source name in the dashboard
       replace:
-        dest: "{{ _tmp_dashboards.path }}/{{ item.dashboard_id }}.json"
+        dest: "{{ _tmp_dashboards.path }}/{{ filename }}"
         regexp: '"(?:\${)?DS_[A-Z0-9_-]+(?:})?"'
         replace: '"{{ item.datasource }}"'
+      vars:
+        source: "{{ 'url' if 'url' in item else 'grafana' }}"
+        filename: >-
+          {%- if source == "url" -%}
+          {{ item.url | urlsplit('path') | basename }}
+          {%- else -%}
+          {{ item.dashboard_id }}.json
+          {%- endif -%}
       changed_when: false
       with_items: "{{ grafana_dashboards }}"
       when: grafana_dashboards | length > 0

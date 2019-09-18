@@ -16,7 +16,8 @@ def test_directories(host):
     ]
     files = [
         "/etc/grafana/grafana.ini",
-        "/etc/grafana/ldap.toml"
+        "/etc/grafana/ldap.toml",
+        "/var/lib/grafana/dashboards/ceph-cluster.json"
     ]
     for directory in dirs:
         d = host.file(directory)

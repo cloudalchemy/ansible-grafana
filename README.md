@@ -79,6 +79,15 @@ grafana_dashboards:
     revision_id: 1
     datasource: prometheus
 ```
+
+It is also possible to download a dashboard from an arbitrary url, e.g:
+
+```yaml
+grafana_dashboards:
+  - url: https://raw.githubusercontent.com/ceph/ceph/master/monitoring/grafana/dashboards/ceph-cluster.json
+    datasource: prometheus
+```
+
 Use a custom Grafana Yum repo template example:
 
 - Put your template next to your playbook under `templates` folder

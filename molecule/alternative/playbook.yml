@@ -84,6 +84,8 @@
       - dashboard_id: '358'
         revision_id: '1'
         datasource: 'Prometheus'
+      - url: https://raw.githubusercontent.com/ceph/ceph/master/monitoring/grafana/dashboards/ceph-cluster.json
+        datasource: 'Prometheus'
     grafana_datasources:
       - name: "Prometheus"
         type: "prometheus"
