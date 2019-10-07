@@ -37,6 +37,12 @@ root_url = {{ grafana_url }}
 {%   endif %}
 {% endfor %}
 
+# Remote cache
+[remote_cache]
+{% for k,v in grafana_remote_cache.items() %}
+{{ k }} = {{ v }}
+{% endfor %}
+
 # Security
 [security]
 {% for k,v in grafana_security.items() %}
