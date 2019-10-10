@@ -1,8 +1,12 @@
 # Change Log
 
-
 ## [**Next release**](https://galaxy.ansible.com/cloudalchemy/grafana)
 
+**Closed issues:**
+
+- Release of a new version ? [\#178](https://github.com/cloudalchemy/ansible-grafana/issues/178)
+
+## [0.15.0](https://galaxy.ansible.com/cloudalchemy/grafana) (2019-10-10)
 **Closed issues:**
 
 - Add new auth configuration options [\#165](https://github.com/cloudalchemy/ansible-grafana/issues/165)
@@ -405,13 +409,13 @@
 - Old [\#1](https://github.com/cloudalchemy/ansible-grafana/pull/1) ([paulfantom](https://github.com/paulfantom))
 
 ## [0.4.0](https://galaxy.ansible.com/cloudalchemy/grafana) (2017-10-16)
-## [0.3.2](https://galaxy.ansible.com/cloudalchemy/grafana) (2017-07-27)
 ## [0.3.3](https://galaxy.ansible.com/cloudalchemy/grafana) (2017-07-27)
+## [0.3.2](https://galaxy.ansible.com/cloudalchemy/grafana) (2017-07-27)
 ## [0.3.1](https://galaxy.ansible.com/cloudalchemy/grafana) (2017-07-27)
 ## [0.3.0](https://galaxy.ansible.com/cloudalchemy/grafana) (2017-07-21)
-## [0.1.3](https://galaxy.ansible.com/cloudalchemy/grafana) (2017-07-13)
-## [0.2.0](https://galaxy.ansible.com/cloudalchemy/grafana) (2017-07-13)
 ## [0.2.1](https://galaxy.ansible.com/cloudalchemy/grafana) (2017-07-13)
+## [0.2.0](https://galaxy.ansible.com/cloudalchemy/grafana) (2017-07-13)
+## [0.1.3](https://galaxy.ansible.com/cloudalchemy/grafana) (2017-07-13)
 ## [0.1.2](https://galaxy.ansible.com/cloudalchemy/grafana) (2017-06-14)
 ## [0.1.1](https://galaxy.ansible.com/cloudalchemy/grafana) (2017-06-14)
 ## [0.1.0](https://galaxy.ansible.com/cloudalchemy/grafana) (2017-06-05)
