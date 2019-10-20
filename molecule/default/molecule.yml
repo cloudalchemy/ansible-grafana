@@ -24,8 +24,8 @@ platforms:
     privileged: true
     volumes:
       - /sys/fs/cgroup:/sys/fs/cgroup:ro
-  - name: jessie
-    image: paulfantom/debian-molecule:8
+  - name: buster
+    image: paulfantom/debian-molecule:10
     docker_host: "${DOCKER_HOST:-unix://var/run/docker.sock}"
     privileged: true
     volumes:
@@ -36,12 +36,22 @@ platforms:
     privileged: true
     volumes:
       - /sys/fs/cgroup:/sys/fs/cgroup:ro
-  - name: fedora
-    image: paulfantom/fedora-molecule:27
+  - name: centos8
+    image: paulfantom/centos-molecule:8
     docker_host: "${DOCKER_HOST:-unix://var/run/docker.sock}"
     privileged: true
     volumes:
       - /sys/fs/cgroup:/sys/fs/cgroup:ro
+    groups:
+      - python3
+  - name: fedora
+    image: paulfantom/fedora-molecule:30
+    docker_host: "${DOCKER_HOST:-unix://var/run/docker.sock}"
+    privileged: true
+    volumes:
+      - /sys/fs/cgroup:/sys/fs/cgroup:ro
+    groups:
+      - python3
 provisioner:
   name: ansible
   lint:
@@ -51,6 +61,10 @@ provisioner:
     prepare: prepare.yml
     converge: playbook.yml
     destroy: destroy.yml
+  inventory:
+    group_vars:
+      python3:
+        ansible_python_interpreter: /usr/bin/python3
 scenario:
   name: default
 verifier:
