@@ -6,6 +6,10 @@
 
 - Release of a new version ? [\#178](https://github.com/cloudalchemy/ansible-grafana/issues/178)
 
+**Merged pull requests:**
+
+- \[REPO SYNC\] add support for CentOS8 [\#179](https://github.com/cloudalchemy/ansible-grafana/pull/179) ([cloudalchemybot](https://github.com/cloudalchemybot))
+
 ## [0.15.0](https://galaxy.ansible.com/cloudalchemy/grafana) (2019-10-10)
 **Closed issues:**
 
