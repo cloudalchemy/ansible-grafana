@@ -8,6 +8,7 @@
 
 **Merged pull requests:**
 
+- Database, user and password attributes for grafana\_datasource \(API\) [\#182](https://github.com/cloudalchemy/ansible-grafana/pull/182) ([bengoa](https://github.com/bengoa))
 - \[REPO SYNC\] add support for CentOS8 [\#179](https://github.com/cloudalchemy/ansible-grafana/pull/179) ([cloudalchemybot](https://github.com/cloudalchemybot))
 
 ## [0.15.0](https://galaxy.ansible.com/cloudalchemy/grafana) (2019-10-10)
