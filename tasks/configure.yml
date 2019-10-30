@@ -10,6 +10,8 @@
     - "/etc/grafana/datasources"
     - "/etc/grafana/provisioning"
     - "/etc/grafana/provisioning/datasources"
+    - "/etc/grafana/provisioning/dashboards"
+    - "/etc/grafana/provisioning/notifiers"
 
 - name: Create grafana main configuration file
   template:
