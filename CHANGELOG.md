@@ -5,12 +5,14 @@
 **Closed issues:**
 
 - Release of a new version ? [\#178](https://github.com/cloudalchemy/ansible-grafana/issues/178)
+- Failed to load LDAP config file when using Jinja templated integer variable [\#175](https://github.com/cloudalchemy/ansible-grafana/issues/175)
 
 **Merged pull requests:**
 
 - AWS Cloudwatch Data Source [\#184](https://github.com/cloudalchemy/ansible-grafana/pull/184) ([bengoa](https://github.com/bengoa))
 - Add missing provisioning directories [\#183](https://github.com/cloudalchemy/ansible-grafana/pull/183) ([gjulianm](https://github.com/gjulianm))
 - Database, user and password attributes for grafana\_datasource \(API\) [\#182](https://github.com/cloudalchemy/ansible-grafana/pull/182) ([bengoa](https://github.com/bengoa))
+- templates: ensure port is of int type [\#180](https://github.com/cloudalchemy/ansible-grafana/pull/180) ([paulfantom](https://github.com/paulfantom))
 - \[REPO SYNC\] add support for CentOS8 [\#179](https://github.com/cloudalchemy/ansible-grafana/pull/179) ([cloudalchemybot](https://github.com/cloudalchemybot))
 
 ## [0.15.0](https://galaxy.ansible.com/cloudalchemy/grafana) (2019-10-10)
