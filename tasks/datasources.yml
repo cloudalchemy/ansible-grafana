@@ -14,6 +14,12 @@
     database: "{{ item.database | default(omit) }}"
     user: "{{ item.user | default(omit) }}"
     password: "{{ item.password | default(omit) }}"
+    aws_auth_type: "{{ item.aws_auth_type | default(omit) }}"
+    aws_default_region: "{{ item.aws_default_region | default(omit) }}"
+    aws_access_key: "{{ item.aws_access_key | default(omit) }}"
+    aws_secret_key: "{{ item.aws_secret_key | default(omit) }}"
+    aws_credentials_profile: "{{ item.aws_credentials_profile | default(omit) }}"
+    aws_custom_metrics_namespaces: "{{ item.aws_custom_metrics_namespaces | default(omit) }}"
   with_items: "{{ grafana_datasources }}"
   when: not grafana_use_provisioning
 
