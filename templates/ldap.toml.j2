@@ -6,7 +6,9 @@ verbose_logging = {{ 'true' if grafana_ldap.verbose_logging else 'false' }}
 
 [[servers]]
 {% for k,v in grafana_ldap.servers.items() if k != 'attributes' %}
-{%   if v in [True, False] %}
+{%   if k == 'port' %}
+{{ k }} = {{ v | int }}
+{%   elif v in [True, False] %}
 {{ k }} = {{ 'true' if v else 'false' }}
 {%   else %}
 {{ k }} = {{ v | to_nice_json }}
