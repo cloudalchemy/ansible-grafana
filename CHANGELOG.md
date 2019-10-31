@@ -8,6 +8,7 @@
 
 **Merged pull requests:**
 
+- AWS Cloudwatch Data Source [\#184](https://github.com/cloudalchemy/ansible-grafana/pull/184) ([bengoa](https://github.com/bengoa))
 - Add missing provisioning directories [\#183](https://github.com/cloudalchemy/ansible-grafana/pull/183) ([gjulianm](https://github.com/gjulianm))
 - Database, user and password attributes for grafana\_datasource \(API\) [\#182](https://github.com/cloudalchemy/ansible-grafana/pull/182) ([bengoa](https://github.com/bengoa))
 - \[REPO SYNC\] add support for CentOS8 [\#179](https://github.com/cloudalchemy/ansible-grafana/pull/179) ([cloudalchemybot](https://github.com/cloudalchemybot))
