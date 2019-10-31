@@ -178,3 +178,11 @@ provider = {{ grafana_image_storage.provider }}
 {%     endif %}
 {%   endfor %}
 {% endif %}
+
+# Panels
+{% if grafana_panels != {} %}
+[panels]
+{%   for k,v in grafana_panels.items() %}
+{{ k }} = {{ v }}
+{%   endfor %}
+{% endif %}
