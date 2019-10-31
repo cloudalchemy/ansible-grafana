@@ -1,7 +1,6 @@
 # Change Log
 
-## [**Next release**](https://galaxy.ansible.com/cloudalchemy/grafana)
-
+## [0.16.0](https://galaxy.ansible.com/cloudalchemy/grafana) (2019-10-31)
 **Closed issues:**
 
 - Release of a new version ? [\#178](https://github.com/cloudalchemy/ansible-grafana/issues/178)
