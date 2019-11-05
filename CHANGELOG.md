@@ -4,6 +4,7 @@
 
 **Merged pull requests:**
 
+- \[REPO SYNC\] Update releaser.sh [\#186](https://github.com/cloudalchemy/ansible-grafana/pull/186) ([cloudalchemybot](https://github.com/cloudalchemybot))
 - Adding the ability to manage \[panels\] session [\#185](https://github.com/cloudalchemy/ansible-grafana/pull/185) ([bengoa](https://github.com/bengoa))
 
 ## [0.16.0](https://galaxy.ansible.com/cloudalchemy/grafana) (2019-10-31)
