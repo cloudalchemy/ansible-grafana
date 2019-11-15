@@ -4,6 +4,7 @@
 
 **Merged pull requests:**
 
+- \[REPO SYNC\] molecule: use CI images from quay.io instead of dockerhub [\#187](https://github.com/cloudalchemy/ansible-grafana/pull/187) ([cloudalchemybot](https://github.com/cloudalchemybot))
 - \[REPO SYNC\] Update releaser.sh [\#186](https://github.com/cloudalchemy/ansible-grafana/pull/186) ([cloudalchemybot](https://github.com/cloudalchemybot))
 - Adding the ability to manage \[panels\] session [\#185](https://github.com/cloudalchemy/ansible-grafana/pull/185) ([bengoa](https://github.com/bengoa))
 
