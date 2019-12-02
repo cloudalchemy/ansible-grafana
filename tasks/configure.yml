@@ -78,6 +78,14 @@
     - grafana_port <= 1024
     - grafana_cap_net_bind_service
 
+- name: Open Grafana port in Firewall
+  firewalld:
+    port: "{{ grafana_port }}/tcp"
+    immediate: yes
+    permanent: yes
+    state: enabled
+  when: grafana_open_firewall|bool
+
 - name: Enable and start Grafana systemd unit
   systemd:
     name: grafana-server
