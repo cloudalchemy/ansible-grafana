@@ -4,6 +4,7 @@
 
 **Merged pull requests:**
 
+- \[REPO SYNC\] use latest available python [\#194](https://github.com/cloudalchemy/ansible-grafana/pull/194) ([cloudalchemybot](https://github.com/cloudalchemybot))
 - \[REPO SYNC\] remove IRC link [\#192](https://github.com/cloudalchemy/ansible-grafana/pull/192) ([cloudalchemybot](https://github.com/cloudalchemybot))
 - \[REPO SYNC\] add declarative label sync; add autolabelling PRs [\#189](https://github.com/cloudalchemy/ansible-grafana/pull/189) ([cloudalchemybot](https://github.com/cloudalchemybot))
 - \[REPO SYNC\] molecule: use CI images from quay.io instead of dockerhub [\#187](https://github.com/cloudalchemy/ansible-grafana/pull/187) ([cloudalchemybot](https://github.com/cloudalchemybot))
