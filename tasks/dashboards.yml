@@ -71,91 +71,16 @@
       with_items: "{{ grafana_dashboards }}"
       when: grafana_dashboards | length > 0
 
-- name: Import grafana dashboards through API
-  uri:
-    url: "{{ grafana_api_url }}/api/dashboards/db"
-    user: "{{ grafana_security.admin_user }}"
-    password: "{{ grafana_security.admin_password }}"
-    force_basic_auth: true
-    method: POST
-    body_format: json
-    body: >
-      {
-        "dashboard": {{ lookup("file", item) }},
-        "overwrite": true,
-        "message": "Updated by ansible"
-      }
+- name: import grafana dashboards
+  grafana_dashboard:
+    grafana_url: "{{ grafana_api_url }}"
+    grafana_user: "{{ grafana_security.admin_user }}"
+    grafana_password: "{{ grafana_security.admin_password }}"
+    path: "{{ _tmp_dashboards.path }}/{{ item }}"
+    message: Updated by ansible
+    state: present
+    overwrite: true
   no_log: true
   with_fileglob:
     - "{{ _tmp_dashboards.path }}/*"
     - "{{ grafana_dashboards_dir }}/*.json"
-  when: not grafana_use_provisioning
-
-# TODO: uncomment this when ansible 2.7 will be min supported version
-# - name: import grafana dashboards
-#   grafana_dashboard:
-#     grafana_url: "{{ grafana_api_url }}"
-#     grafana_user: "{{ grafana_security.admin_user }}"
-#     grafana_password: "{{ grafana_security.admin_password }}"
-#     path: "/tmp/dashboards/{{ item }}"
-#     message: Updated by ansible
-#     state: present
-#     overwrite: true
-#   no_log: true
-#   with_fileglob:
-#     - "/tmp/dashboards/*"
-
-- when: grafana_use_provisioning
-  block:
-    - name: Create/Update dashboards file (provisioning)
-      become: true
-      copy:
-        dest: "/etc/grafana/provisioning/dashboards/ansible.yml"
-        content: |
-          apiVersion: 1
-          providers:
-           - name: 'default'
-             orgId: 1
-             folder: ''
-             type: file
-             options:
-               path: "{{ grafana_data_dir }}/dashboards"
-        backup: false
-        owner: root
-        group: grafana
-        mode: 0640
-      notify: restart grafana
-
-    - name: Register previously copied dashboards
-      find:
-        paths: "{{ grafana_data_dir }}/dashboards"
-        hidden: true
-        patterns:
-          - "*.json"
-      register: _dashboards_present
-      when: grafana_provisioning_synced
-
-    - name: Import grafana dashboards
-      become: true
-      copy:
-        src: "{{ item }}"
-        dest: "{{ grafana_data_dir }}/dashboards/{{ item | basename }}"
-      with_fileglob:
-        - "{{ _tmp_dashboards.path }}/*"
-        - "{{ grafana_dashboards_dir }}/*.json"
-      register: _dashboards_copied
-      notify: "provisioned dashboards changed"
-
-    - name: Get dashboard lists
-      set_fact:
-        _dashboards_present_list: "{{ _dashboards_present | json_query('files[*].path') | default([]) }}"
-        _dashboards_copied_list: "{{ _dashboards_copied | json_query('results[*].dest') | default([]) }}"
-      when: grafana_provisioning_synced
-
-    - name: Remove dashbards not present on deployer machine (synchronize)
-      become: true
-      file:
-        path: "{{ item }}"
-        state: absent
-      with_items: "{{ _dashboards_present_list | difference( _dashboards_copied_list ) }}"
-      when: grafana_provisioning_synced
