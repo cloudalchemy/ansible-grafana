@@ -1,9 +1,9 @@
 # Change Log
 
-## [**Next release**](https://galaxy.ansible.com/cloudalchemy/grafana)
-
+## [0.16.1](https://galaxy.ansible.com/cloudalchemy/grafana) (2020-01-13)
 **Merged pull requests:**
 
+- Use fileglob for registering local dashboard files [\#197](https://github.com/cloudalchemy/ansible-grafana/pull/197) ([paulfantom](https://github.com/paulfantom))
 - :robot: sync with cloudalchemy/skeleton \(SHA: 69fc5be8\): Merge pull request \#4 from cloudalchemy/travis\_fix [\#196](https://github.com/cloudalchemy/ansible-grafana/pull/196) ([cloudalchemybot](https://github.com/cloudalchemybot))
 - \[REPO SYNC\] use latest available python [\#194](https://github.com/cloudalchemy/ansible-grafana/pull/194) ([cloudalchemybot](https://github.com/cloudalchemybot))
 - \[REPO SYNC\] remove IRC link [\#192](https://github.com/cloudalchemy/ansible-grafana/pull/192) ([cloudalchemybot](https://github.com/cloudalchemybot))
