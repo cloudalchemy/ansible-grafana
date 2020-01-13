@@ -4,6 +4,7 @@
 
 **Merged pull requests:**
 
+- :robot: sync with cloudalchemy/skeleton \(SHA: 69fc5be8\): Merge pull request \#4 from cloudalchemy/travis\_fix [\#196](https://github.com/cloudalchemy/ansible-grafana/pull/196) ([cloudalchemybot](https://github.com/cloudalchemybot))
 - \[REPO SYNC\] use latest available python [\#194](https://github.com/cloudalchemy/ansible-grafana/pull/194) ([cloudalchemybot](https://github.com/cloudalchemybot))
 - \[REPO SYNC\] remove IRC link [\#192](https://github.com/cloudalchemy/ansible-grafana/pull/192) ([cloudalchemybot](https://github.com/cloudalchemybot))
 - \[REPO SYNC\] add declarative label sync; add autolabelling PRs [\#189](https://github.com/cloudalchemy/ansible-grafana/pull/189) ([cloudalchemybot](https://github.com/cloudalchemybot))
