@@ -92,21 +92,17 @@
     - grafana_notifications
     - grafana_run
 
-- name: "Check if there are any dashboards in {{ grafana_dashboards_dir }}"
+- name: "Check if there are any dashboards in local {{ grafana_dashboards_dir }}"
   become: false
-  find:
-    paths: "{{ grafana_dashboards_dir }}"
-    patterns: '*.json'
-  delegate_to: localhost
-  run_once: true
-  register: found_dashboards
+  set_fact:
+    found_dashboards: "{{ lookup('fileglob', grafana_dashboards_dir + '/*.json', wantlist=True) }}"
   tags:
     - grafana_configure
     - grafana_dashboards
     - grafana_run
 
 - include: dashboards.yml
-  when: grafana_dashboards | length > 0 or found_dashboards.matched > 0
+  when: grafana_dashboards | length > 0 or found_dashboards | length > 0
   tags:
     - grafana_configure
     - grafana_dashboards
