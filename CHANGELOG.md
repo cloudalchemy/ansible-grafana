@@ -1,5 +1,11 @@
 # Change Log
 
+## [**Next release**](https://galaxy.ansible.com/cloudalchemy/grafana)
+
+**Merged pull requests:**
+
+- Update README [\#199](https://github.com/cloudalchemy/ansible-grafana/pull/199) ([rnhurt](https://github.com/rnhurt))
+
 ## [0.16.1](https://galaxy.ansible.com/cloudalchemy/grafana) (2020-01-13)
 **Merged pull requests:**
 
