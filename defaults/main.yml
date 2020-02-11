@@ -207,6 +207,12 @@ grafana_dashboards: []
 #    revision_id: '1'
 #    datasource: 'Prometheus'
 
+grafana_dashboards_provider_config: 
+  disableDeletion: false
+  editable: true
+  updateIntervalSeconds: 10
+  allowUiUpdates: false
+
 grafana_dashboards_dir: "dashboards"
 
 # Alert notification channels to configure

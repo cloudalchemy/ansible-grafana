@@ -118,6 +118,7 @@
              orgId: 1
              folder: ''
              type: file
+             {{ grafana_dashboards_provider_config | to_nice_yaml(indent=3) | trim | indent(3) }}
              options:
                path: "{{ grafana_data_dir }}/dashboards"
         backup: false
