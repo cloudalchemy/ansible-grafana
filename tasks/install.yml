@@ -1,4 +1,12 @@
 ---
+- name: Update apt cache
+  apt:
+    update_cache: true
+  register: _pre_update_apt_cache
+  until: _pre_update_apt_cache is succeeded
+  when:
+    - ansible_pkg_mgr == "apt"
+
 - name: Install dependencies
   package:
     name: "{{ grafana_dependencies }}"
