@@ -2,8 +2,18 @@
 
 ## [**Next release**](https://galaxy.ansible.com/cloudalchemy/grafana)
 
+**Fixed bugs:**
+
+- Installation fails due to missing package libfontconfig on Ubuntu 18.04 [\#200](https://github.com/cloudalchemy/ansible-grafana/issues/200)
+
+## [0.16.2](https://galaxy.ansible.com/cloudalchemy/grafana) (2020-03-01)
+**Fixed bugs:**
+
+- Grafana \[session\] has been replaced [\#155](https://github.com/cloudalchemy/ansible-grafana/issues/155)
+
 **Merged pull requests:**
 
+- \[fix\] Update apt-cache before installing dependencies [\#205](https://github.com/cloudalchemy/ansible-grafana/pull/205) ([obitech](https://github.com/obitech))
 - Update README [\#199](https://github.com/cloudalchemy/ansible-grafana/pull/199) ([rnhurt](https://github.com/rnhurt))
 
 ## [0.16.1](https://galaxy.ansible.com/cloudalchemy/grafana) (2020-01-13)
