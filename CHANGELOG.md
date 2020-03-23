@@ -6,6 +6,10 @@
 
 - Installation fails due to missing package libfontconfig on Ubuntu 18.04 [\#200](https://github.com/cloudalchemy/ansible-grafana/issues/200)
 
+**Merged pull requests:**
+
+- Fix RPi 1 issue when grafana-rpi package needs to be installed \(\#207\) [\#208](https://github.com/cloudalchemy/ansible-grafana/pull/208) ([ruzickap](https://github.com/ruzickap))
+
 ## [0.16.2](https://galaxy.ansible.com/cloudalchemy/grafana) (2020-03-01)
 **Fixed bugs:**
 
