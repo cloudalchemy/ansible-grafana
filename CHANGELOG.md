@@ -1,14 +1,15 @@
 # Change Log
 
-## [**Next release**](https://galaxy.ansible.com/cloudalchemy/grafana)
-
+## [0.17.0](https://galaxy.ansible.com/cloudalchemy/grafana) (2020-03-30)
 **Fixed bugs:**
 
+- cast grafana\_port to int before comparing it to 1024 [\#212](https://github.com/cloudalchemy/ansible-grafana/issues/212)
 - This role does not work with RPi 1 [\#207](https://github.com/cloudalchemy/ansible-grafana/issues/207)
 - Installation fails due to missing package libfontconfig on Ubuntu 18.04 [\#200](https://github.com/cloudalchemy/ansible-grafana/issues/200)
 
 **Merged pull requests:**
 
+- cast grafana\_port to int. Fix \#212 [\#213](https://github.com/cloudalchemy/ansible-grafana/pull/213) ([kapouer](https://github.com/kapouer))
 - Avoid being clever about unsupported architectures [\#211](https://github.com/cloudalchemy/ansible-grafana/pull/211) ([bwolf](https://github.com/bwolf))
 - Fix RPi 1 issue when grafana-rpi package needs to be installed \(\#207\) [\#208](https://github.com/cloudalchemy/ansible-grafana/pull/208) ([ruzickap](https://github.com/ruzickap))
 
