@@ -75,7 +75,7 @@
     capability: CAP_NET_BIND_SERVICE+ep
     state: present
   when:
-    - grafana_port <= 1024
+    - grafana_port | int <= 1024
     - grafana_cap_net_bind_service
 
 - name: Enable and start Grafana systemd unit
