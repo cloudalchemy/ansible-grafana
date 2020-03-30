@@ -74,7 +74,7 @@
   fail:
     msg: Trying to use a port lower than 1024 without setting grafana_cap_net_bind_service.
   when:
-    - grafana_port <= 1024
+    - grafana_port | int <= 1024
     - not grafana_cap_net_bind_service
 
 - name: Fail if grafana_server.socket not defined when in socket mode
