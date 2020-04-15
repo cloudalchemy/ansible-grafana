@@ -37,11 +37,11 @@ def test_service(host):
 def test_packages(host):
     p = host.package("grafana")
     assert p.is_installed
-    assert p.version == "6.2.5"
+    assert p.version == "6.7.2"
 
 
 def test_socket(host):
-    assert host.socket("tcp://127.0.0.1:3000").is_listening
+    assert host.socket("tcp://127.0.0.1:4000").is_listening
 
 
 def test_alternative_yum_repo(host):
