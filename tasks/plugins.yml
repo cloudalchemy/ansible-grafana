@@ -18,3 +18,13 @@
   delay: 2
   notify:
     - restart grafana
+
+# - name: Install plugins
+#   become: true
+#   grafana_plugins:
+#     name: "{{ item }}"
+#     version: "{{ latest }}"
+#     state: present
+#   with_items: "{{ grafana_plugins }}"
+#   notify:
+#     - restart grafana
