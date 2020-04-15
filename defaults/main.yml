@@ -209,6 +209,8 @@ grafana_dashboards: []
 
 grafana_dashboards_dir: "dashboards"
 
+grafana_dashboards_folder: ""
+
 # Alert notification channels to configure
 grafana_alert_notifications: []
 #   - name: "Email Alert"

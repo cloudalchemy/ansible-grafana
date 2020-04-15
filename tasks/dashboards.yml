@@ -116,7 +116,7 @@
           providers:
            - name: 'default'
              orgId: 1
-             folder: ''
+             folder: "{{ grafana_dashboards_folder }}"
              type: file
              options:
                path: "{{ grafana_data_dir }}/dashboards"
