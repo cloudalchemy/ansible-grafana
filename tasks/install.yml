@@ -1,5 +1,4 @@
 ---
-
 - block:
     - name: Update apt cache
       apt:

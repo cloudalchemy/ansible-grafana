@@ -1,10 +1,8 @@
 ---
 - name: Ensure grafana key directory exists
-  become: false
   file:
     path: "{{ grafana_api_keys_dir }}/{{ inventory_hostname }}"
     state: directory
-  delegate_to: localhost
 
 - name: Check api key list
   uri:
@@ -31,11 +29,9 @@
   register: new_api_keys
 
 - name: Create api keys file to allow the keys to be seen and used by other automation
-  become: false
   copy:
     dest: "{{ grafana_api_keys_dir }}/{{ inventory_hostname }}/{{ item['item']['name'] }}.key"
     content: "{{ item['json']['key'] }}"
     backup: false
   when: item['json'] is defined
   with_items: "{{ new_api_keys['results'] }}"
-  delegate_to: localhost

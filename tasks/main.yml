@@ -73,12 +73,16 @@
     - grafana_run
 
 - include: api_keys.yml
+  become: false
+  delegate_to: localhost
   when: grafana_api_keys | length > 0
   tags:
     - grafana_configure
     - grafana_run
 
 - include: datasources.yml
+  become: false
+  delegate_to: localhost
   when: grafana_datasources != []
   tags:
     - grafana_configure
@@ -86,6 +90,8 @@
     - grafana_run
 
 - include: notifications.yml
+  become: false
+  delegate_to: localhost
   when: grafana_alert_notifications | length > 0
   tags:
     - grafana_configure
