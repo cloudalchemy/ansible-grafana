@@ -3,11 +3,10 @@
   file:
     path: "{{ item }}"
     state: directory
-    owner: root
-    group: grafana
+    # owner: root
+    # group: grafana
   with_items:
     - "/etc/grafana"
-    - "/etc/grafana/datasources"
     - "/etc/grafana/provisioning"
     - "/etc/grafana/provisioning/datasources"
     - "/etc/grafana/provisioning/dashboards"

@@ -102,6 +102,8 @@
     - grafana_run
 
 - include: dashboards.yml
+  delegate_to: localhost
+  become: false
   when: grafana_dashboards | length > 0 or found_dashboards | length > 0
   tags:
     - grafana_configure

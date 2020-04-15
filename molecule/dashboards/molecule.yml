@@ -1,0 +1,38 @@
+---
+dependency:
+  name: galaxy
+driver:
+  name: docker
+lint:
+  name: yamllint
+platforms:
+  - name: bionic
+    image: quay.io/paulfantom/molecule-systemd:ubuntu-18.04
+    docker_host: "${DOCKER_HOST:-unix://var/run/docker.sock}"
+    published_ports:
+      - 3000:3000
+    privileged: true
+    volumes:
+      - /sys/fs/cgroup:/sys/fs/cgroup:ro
+    groups:
+      - python3
+provisioner:
+  name: ansible
+  lint:
+    name: ansible-lint
+  playbooks:
+    create: ../default/create.yml
+    prepare: prepare.yml
+    converge: playbook.yml
+    destroy: ../default/destroy.yml
+  inventory:
+    group_vars:
+      python3:
+        ansible_python_interpreter: /usr/bin/python3
+scenario:
+  name: dashboards
+verifier:
+  name: testinfra
+  lint:
+    name: flake8
+    enabled: true
