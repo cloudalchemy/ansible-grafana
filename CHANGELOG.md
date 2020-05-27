@@ -1,5 +1,15 @@
 # Change Log
 
+## [**Next release**](https://galaxy.ansible.com/cloudalchemy/grafana)
+
+**Fixed bugs:**
+
+- Configuration fails for unlisted options in template for grafana\_auth [\#218](https://github.com/cloudalchemy/ansible-grafana/issues/218)
+
+**Merged pull requests:**
+
+- Cleaner and more general handling of auth options [\#219](https://github.com/cloudalchemy/ansible-grafana/pull/219) ([faxm0dem](https://github.com/faxm0dem))
+
 ## [0.17.0](https://galaxy.ansible.com/cloudalchemy/grafana) (2020-03-30)
 **Fixed bugs:**
 
