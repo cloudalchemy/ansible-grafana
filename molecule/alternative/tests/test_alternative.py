@@ -48,3 +48,8 @@ def test_alternative_yum_repo(host):
     if host.system_info.distribution in ['centos', 'redhat', 'fedora']:
         f = host.file("/etc/yum.repos.d/alternative.grafana.yum.repo")
         assert f.exists
+
+
+def test_custom_auth_option(host):
+    f = host.file("/etc/grafana/grafana.ini")
+    assert f.contains("login_maximum_inactive_lifetime_days = 42")

@@ -11,6 +11,7 @@
       admin_password: "password"
     grafana_address: "127.0.0.1"
     grafana_auth:
+      login_maximum_inactive_lifetime_days: 42
       disable_login_form: false
       oauth_auto_login: false
       disable_signout_menu: false
