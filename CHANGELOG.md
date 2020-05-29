@@ -8,6 +8,7 @@
 
 **Merged pull requests:**
 
+- Fix custom auth option not showing up [\#221](https://github.com/cloudalchemy/ansible-grafana/pull/221) ([faxm0dem](https://github.com/faxm0dem))
 - Cleaner and more general handling of auth options [\#219](https://github.com/cloudalchemy/ansible-grafana/pull/219) ([faxm0dem](https://github.com/faxm0dem))
 
 ## [0.17.0](https://galaxy.ansible.com/cloudalchemy/grafana) (2020-03-30)
