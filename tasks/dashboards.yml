@@ -152,7 +152,7 @@
         _dashboards_copied_list: "{{ _dashboards_copied | json_query('results[*].dest') | default([]) }}"
       when: grafana_provisioning_synced
 
-    - name: Remove dashbards not present on deployer machine (synchronize)
+    - name: Remove dashboards not present on deployer machine (synchronize)
       become: true
       file:
         path: "{{ item }}"
