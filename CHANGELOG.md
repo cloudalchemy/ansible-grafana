@@ -5,9 +5,12 @@
 **Fixed bugs:**
 
 - Configuration fails for unlisted options in template for grafana\_auth [\#218](https://github.com/cloudalchemy/ansible-grafana/issues/218)
+- Unable to use with Ubuntu 18.04. [\#191](https://github.com/cloudalchemy/ansible-grafana/issues/191)
 
 **Merged pull requests:**
 
+- Fix "dashbards" typo [\#224](https://github.com/cloudalchemy/ansible-grafana/pull/224) ([hectorj](https://github.com/hectorj))
+- \[REPO SYNC\] Add passlib as a test requirement [\#223](https://github.com/cloudalchemy/ansible-grafana/pull/223) ([cloudalchemybot](https://github.com/cloudalchemybot))
 - add test for custom grafana auth section option [\#222](https://github.com/cloudalchemy/ansible-grafana/pull/222) ([faxm0dem](https://github.com/faxm0dem))
 - Fix custom auth option not showing up [\#221](https://github.com/cloudalchemy/ansible-grafana/pull/221) ([faxm0dem](https://github.com/faxm0dem))
 - Cleaner and more general handling of auth options [\#219](https://github.com/cloudalchemy/ansible-grafana/pull/219) ([faxm0dem](https://github.com/faxm0dem))
