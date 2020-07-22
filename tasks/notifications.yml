@@ -1,23 +1,13 @@
 ---
-- name: Check alert notifications list
-  uri:
-    url: "{{ grafana_api_url }}/api/alert-notifications"
-    user: "{{ grafana_security.admin_user }}"
-    password: "{{ grafana_security.admin_password }}"
-    force_basic_auth: true
-    return_content: true
-  no_log: true
-  register: alert_notifications
-
-- name: Create grafana alert notification channels
-  uri:
-    url: "{{ grafana_api_url }}/api/alert-notifications"
-    user: "{{ grafana_security.admin_user }}"
-    password: "{{ grafana_security.admin_password }}"
-    force_basic_auth: true
-    method: POST
-    body_format: json
-    body: "{{ item | to_json }}"
-  with_items: "{{ grafana_alert_notifications }}"
-  no_log: true
-  when: ((alert_notifications['json'] | selectattr("name", "equalto", item['name'])) | list) | length == 0
+- name: Create/Delete/Update alert notifications channels (provisioning)
+  become: true
+  copy:
+    content: |
+      apiVersion: 1
+      {{ grafana_alert_notifications | to_nice_yaml }}
+    dest: /etc/grafana/provisioning/notifiers/ansible.yml
+    owner: root
+    group: grafana
+    mode: 0640
+  notify: restart grafana
+  when: grafana_use_provisioning

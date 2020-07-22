@@ -73,11 +73,13 @@
     grafana_plugins:
       - raintank-worldping-app
     grafana_alert_notifications:
-      - name: "Email Alert"
-        type: "email"
-        isDefault: true
-        settings:
-          addresses: "example@example.com"
+      notifiers:
+        - name: "Email Alert"
+          type: "email"
+          uid: notifier1
+          is_default: true
+          settings:
+            addresses: "example@example.com"
     grafana_dashboards:
       - dashboard_id: '1860'
         revision_id: '4'
