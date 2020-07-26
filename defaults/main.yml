@@ -211,11 +211,12 @@ grafana_dashboards_dir: "dashboards"
 
 # Alert notification channels to configure
 grafana_alert_notifications: []
-#   - name: "Email Alert"
-#     type: "email"
-#     isDefault: true
-#     settings:
-#       addresses: "example@example.com"
+#  - name: "Email Alert"
+#    type: "email"
+#    uid: channel1
+#    is_default: true
+#    settings:
+#      addresses: "example@example.com"
 
 # Datasources to configure
 grafana_datasources: []
