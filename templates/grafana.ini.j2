@@ -141,6 +141,12 @@ level = {{ grafana_log.level | default('info') }}
 [metrics]
 enabled = true
 interval_seconds = {{ grafana_metrics.interval_seconds | default(10) }}
+{%   if grafana_metrics.basic_auth_username is defined %}
+basic_auth_username = {{ grafana_metrics.basic_auth_username }}
+{%   endif %}
+{%   if grafana_metrics.basic_auth_password is defined %}
+basic_auth_password = """{{ grafana_metrics.basic_auth_password }}"""
+{%   endif %}
 {%   if grafana_metrics.graphite is defined %}
 [metrics.graphite]
 address = {{ grafana_metrics.graphite.address }}
