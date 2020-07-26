@@ -2,6 +2,11 @@
 
 ## [**Next release**](https://galaxy.ansible.com/cloudalchemy/grafana)
 
+**Merged pull requests:**
+
+- enable basic auth in metrics section [\#225](https://github.com/cloudalchemy/ansible-grafana/pull/225) ([kgizdov](https://github.com/kgizdov))
+
+## [0.18.0](https://galaxy.ansible.com/cloudalchemy/grafana) (2020-07-26)
 **Fixed bugs:**
 
 - Configuration fails for unlisted options in template for grafana\_auth [\#218](https://github.com/cloudalchemy/ansible-grafana/issues/218)
@@ -11,7 +16,6 @@
 
 - Provision alert notification channels using config file [\#227](https://github.com/cloudalchemy/ansible-grafana/pull/227) ([hyzth](https://github.com/hyzth))
 - Make sure to create default plugin provisioning directory [\#226](https://github.com/cloudalchemy/ansible-grafana/pull/226) ([hyzth](https://github.com/hyzth))
-- enable basic auth in metrics section [\#225](https://github.com/cloudalchemy/ansible-grafana/pull/225) ([kgizdov](https://github.com/kgizdov))
 - Fix "dashbards" typo [\#224](https://github.com/cloudalchemy/ansible-grafana/pull/224) ([hectorj](https://github.com/hectorj))
 - \[REPO SYNC\] Add passlib as a test requirement [\#223](https://github.com/cloudalchemy/ansible-grafana/pull/223) ([cloudalchemybot](https://github.com/cloudalchemybot))
 - add test for custom grafana auth section option [\#222](https://github.com/cloudalchemy/ansible-grafana/pull/222) ([faxm0dem](https://github.com/faxm0dem))
