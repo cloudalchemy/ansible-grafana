@@ -1,0 +1,7 @@
+---
+- name: Gather variables for package dependencies
+  include_vars: suse/dependencies.yml
+
+- name: Gather variables for package dependencies
+  include_vars: suse/package.yml
+  when: grafana_package is not defined

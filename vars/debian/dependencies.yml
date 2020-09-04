@@ -1,0 +1,7 @@
+---
+grafana_dependencies:
+  - apt-transport-https
+  - adduser
+  - ca-certificates
+  - libfontconfig
+  - gnupg2

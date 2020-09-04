@@ -1,0 +1,7 @@
+---
+- name: Gather variables for package dependencies
+  include_vars: redhat/dependencies.yml
+
+- name: Gather variables for package dependencies
+  include_vars: redhat/package.yml
+  when: grafana_package is not defined
