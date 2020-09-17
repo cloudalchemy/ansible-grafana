@@ -4,7 +4,9 @@
 
 **Merged pull requests:**
 
+- \[REPO SYNC\] add troubleshooting doc skeleton [\#234](https://github.com/cloudalchemy/ansible-grafana/pull/234) ([cloudalchemybot](https://github.com/cloudalchemybot))
 - enable basic auth in metrics section [\#225](https://github.com/cloudalchemy/ansible-grafana/pull/225) ([kgizdov](https://github.com/kgizdov))
+- Add parameter to enable/disable repository management [\#217](https://github.com/cloudalchemy/ansible-grafana/pull/217) ([faxm0dem](https://github.com/faxm0dem))
 
 ## [0.18.0](https://galaxy.ansible.com/cloudalchemy/grafana) (2020-07-26)
 **Fixed bugs:**
@@ -246,7 +248,7 @@
 **Merged pull requests:**
 
 - use tox, ansible 2.6, and allow using remote docker host [\#67](https://github.com/cloudalchemy/ansible-grafana/pull/67) ([paulfantom](https://github.com/paulfantom))
-- Add examples for datasource and dashboard configs [\#66](https://github.com/cloudalchemy/ansible-grafana/pull/66) ([bitfag](https://github.com/bitfag))
+- Add examples for datasource and dashboard configs [\#66](https://github.com/cloudalchemy/ansible-grafana/pull/66) ([bitphage](https://github.com/bitphage))
 
 ## [0.9.0](https://galaxy.ansible.com/cloudalchemy/grafana) (2018-06-16)
 **Closed issues:**
