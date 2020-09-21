@@ -2,6 +2,10 @@
 
 ## [**Next release**](https://galaxy.ansible.com/cloudalchemy/grafana)
 
+**Fixed bugs:**
+
+- grafana\_system\_user and grafana\_system\_group are not used [\#238](https://github.com/cloudalchemy/ansible-grafana/issues/238)
+
 **Merged pull requests:**
 
 - \[REPO SYNC\] add troubleshooting doc skeleton [\#234](https://github.com/cloudalchemy/ansible-grafana/pull/234) ([cloudalchemybot](https://github.com/cloudalchemybot))
