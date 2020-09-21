@@ -24,8 +24,6 @@ All variables which can be overridden are stored in [defaults/main.yml](defaults
 | -------------- | ------------- | -----------------------------------|
 | `grafana_use_provisioning` | true | Use Grafana provisioning capability when possible (**grafana_version=latest will assume >= 5.0**). |
 | `grafana_provisioning_synced` | false | Ensure no previously provisioned dashboards are kept if not referenced anymore. |
-| `grafana_system_user` | grafana | Grafana server system user |
-| `grafana_system_group` | grafana | Grafana server system group |
 | `grafana_version` | latest | Grafana package version |
 | `grafana_yum_repo_template` | etc/yum.repos.d/grafana.repo.j2 | Yum template to use |
 | `grafana_manage_repo` | true | Manage package repo (or don't) |
