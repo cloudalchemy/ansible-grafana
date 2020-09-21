@@ -137,8 +137,8 @@ mode = {{ grafana_log.mode | default('console, file') }}
 level = {{ grafana_log.level | default('info') }}
 
 # Metrics
-{% if grafana_metrics != {} %}
 [metrics]
+{% if grafana_metrics != {} %}
 enabled = true
 interval_seconds = {{ grafana_metrics.interval_seconds | default(10) }}
 {%   if grafana_metrics.basic_auth_username is defined %}
@@ -152,6 +152,8 @@ basic_auth_password = """{{ grafana_metrics.basic_auth_password }}"""
 address = {{ grafana_metrics.graphite.address }}
 prefix = {{ grafana_metrics.graphite.prefix }}
 {%   endif %}
+{% else %}
+enabled = false
 {% endif %}
 
 # Tracing
