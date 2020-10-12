@@ -20,6 +20,7 @@
     aws_secret_key: "{{ item.aws_secret_key | default(omit) }}"
     aws_credentials_profile: "{{ item.aws_credentials_profile | default(omit) }}"
     aws_custom_metrics_namespaces: "{{ item.aws_custom_metrics_namespaces | default(omit) }}"
+    sslmode: "{{ item.sslmode | default(omit) }}"
   with_items: "{{ grafana_datasources }}"
   when: not grafana_use_provisioning
 
