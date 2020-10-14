@@ -9,7 +9,7 @@ grafana_use_provisioning: true
 # Should the provisioning be kept synced. If true, previous provisioned objects will be removed if not referenced anymore.
 grafana_provisioning_synced: false
 
-# If true, allow change provisioning dashboard
+# If true, allow change provisioning dashboard. Available from v5.0
 grafana_allow_change_provisioning_dash: false
 
 grafana_instance: "{{ ansible_fqdn | default(ansible_host) | default(inventory_hostname) }}"
