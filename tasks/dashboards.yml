@@ -117,6 +117,7 @@
            - name: 'default'
              orgId: 1
              folder: ''
+             allowUiUpdates: {{ grafana_allow_change_provisioning_dash }}
              type: file
              options:
                path: "{{ grafana_data_dir }}/dashboards"
