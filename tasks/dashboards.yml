@@ -118,6 +118,7 @@
              orgId: 1
              folder: ''
              type: file
+             allowUiUpdates: "{{ grafana_allow_dash_update }}"
              options:
                path: "{{ grafana_data_dir }}/dashboards"
         backup: false
