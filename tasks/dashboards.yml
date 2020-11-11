@@ -81,15 +81,18 @@
     body_format: json
     body: >
       {
-        "dashboard": {{ lookup("file", item) }},
+        "dashboard": {{ lookup("file", item.src) }},
         "overwrite": true,
         "message": "Updated by ansible"
       }
   no_log: true
-  with_fileglob:
-    - "{{ _tmp_dashboards.path }}/*"
-    - "{{ grafana_dashboards_dir }}/*.json"
-  when: not grafana_use_provisioning
+  with_filetree:
+    - "{{ _tmp_dashboards.path }}/"
+    - "{{ grafana_dashboards_dir }}/"
+  when:
+    - not grafana_use_provisioning
+    - item.state == 'file'
+    - item.path | splitext | last == '.json'
 
 # TODO: uncomment this when ansible 2.7 will be min supported version
 # - name: import grafana dashboards
@@ -120,6 +123,7 @@
              type: file
              options:
                path: "{{ grafana_data_dir }}/dashboards"
+               foldersFromFilesStructure: true
         backup: false
         owner: root
         group: grafana
@@ -130,21 +134,44 @@
       find:
         paths: "{{ grafana_data_dir }}/dashboards"
         hidden: true
+        recurse: true
         patterns:
           - "*.json"
       register: _dashboards_present
       when: grafana_provisioning_synced
 
+    - name: Create directories inside dashboards path
+      file:
+        path: "{{ grafana_data_dir }}/dashboards/{{ item.path }}"
+        state: directory
+        mode: '0750'
+        owner: grafana
+        group: grafana
+      with_filetree: "{{ grafana_dashboards_dir }}/"
+      when: item.state == 'directory'
+
+    - name: Define regex to get file relative path based on dashboard source path
+      set_fact: regex_dashboard_relative_path="^.*/{{ grafana_dashboards_dir }}/(.*)$"
+
     - name: Import grafana dashboards
       become: true
       copy:
-        src: "{{ item }}"
-        dest: "{{ grafana_data_dir }}/dashboards/{{ item | basename }}"
-      with_fileglob:
-        - "{{ _tmp_dashboards.path }}/*"
-        - "{{ grafana_dashboards_dir }}/*.json"
+        src: "{{ item.src }}"
+        dest: "{{ grafana_data_dir }}/dashboards/{{ item.src | regex_replace(regex_dashboard_relative_path, '\\1')  }}"
+        mode: '0640'
+        owner: grafana
+        group: grafana
+      with_filetree:
+        - "{{ _tmp_dashboards.path }}/"
+        - "{{ grafana_dashboards_dir }}/"
       register: _dashboards_copied
+      when:
+        - item.state == 'file'
+        - item.path | splitext | last == '.json'
       notify: "provisioned dashboards changed"
+
+    - debug:
+        var: "{{ _dashboards_copied }}"
 
     - name: Get dashboard lists
       set_fact:
