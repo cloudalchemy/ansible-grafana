@@ -120,6 +120,7 @@
              type: file
              options:
                path: "{{ grafana_data_dir }}/dashboards"
+               foldersFromFilesStructure: "{{ grafana_folders_from_files_structure }}"
         backup: false
         owner: root
         group: grafana
