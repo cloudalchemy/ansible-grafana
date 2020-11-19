@@ -109,18 +109,9 @@
   block:
     - name: Create/Update dashboards file (provisioning)
       become: true
-      copy:
-        dest: "/etc/grafana/provisioning/dashboards/ansible.yml"
-        content: |
-          apiVersion: 1
-          providers:
-           - name: 'default'
-             orgId: 1
-             folder: ''
-             type: file
-             options:
-               path: "{{ grafana_data_dir }}/dashboards"
-        backup: false
+      template:
+        src: provisioning-dashboards.yml.j2
+        dest: /etc/grafana/provisioning/dashboards/ansible.yml
         owner: root
         group: grafana
         mode: 0640
