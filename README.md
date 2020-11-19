@@ -53,6 +53,7 @@ All variables which can be overridden are stored in [defaults/main.yml](defaults
 | `grafana_snapshots` | {} | [snapshots](http://docs.grafana.org/installation/configuration/#snapshots) configuration section |
 | `grafana_image_storage` | {} | [image storage](http://docs.grafana.org/installation/configuration/#external-image-storage) configuration section |
 | `grafana_dashboards` | [] | List of dashboards which should be imported |
+| `grafana_folders_from_files_structure` | false | Should dashboard provisioner follow file directory structure and create folders |
 | `grafana_dashboards_dir` | "dashboards" | Path to a local directory containing dashboards files in `json` format |
 | `grafana_datasources` | [] | List of datasources which should be configured |
 | `grafana_environment` | {} | Optional Environment param for Grafana installation, useful ie for setting http_proxy |
