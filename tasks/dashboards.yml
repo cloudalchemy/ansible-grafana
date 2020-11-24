@@ -118,6 +118,7 @@
              orgId: 1
              folder: ''
              type: file
+             updateIntervalSeconds: "{{ grafana_update_interval_seconds }}"
              options:
                path: "{{ grafana_data_dir }}/dashboards"
                foldersFromFilesStructure: "{{ grafana_folders_from_files_structure }}"
