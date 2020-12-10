@@ -209,6 +209,8 @@ grafana_dashboards: []
 #    datasource: 'Prometheus'
 
 grafana_dashboards_dir: "dashboards"
+grafana_folders_from_files_structure: false
+grafana_update_interval_seconds: 60
 
 # Alert notification channels to configure
 grafana_alert_notifications: []
