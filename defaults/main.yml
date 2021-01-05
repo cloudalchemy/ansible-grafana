@@ -252,3 +252,7 @@ grafana_environment: {}
 grafana_panels: {}
 #  disable_sanitize_html: false
 #  enable_alpha: false
+
+# Explore configurations
+grafana_explore: {}
+#  enabled: false
