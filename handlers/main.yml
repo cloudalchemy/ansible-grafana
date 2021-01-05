@@ -3,9 +3,10 @@
   become: true
   service:
     name: grafana-server
-    state: restarted
+    state: "{{ grafana_service_handler_state }}"
   tags:
     - grafana_run
+  when: grafana_service_state == 'started'
 
 - name: Set privileges on provisioned dashboards
   become: true

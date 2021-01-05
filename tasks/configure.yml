@@ -82,6 +82,6 @@
 - name: Enable and start Grafana systemd unit
   systemd:
     name: grafana-server
-    enabled: true
-    state: started
+    enabled: "{{ grafana_service_enabled }}"
+    state: "{{ grafana_service_state }}"
     daemon_reload: true
