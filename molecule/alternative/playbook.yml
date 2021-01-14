@@ -6,6 +6,7 @@
   vars:
     grafana_version: 6.2.5
     grafana_yum_repo_template: alternative.grafana.yum.repo.j2
+    grafana_apt_update_cache: false
     grafana_security:
       admin_user: admin
       admin_password: "password"

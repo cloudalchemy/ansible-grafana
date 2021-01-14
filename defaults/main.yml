@@ -2,6 +2,8 @@
 grafana_version: latest
 grafana_yum_repo_template: etc/yum.repos.d/grafana.repo.j2
 grafana_manage_repo: true
+grafana_apt_update_cache: true
+grafana_apt_cache_valid_time: 0
 
 # Should we use the provisioning capability when possible (provisioning require grafana >= 5.0)
 grafana_use_provisioning: true
