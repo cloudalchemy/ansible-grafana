@@ -3,7 +3,8 @@
 - block:
     - name: Update apt cache
       apt:
-        update_cache: true
+        update_cache: "{{ grafana_apt_update_cache }}"
+        cache_valid_time: "{{ grafana_apt_cache_valid_time }}"
       register: _pre_update_apt_cache
       until: _pre_update_apt_cache is succeeded
       when:
