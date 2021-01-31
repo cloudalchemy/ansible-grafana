@@ -141,6 +141,7 @@ grafana_session: {}
 
 grafana_analytics: {}
 #  reporting_enabled: true
+#  check_for_updates: true
 #  google_analytics_ua_id: ""
 
 # Set this for mail notifications
