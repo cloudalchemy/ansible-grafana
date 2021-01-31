@@ -92,6 +92,7 @@ enabled = True
 # Analytics
 [analytics]
 reporting_enabled = "{{ grafana_analytics.reporting_enabled | default(True) }}"
+check_for_updates = "{{ grafana_analytics.check_for_updates | default(True) }}"
 {% if grafana_analytics.google_analytics_ua_id is defined and grafana_analytics.google_analytics_ua_id != '' %}
 google_analytics_ua_id = "{{ grafana_analytics.google_analytics_ua_id }}"
 {% endif %}
