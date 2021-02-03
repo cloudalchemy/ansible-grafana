@@ -10,15 +10,10 @@
       changed_when: false
       check_mode: false
 
-    # Use curl to solve issue #77
-    - name: download grafana dashboard from grafana.net to local directory
-      command: >
-        curl --fail --compressed
-        https://grafana.com/api/dashboards/{{ item.dashboard_id }}/revisions/{{ item.revision_id }}/download
-        -o {{ _tmp_dashboards.path }}/{{ item.dashboard_id }}.json
-      args:
-        creates: "{{ _tmp_dashboards.path }}/{{ item.dashboard_id }}.json"
-        warn: false
+    - name: Download grafana dashboard from grafana.com to local directory
+      get_url:
+        url: "https://grafana.com/api/dashboards/{{ item.dashboard_id }}/revisions/{{ item.revision_id }}/download"
+        dest: "{{ _tmp_dashboards.path }}/{{ item.dashboard_id }}.json"
       register: _download_dashboards
       until: _download_dashboards is succeeded
       retries: 5
