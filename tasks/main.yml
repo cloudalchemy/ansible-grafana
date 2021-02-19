@@ -102,7 +102,7 @@
     - grafana_run
 
 - include: dashboards.yml
-  when: grafana_dashboards | length > 0 or found_dashboards | length > 0
+  when: grafana_dashboards | length > 0 or grafana_dashboards_external | length > 0 or found_dashboards | length > 0
   tags:
     - grafana_configure
     - grafana_dashboards
