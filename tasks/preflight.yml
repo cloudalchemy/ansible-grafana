@@ -9,7 +9,9 @@
 - name: Fail when datasources aren't configured when dashboards are set to be installed
   fail:
     msg: "You need to specify datasources for dashboards!!!"
-  when: grafana_dashboards != [] and grafana_datasources == []
+  when:
+    - grafana_dashboards != [] and grafana_datasources == [] or
+      grafana_dashboards_external != [] and grafana_datasources == []
 
 - name: Fail when grafana admin user isn't set
   fail:

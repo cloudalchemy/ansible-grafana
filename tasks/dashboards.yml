@@ -30,6 +30,19 @@
       tags:
         - skip_ansible_lint
 
+    - name: download grafana dashboard from external url to local directory
+      get_url:
+        url: "{{ item.url }}"
+        dest: "{{ _tmp_dashboards.path }}/{{ item.url | hash('sha256') }}.json"
+      register: _download_dashboards
+      until: _download_dashboards is succeeded
+      retries: 5
+      delay: 2
+      with_items: "{{ grafana_dashboards_external }}"
+      when: grafana_dashboards_external | length > 0
+      changed_when: false
+      check_mode: false
+
     # As noted in [1] an exported dashboard replaces the exporter's datasource
     # name with a representative name, something like 'DS_GRAPHITE'. The name
     # is different for each datasource plugin, but always begins with 'DS_'.
@@ -62,7 +75,7 @@
     # This regex can be tested and understood better by looking at the
     # matches and non-matches in https://regex101.com/r/f4Gkvg/6
 
-    - name: Set the correct data source name in the dashboard
+    - name: Set the correct data source name in the dashboard (grafana.com)
       replace:
         dest: "{{ _tmp_dashboards.path }}/{{ item.dashboard_id }}.json"
         regexp: '"(?:\${)?DS_[A-Z0-9_-]+(?:})?"'
@@ -70,6 +83,16 @@
       changed_when: false
       with_items: "{{ grafana_dashboards }}"
       when: grafana_dashboards | length > 0
+
+
+    - name: Set the correct data source name in the dashboard (external)
+      replace:
+        dest: "{{ _tmp_dashboards.path }}/{{ item.url | hash('sha256') }}.json"
+        regexp: '"(?:\${)?DS_[A-Z0-9_-]+(?:})?"'
+        replace: '"{{ item.datasource }}"'
+      changed_when: false
+      with_items: "{{ grafana_dashboards_external }}"
+      when: grafana_dashboards_external | length > 0
 
 - name: Import grafana dashboards through API
   uri:
