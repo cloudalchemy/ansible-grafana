@@ -87,6 +87,9 @@
       - dashboard_id: '358'
         revision_id: '1'
         datasource: 'Prometheus'
+    grafana_dashboards_external:
+      - url: 'https://raw.githubusercontent.com/grafana/grafana/9ca12a7663d2fda709c15e18b3c381e3fccfc85e/public/app/plugins/datasource/prometheus/dashboards/grafana_stats.json'
+        datasource: 'Prometheus'
     grafana_datasources:
       - name: "Prometheus"
         type: "prometheus"

@@ -208,6 +208,11 @@ grafana_dashboards: []
 #    revision_id: '1'
 #    datasource: 'Prometheus'
 
+# Dashboards from external URLs
+grafana_dashboards_external: []
+#  - url: 'https://example.com/dashboard.json'
+#    datasource: 'Prometheus'
+
 grafana_dashboards_dir: "dashboards"
 
 # Alert notification channels to configure
