@@ -11,7 +11,7 @@ jobs:
     executor: python
     steps:
       - checkout
-      - run: pip install ansible-lint yamllint flake8
+      - run: pip install ansible-lint "ansible>=2.10,<2.11" yamllint flake8
       - run: ansible-lint
       - run: yamllint .
       - run: flake8
