@@ -28,6 +28,7 @@ All variables which can be overridden are stored in [defaults/main.yml](defaults
 | `grafana_yum_repo_template` | etc/yum.repos.d/grafana.repo.j2 | Yum template to use |
 | `grafana_manage_repo` | true | Manage package repo (or don't) |
 | `grafana_instance` | {{ ansible_fqdn \| default(ansible_host) \| default(inventory_hostname) }} | Grafana instance name |
+| `grafana_configuration_template` | templates/grafana.ini.j2 | Path within ansible, to the grafana.ini template |
 | `grafana_logs_dir` | /var/log/grafana | Path to logs directory |
 | `grafana_data_dir` | /var/lib/grafana | Path to database directory |
 | `grafana_address` | 0.0.0.0 | Address on which grafana listens |

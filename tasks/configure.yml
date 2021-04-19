@@ -16,7 +16,7 @@
 
 - name: Create grafana main configuration file
   template:
-    src: grafana.ini.j2
+    src: "{{ grafana_configuration_template }}"
     dest: /etc/grafana/grafana.ini
     owner: root
     group: grafana

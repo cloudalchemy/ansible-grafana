@@ -11,6 +11,8 @@ grafana_provisioning_synced: false
 
 grafana_instance: "{{ ansible_fqdn | default(ansible_host) | default(inventory_hostname) }}"
 
+grafana_configuration_template: templates/grafana.ini.j2
+
 grafana_logs_dir: "/var/log/grafana"
 grafana_data_dir: "/var/lib/grafana"
 
