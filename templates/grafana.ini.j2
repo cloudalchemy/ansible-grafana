@@ -135,6 +135,14 @@ enabled = True
 [log]
 mode = {{ grafana_log.mode | default('console, file') }}
 level = {{ grafana_log.level | default('info') }}
+{%  for section, options in grafana_log.items() %}
+{%    if options is mapping %}
+[log.{{ section }}]
+{%      for k, v in options.items() %}
+{{ k }} = {{ v }}
+{%      endfor %}
+{%    endif %}
+{%  endfor %}
 
 # Metrics
 [metrics]
