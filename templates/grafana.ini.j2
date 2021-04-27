@@ -75,7 +75,10 @@ enabled = True
 {%      for k, v in options.items() %}
 {{ k }} = {{ v }}
 {%      endfor %}
-{%    else %}
+{%    elif section != 'disable_login_form' and
+           section != 'oauth_auto_login' and 
+           section != 'disable_signout_menu' and 
+           section != 'signout_redirect_url' %}
 {{ section }} = {{ options }}
 {%    endif %}
 {%  endfor %}
