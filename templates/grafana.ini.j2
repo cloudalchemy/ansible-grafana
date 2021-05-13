@@ -135,6 +135,9 @@ enabled = True
 [log]
 mode = {{ grafana_log.mode | default('console, file') }}
 level = {{ grafana_log.level | default('info') }}
+{% if grafana_log.filters is defined %}
+filters = {{ grafana_log.filters }}
+{%   endif %}
 
 # Metrics
 [metrics]
