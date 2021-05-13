@@ -11,13 +11,13 @@ verbose_logging = {{ 'true' if grafana_ldap.verbose_logging else 'false' }}
 {%   elif v in [True, False] %}
 {{ k }} = {{ 'true' if v else 'false' }}
 {%   else %}
-{{ k }} = {{ v | to_nice_json }}
+{{ k }} = {{ v | to_nice_json(ensure_ascii=False) }}
 {%   endif %}
 {% endfor %}
 
 [servers.attributes]
 {% for k,v in grafana_ldap.servers.attributes.items() %}
-{{ k }} = {{ v | to_nice_json }}
+{{ k }} = {{ v | to_nice_json(ensure_ascii=False) }}
 {% endfor %}
 
 {% for org in grafana_ldap.group_mappings %}
