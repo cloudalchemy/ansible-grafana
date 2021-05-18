@@ -234,6 +234,9 @@ grafana_datasources: []
 #      tlsAuthWithCACert: false
 #      tlsSkipVerify: true
 
+# Datasources to delete 
+deleteDatasources: []
+
 # API keys to configure
 grafana_api_keys: []
 #  - name: "admin"

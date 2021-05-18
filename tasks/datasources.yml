@@ -29,7 +29,8 @@
     dest: "/etc/grafana/provisioning/datasources/ansible.yml"
     content: |
       apiVersion: 1
-      deleteDatasources: []
+      deleteDatasources:
+      {{ grafana_deleteDatasources | to_nice_yaml }}
       datasources:
       {{ grafana_datasources | to_nice_yaml }}
     backup: false

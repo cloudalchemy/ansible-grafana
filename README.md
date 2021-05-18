@@ -55,6 +55,7 @@ All variables which can be overridden are stored in [defaults/main.yml](defaults
 | `grafana_dashboards` | [] | List of dashboards which should be imported |
 | `grafana_dashboards_dir` | "dashboards" | Path to a local directory containing dashboards files in `json` format |
 | `grafana_datasources` | [] | List of datasources which should be configured |
+| `grafana_deleteDatasources` | [] | List of previously provisioned datasources which should be deleted |
 | `grafana_environment` | {} | Optional Environment param for Grafana installation, useful ie for setting http_proxy |
 | `grafana_plugins` | [] |  List of Grafana plugins which should be installed |
 | `grafana_alert_notifications` | [] | List of alert notification channels to be created, updated, or deleted |
