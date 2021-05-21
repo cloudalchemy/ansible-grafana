@@ -252,3 +252,12 @@ grafana_environment: {}
 grafana_panels: {}
 #  disable_sanitize_html: false
 #  enable_alpha: false
+
+grafana_date_formats: {}
+#  full_date: "MMM Do, YYYY @ hh:mm:ss a"
+#  interval_second: "hh:mm:ss a"
+#  interval_minute: "hh:mm a"
+#  interval_hour: "MMM DD hh:mm a"
+#  interval_day: "MMM DD"
+#  interval_month: "YYYY-MM"
+#  interval_year: "YYYY"
