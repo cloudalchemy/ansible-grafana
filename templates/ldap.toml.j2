@@ -20,6 +20,7 @@ verbose_logging = {{ 'true' if grafana_ldap.verbose_logging else 'false' }}
 {{ k }} = {{ v | to_nice_json }}
 {% endfor %}
 
+{% if 'group_mappings' in grafana_ldap %}
 {% for org in grafana_ldap.group_mappings %}
 {%   if 'name' in org %}
 # {{ org.name }}
@@ -37,3 +38,4 @@ org_id = {{ org.id }}
 
 {%   endfor %}
 {% endfor %}
+{% endif %}

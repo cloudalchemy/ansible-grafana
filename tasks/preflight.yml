@@ -61,7 +61,7 @@
     msg: "You need to configure grafana_ldap.servers and grafana_ldap.group_mappings when grafana_auth.ldap is set"
   when:
     - "'ldap' in grafana_auth"
-    - grafana_ldap is not defined or ('servers' not in grafana_ldap or 'group_mappings' not in grafana_ldap)
+    - grafana_ldap is not defined or 'servers' not in grafana_ldap
 
 - name: Force grafana_use_provisioning to false if grafana_version is < 5.0 ( grafana_version is set to '{{ grafana_version }}' )
   set_fact:
