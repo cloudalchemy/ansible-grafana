@@ -18,3 +18,9 @@
   delay: 2
   notify:
     - restart grafana
+
+- name: Install dependencies for image-renderer plugin
+  package:
+    name: "{{ grafana_plugin_image_renderer_dependencies }}"
+    state: present
+  when: "grafana-image-renderer in vars[grafana_plugins]"
