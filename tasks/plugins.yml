@@ -23,4 +23,4 @@
   package:
     name: "{{ grafana_plugin_image_renderer_dependencies }}"
     state: present
-  when: "grafana-image-renderer in vars[grafana_plugins]"
+  when: '"grafana-image-renderer" in grafana_plugins'
