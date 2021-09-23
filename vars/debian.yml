@@ -6,3 +6,4 @@ grafana_dependencies:
   - ca-certificates
   - libfontconfig
   - gnupg2
+  - curl
