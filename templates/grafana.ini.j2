@@ -195,3 +195,11 @@ provider = {{ grafana_image_storage.provider }}
 {{ k }} = {{ v }}
 {%   endfor %}
 {% endif %}
+
+# Date formats
+{% if grafana_date_formats != {} %}
+[date_formats]
+{%   for k,v in grafana_date_formats.items() %}
+{{ k }} = {{ v }}
+{%   endfor %}
+{% endif %}
