@@ -18,3 +18,4 @@
   delay: 2
   notify:
     - restart grafana
+  environment: "{{ grafana_environment }}"
