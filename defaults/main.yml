@@ -252,3 +252,5 @@ grafana_environment: {}
 grafana_panels: {}
 #  disable_sanitize_html: false
 #  enable_alpha: false
+grafana_feature_toggles: []
+#  - tempoSearch
