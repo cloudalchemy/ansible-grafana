@@ -63,7 +63,7 @@ Datasource example:
 
 ```yaml
 grafana_datasources:
-  - name: prometheus
+  - name: Prometheus
     type: prometheus
     access: proxy
     url: 'http://{{ prometheus_web_listen_address }}'
@@ -76,7 +76,7 @@ Dashboard example:
 grafana_dashboards:
   - dashboard_id: 111
     revision_id: 1
-    datasource: prometheus
+    datasource: Prometheus
 ```
 
 Alert notification channel example:
