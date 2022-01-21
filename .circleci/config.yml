@@ -5,6 +5,7 @@ executors:
   python:
     docker:
       - image: cimg/python:3.10
+    resource_class: large
   publisher:
     docker:
       - image: quay.io/cloudalchemy/publisher:latest
