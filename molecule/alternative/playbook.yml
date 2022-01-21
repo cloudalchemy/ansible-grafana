@@ -2,7 +2,7 @@
 - hosts: all
   any_errors_fatal: true
   roles:
-    - ansible-grafana
+    - cloudalchemy.grafana
   vars:
     grafana_version: 6.2.5
     grafana_yum_repo_template: alternative.grafana.yum.repo.j2

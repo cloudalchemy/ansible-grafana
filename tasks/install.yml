@@ -24,7 +24,7 @@
     state: absent
   register: _old_grafana_pkgs
 
-- name: Clean apt cache
+- name: Clean apt cache  # noqa 503
   command: apt clean
   when:
     - _old_grafana_pkgs is changed
