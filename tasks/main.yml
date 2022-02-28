@@ -14,7 +14,7 @@
     - grafana_notifications
     - grafana_dashboards
 
-- include: preflight.yml
+- import_tasks: preflight.yml
   tags:
     - grafana_install
     - grafana_configure
@@ -22,17 +22,17 @@
     - grafana_notifications
     - grafana_dashboards
 
-- include: install.yml
+- import_tasks: install.yml
   become: true
   tags:
     - grafana_install
 
-- include: configure.yml
+- import_tasks: configure.yml
   become: true
   tags:
     - grafana_configure
 
-- include: plugins.yml
+- import_tasks: plugins.yml
   when: grafana_plugins != []
   tags:
     - grafana_configure
@@ -72,20 +72,20 @@
     - grafana_dashboards
     - grafana_run
 
-- include: api_keys.yml
+- import_tasks: api_keys.yml
   when: grafana_api_keys | length > 0
   tags:
     - grafana_configure
     - grafana_run
 
-- include: datasources.yml
+- import_tasks: datasources.yml
   when: grafana_datasources != []
   tags:
     - grafana_configure
     - grafana_datasources
     - grafana_run
 
-- include: notifications.yml
+- import_tasks: notifications.yml
   when: grafana_alert_notifications | length > 0
   tags:
     - grafana_configure
@@ -101,7 +101,7 @@
     - grafana_dashboards
     - grafana_run
 
-- include: dashboards.yml
+- import_tasks: dashboards.yml
   when: grafana_dashboards | length > 0 or found_dashboards | length > 0
   tags:
     - grafana_configure
