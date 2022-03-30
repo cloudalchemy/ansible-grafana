@@ -4,6 +4,7 @@
   copy:
     content: |
       apiVersion: 1
+      notifiers:
       {{ grafana_alert_notifications | to_nice_yaml }}
     dest: /etc/grafana/provisioning/notifiers/ansible.yml
     owner: root
