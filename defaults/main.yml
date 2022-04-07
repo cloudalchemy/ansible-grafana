@@ -150,6 +150,11 @@ grafana_smtp: {}
 #  password:
 #  from_address:
 
+# Grafana dashboards configuration
+grafana_dashboards_config:
+#  versions_to_keep: '20'
+#  min_refresh_interval: '5s'
+
 # Enable grafana alerting mechanism
 grafana_alerting:
   execute_alerts: true

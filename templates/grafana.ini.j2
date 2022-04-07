@@ -98,7 +98,8 @@ google_analytics_ua_id = "{{ grafana_analytics.google_analytics_ua_id }}"
 
 # Dashboards
 [dashboards]
-versions_to_keep = 20
+versions_to_keep = "{{ grafana_dashboards_config.versions_to_keep | default('20') }}"
+min_refresh_interval = "{{ grafana_dashboards_config.min_refresh_interval | default('5s') }}"
 
 [dashboards.json]
 enabled = true

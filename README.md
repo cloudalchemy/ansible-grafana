@@ -46,6 +46,7 @@ All variables which can be overridden are stored in [defaults/main.yml](defaults
 | `grafana_session` | {} | [session](http://docs.grafana.org/installation/configuration/#session) management configuration section |
 | `grafana_analytics` | {} | Google [analytics](http://docs.grafana.org/installation/configuration/#analytics) configuration section |
 | `grafana_smtp` | {} | [smtp](http://docs.grafana.org/installation/configuration/#smtp) configuration section |
+| `grafana_dashboards_config` | {} | [dashboards](https://grafana.com/docs/grafana/latest/administration/configuration/#dashboards) configuration section
 | `grafana_alerting` | {} | [alerting](http://docs.grafana.org/installation/configuration/#alerting) configuration section |
 | `grafana_log` | {} | [log](http://docs.grafana.org/installation/configuration/#log) configuration section |
 | `grafana_metrics` | {} | [metrics](http://docs.grafana.org/installation/configuration/#metrics) configuration section |
