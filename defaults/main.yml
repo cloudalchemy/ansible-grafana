@@ -190,6 +190,18 @@ grafana_image_storage: {}
 #  bucket:
 #  path:
 
+# Date format
+grafana_date_formats: {}
+#  full_date: "DD-MM-YYYY HH:mm:ss"
+#  interval_second: "HH:mm:ss"
+#  interval_minute: "HH:mm"
+#  interval_hour: "DD/MM HH:mm"
+#  interval_day: "DD/MM"
+#  interval_month: "MM-YYYY"
+#  interval_year: "YYYY"
+#
+#  use_browser_locale: true
+#  default_timezone: "browser"
 
 #######
 # Plugins from https://grafana.com/plugins

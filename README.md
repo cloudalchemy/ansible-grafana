@@ -52,6 +52,7 @@ All variables which can be overridden are stored in [defaults/main.yml](defaults
 | `grafana_tracing` | {} | [tracing](http://docs.grafana.org/installation/configuration/#tracing) configuration section |
 | `grafana_snapshots` | {} | [snapshots](http://docs.grafana.org/installation/configuration/#snapshots) configuration section |
 | `grafana_image_storage` | {} | [image storage](http://docs.grafana.org/installation/configuration/#external-image-storage) configuration section |
+| `grafana_date_formats` | {} | [date formats](http://docs.grafana.org/installation/configuration/#date_formats) configuration section |
 | `grafana_dashboards` | [] | List of dashboards which should be imported |
 | `grafana_dashboards_dir` | "dashboards" | Path to a local directory containing dashboards files in `json` format |
 | `grafana_datasources` | [] | List of datasources which should be configured |
