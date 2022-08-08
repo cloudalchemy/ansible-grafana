@@ -46,6 +46,7 @@
         url: "https://packages.grafana.com/gpg.key"
         state: present
         validate_certs: false
+        keyring: /usr/share/keyrings/grafana.gpg
       register: _add_apt_key
       until: _add_apt_key is succeeded
       retries: 5
@@ -53,7 +54,7 @@
 
     - name: Add Grafana repository [Debian/Ubuntu]
       apt_repository:
-        repo: deb https://packages.grafana.com/oss/deb stable main
+        repo: deb [signed-by=/usr/share/keyrings/grafana.gpg] https://packages.grafana.com/oss/deb stable main
         state: present
         update_cache: true
       register: _update_apt_cache
