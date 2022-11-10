@@ -8,6 +8,8 @@
         update_cache: true
       when:
         - ansible_pkg_mgr == "apt"
+      retries: 5
+      delay: 2
 
     - name: Update apt cache
       apt:
