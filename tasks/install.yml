@@ -53,7 +53,7 @@
 
     - name: Add Grafana repository [Debian/Ubuntu]
       apt_repository:
-        repo: deb https://packages.grafana.com/oss/deb stable main
+        repo: deb https://apt.grafana.com stable main
         state: present
         update_cache: true
       register: _update_apt_cache
