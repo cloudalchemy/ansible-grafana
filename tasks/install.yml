@@ -1,6 +1,14 @@
 ---
 
 - block:
+    - name: Clean legacy Grafana repository [Debian/Ubuntu]
+      apt_repository:
+        repo: deb https://packages.grafana.com/oss/deb stable main
+        state: absent
+        update_cache: true
+      when:
+        - ansible_pkg_mgr == "apt"
+
     - name: Update apt cache
       apt:
         update_cache: true
