@@ -43,7 +43,7 @@
 - block:
     - name: Import Grafana GPG signing key [Debian/Ubuntu]
       apt_key:
-        url: "https://packages.grafana.com/gpg.key"
+        url: "{{ grafana_packages_base_url }}/gpg.key"
         state: present
         validate_certs: false
       register: _add_apt_key
@@ -53,7 +53,7 @@
 
     - name: Add Grafana repository [Debian/Ubuntu]
       apt_repository:
-        repo: deb https://packages.grafana.com/oss/deb stable main
+        repo: "deb {{ grafana_packages_base_url }}/oss/deb stable main"
         state: present
         update_cache: true
       register: _update_apt_cache
