@@ -29,7 +29,10 @@
     dest: "/etc/grafana/provisioning/datasources/ansible.yml"
     content: |
       apiVersion: 1
-      deleteDatasources: []
+      {% if grafana_delete_datasources is defined -%}
+      deleteDatasources: 
+      {{ grafana_delete_datasources | to_nice_yaml }}
+      {% endif -%}
       datasources:
       {{ grafana_datasources | to_nice_yaml }}
     backup: false

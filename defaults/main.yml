@@ -210,6 +210,9 @@ grafana_dashboards: []
 
 grafana_dashboards_dir: "dashboards"
 
+# Allow edit dashboard by UI
+grafana_dashboards_allow_ui_updates: false
+
 # Alert notification channels to configure
 grafana_alert_notifications: []
 #  - name: "Email Alert"
