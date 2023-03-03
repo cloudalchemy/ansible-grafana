@@ -51,6 +51,7 @@
   wait_for:
     host: "{{ grafana_address }}"
     port: "{{ grafana_port }}"
+    timeout: "{{ grafana_timeout }}"
   when: grafana_server.protocol is undefined or grafana_server.protocol in ['http', 'https']
   tags:
     - grafana_install
