@@ -4,7 +4,7 @@
   roles:
     - ansible-grafana
   vars:
-    grafana_version: 6.2.5
+    grafana_version: 9.4.7
     grafana_yum_repo_template: alternative.grafana.yum.repo.j2
     grafana_security:
       admin_user: admin
@@ -100,6 +100,14 @@
           tlsAuth: false
           tlsAuthWithCACert: false
           tlsSkipVerify: true
+    grafana_alerting_provisioning:
+      contactPoints:
+        - name: "Email Alert"
+          receivers:
+            - uid: notifier1
+              type: email
+              settings:
+                addresses: "example@example.com"
     grafana_log:
       mode: syslog
       level: warn

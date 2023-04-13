@@ -1,5 +1,6 @@
 ---
 galaxy_info:
+  role_name: cloudalchemy.grafana
   author: Pawel Krupa
   description: Grafana - platform for analytics and monitoring
   license: MIT
