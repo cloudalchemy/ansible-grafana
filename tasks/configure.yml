@@ -13,6 +13,7 @@
     - "/etc/grafana/provisioning/dashboards"
     - "/etc/grafana/provisioning/notifiers"
     - "/etc/grafana/provisioning/plugins"
+    - "/etc/grafana/provisioning/alerting"
 
 - name: Create grafana main configuration file
   template:

@@ -92,6 +92,13 @@
     - grafana_notifications
     - grafana_run
 
+- include: alerting.yml
+  when: grafana_alerting_provisioning | length > 0
+  tags:
+    - grafana_configure
+    - grafana_alerting
+    - grafana_run
+
 - name: "Check if there are any dashboards in local {{ grafana_dashboards_dir }}"
   become: false
   set_fact:

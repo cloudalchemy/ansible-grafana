@@ -1,0 +1,13 @@
+---
+- name: Create/Delete/Update Grafana alerting (provisioning)
+  become: true
+  copy:
+    content: |
+      apiVersion: 1
+      {{ grafana_alerting_provisioning | to_nice_yaml }}
+    dest: /etc/grafana/provisioning/alerting/ansible.yml
+    owner: root
+    group: grafana
+    mode: 0640
+  notify: restart grafana
+  when: grafana_use_provisioning and (grafana_version == 'latest' or (grafana_version is version_compare('9.0', '>=')))

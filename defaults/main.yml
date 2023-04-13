@@ -157,6 +157,11 @@ grafana_alerting:
 #  nodata_or_nullvalues: 'no_data'
 #  concurrent_render_limit: 5
 
+# Grafana alerting notification channels and Alerts, see https://grafana.com/docs/grafana/latest/alerting/set-up/provision-alerting-resources/file-provisioning/
+# Provisioning for Grafana Alerting
+grafana_alerting_provisioning: {}
+
+
 # Grafana logging configuration
 grafana_log:
 # mode: 'console file'
