@@ -1,3 +1,7 @@
+# DEPRECATED
+
+**This role has been deprecated in favor of a the [grafana-ansible-collection](https://github.com/grafana/grafana-ansible-collection) collection.**
+
 <p><img src="https://grafana.com/blog/assets/img/blog/timeshift/grafana_release_icon.png" alt="grafana logo" title="grafana" align="right" height="60" /></p>
 
 # Ansible Role: grafana
